@@ -1,0 +1,8 @@
+node_modules
+media
+dist
+env
+.vscode
+.git
+.gitignore
+*log
