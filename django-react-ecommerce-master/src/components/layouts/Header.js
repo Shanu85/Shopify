@@ -63,15 +63,15 @@ const Header = () => {
         <Toolbar>
           <Link
             component={RouterLink}
-            to="/products"
+            to="/"
             variant="h6"
             color="inherit"
             className={classes.title}
             underline={"none"}
           >
-            Products
+            Shopify
           </Link>
-          {!matches && <Search />}
+          {!matches && isAuthenticated && <Search />}
           {isAuthenticated === false ? guestNav : authNav}
         </Toolbar>
       </AppBar>

@@ -8,6 +8,8 @@ import ProtectedRoute from "./components/routes/ProtectedRoute";
 import Loading from "./components/loading/Loading";
 
 const Header = React.lazy(() => import("./components/layouts/Header"));
+const Home = React.lazy(() => import("./components/layouts/Home"));
+const Footer = React.lazy(() => import("./components/layouts/Footer"));
 
 const MobileNavigation = React.lazy(() =>
   import(
@@ -99,8 +101,6 @@ const Order = React.lazy(() =>
   import(/* webpackChunkName: "order" */ "./pages/checkoutPages/order")
 );
 
-const Index = () => <Redirect to="/products" />;
-
 const Routes = () => {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("xs"));
@@ -110,7 +110,7 @@ const Routes = () => {
       {!matches && <Header />}
       <Loading inFetching />
       <Switch>
-        <Route exact path="/" component={Index} />
+        <Route exact path="/" component={Home} />
         <ProtectedRoute exact path="/logout" component={Logout} />
         <AuthRoute exact path="/login" component={Login} />
         <AuthRoute exact path="/register" component={Register} />
@@ -153,6 +153,7 @@ const Routes = () => {
         <ProtectedRoute exact path="/cart" component={Cart} />
         <ProtectedRoute exact path="/order" component={Order} />
       </Switch>
+      {!matches && <Footer />}
       <div style={{ height: "56px" }}></div>
       {matches && <MobileNavigation />}
     </React.Suspense>
