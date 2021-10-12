@@ -1,3 +1,5 @@
+import Button from "@material-ui/core/Button";
+import { Link as RouterLink } from "react-router-dom";
 import { mobile } from "./responsive";
 import styled from "styled-components";
 import React from "react";
@@ -21,6 +23,7 @@ const Wrapper = styled.div`
 const ImgContainer = styled.div`
   height: 100%;
   flex: 1;
+  text-align: right;
 `;
 
 const Image = styled.img`
@@ -43,13 +46,6 @@ const Desc = styled.p`
   letter-spacing: 3px;
 `;
 
-const Button = styled.button`
-  padding: 10px;
-  font-size: 20px;
-  background-color: transparent;
-  cursor: pointer;
-`;
-
 const homeItem = {
     img: "https://i.ibb.co/DG69bQ4/2.png",
     title: "AUTUMN COLLECTION",
@@ -67,7 +63,11 @@ const Home = () => {
         <InfoContainer>
             <Title>{homeItem.title}</Title>
             <Desc>{homeItem.desc}</Desc>
-            <Button>SHOW NOW</Button>
+            
+            <Button component={RouterLink} to="/products" variant="contained" color="success">
+              SHOP NOW
+            </Button>
+            
         </InfoContainer>
       </Wrapper>
     </Container>
