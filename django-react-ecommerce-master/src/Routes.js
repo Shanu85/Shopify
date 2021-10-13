@@ -9,13 +9,6 @@ import Loading from "./components/loading/Loading";
 
 const Header = React.lazy(() => import("./components/layouts/Header"));
 const Home = React.lazy(() => import("./components/layouts/Home"));
-const Footer = React.lazy(() => import("./components/layouts/Footer"));
-
-const MobileNavigation = React.lazy(() =>
-  import(
-    /* webpackChunkName: "header" */ "./components/layouts/MobileNavigation"
-  )
-);
 
 const Login = React.lazy(() =>
   import(/* webpackChunkName: "login" */ "./pages/authPages/login")
@@ -153,9 +146,6 @@ const Routes = () => {
         <ProtectedRoute exact path="/cart" component={Cart} />
         <ProtectedRoute exact path="/order" component={Order} />
       </Switch>
-      {!matches && <Footer />}
-      <div style={{ height: "56px" }}></div>
-      {matches && <MobileNavigation />}
     </React.Suspense>
   );
 };
