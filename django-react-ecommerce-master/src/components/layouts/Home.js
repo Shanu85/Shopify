@@ -1,77 +1,62 @@
-import Button from "@material-ui/core/Button";
 import { Link as RouterLink } from "react-router-dom";
-import { mobile } from "./responsive";
-import styled from "styled-components";
 import React from "react";
+import { CardMedia } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
 
-const Container = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  position: relative;
-  overflow: hidden;
-  ${mobile({ display: "none" })}
-`;
 
-const Wrapper = styled.div`
-  height: 100%;
-  display: flex;
-  transition: all 1.5s ease;
-  transform: translateX(${(props) => props.slideIndex * -100}vw);
-`;
+function Home() {
+  return (
+    
+    <div>
+        <Grid height="100vh"  display="flex" direction="column" padding="20px">
+        <Grid item lg={10}>
+            <Grid display="flex" direction="row" height="100%">
+                <Grid item lg={6} >
+                    <div style={{ display:'flex', justifyContent:'center' }}>
+                        <Card  sx={{ maxWidth: "80%", border:"none", boxShadow:"none"}}>
+                            <CardMedia
+                                component="img"
+                                image="https://i.ibb.co/DG69bQ4/2.png"
+                            />
+                        </Card>
+                    </div>
+                </Grid>
+                <Grid item lg={6}>
+                    <Box
+                    display="flex"
+                    
+                    justifyContent="center"
+                    alignItems="center"
+                    minHeight="50vh"
+                    >
+                        <Container>
+                        <Typography variant="h2" fontWeight="600" color="black">
+                                    Autumn Collection
+                        </Typography>
+                        <Typography variant="h6"  color="black" margin="20px 0px" >
+                            DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.
+                        </Typography>
+                        <Button component={RouterLink} to="/products" variant="contained" color="success">
+                          SHOP NOW
+                        </Button>
+                        </Container>
+                        </Box>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid item lg={2} bgcolor="palegreen">
+            there
+        </Grid>
+    </Grid>
 
-const ImgContainer = styled.div`
-  height: 100%;
-  flex: 1;
-  text-align: right;
-`;
-
-const Image = styled.img`
-  height: 80%;
-`;
-
-const InfoContainer = styled.div`
-  flex: 1;
-  padding: 50px;
-`;
-
-const Title = styled.h1`
-  font-size: 70px;
-`;
-
-const Desc = styled.p`
-  margin: 50px 0px;
-  font-size: 20px;
-  font-weight: 500;
-  letter-spacing: 3px;
-`;
-
-const homeItem = {
-    img: "https://i.ibb.co/DG69bQ4/2.png",
-    title: "AUTUMN COLLECTION",
-    desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS."
+    </div>
+    
+  );
 }
 
-const Home = () => {
-
-  return (
-    <Container>
-      <Wrapper>
-        <ImgContainer>
-            <Image src={homeItem.img} />
-        </ImgContainer>
-        <InfoContainer>
-            <Title>{homeItem.title}</Title>
-            <Desc>{homeItem.desc}</Desc>
-            
-            <Button component={RouterLink} to="/products" variant="contained" color="success">
-              SHOP NOW
-            </Button>
-            
-        </InfoContainer>
-      </Wrapper>
-    </Container>
-  );
-};
-
-export default Home;
+export default Home

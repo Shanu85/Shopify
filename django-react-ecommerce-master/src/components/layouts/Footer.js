@@ -8,6 +8,8 @@ import { mobile } from "./responsive";
 import React from "react";
 
 const Container = styled.div`
+  
+  bottom: 0;
   display: flex;
   background-color:silver;
   position:sticky;
@@ -45,7 +47,7 @@ const Center = styled.div`
 
 const Footer = () => {
   return (
-    <Container>
+    <Container position="static">
       <Left>
         
       </Left>
