@@ -141,8 +141,8 @@ const Routes = () => {
           path="/profile/orders/:id"
           component={OrdersDetail}
         />
-        <Route exact path="/products" component={Products} />
-        <Route exact path="/products/:slug" component={ProductsDetail} />
+        <ProtectedRoute exact path="/products" component={Products} />
+        <ProtectedRoute exact path="/products/:slug" component={ProductsDetail} />
         <ProtectedRoute exact path="/cart" component={Cart} />
         <ProtectedRoute exact path="/order" component={Order} />
       </Switch>

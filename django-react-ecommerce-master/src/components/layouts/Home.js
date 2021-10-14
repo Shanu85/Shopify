@@ -24,8 +24,6 @@ const Home = () => {
   margin-right: 20px;
 `;
 
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
-
   return (
     <div>
       <Grid container style={{ margin: '40px 0px 0px' }}>
@@ -45,8 +43,7 @@ const Home = () => {
           <div style={{ padding: '250px 200px 0px 0px' }}>
             <Typography variant="h2">Find it, love it, buy it.</Typography>
 
-            <Button component={RouterLink} to={isAuthenticated ? "/products": "/login"}  
-            color="primary" variant="contained" style={{ margin: '50px' }}>
+            <Button component={RouterLink} to="/products" color="primary" variant="contained" style={{ margin: '50px' }}>
               SHOP NOW
             </Button>
 
