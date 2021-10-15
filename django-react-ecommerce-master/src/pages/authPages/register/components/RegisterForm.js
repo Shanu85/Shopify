@@ -13,7 +13,7 @@ import LoadingButton from "@components/loading/LoadingButton";
 
 const RegisterForm = props => {
   const {
-    values: { first_name, last_name, phone_number, password, user_type },
+    values: { first_name, last_name, phone_number, password },
     errors,
     handleSubmit,
     handleChange,
@@ -62,22 +62,6 @@ const RegisterForm = props => {
                   Boolean(errors.last_name) || Boolean(errors.non_field_errors)
                 }
                 value={last_name}
-                onChange={handleChange}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="user_type"
-                label="Register_As"
-                name="user_type"
-                helperText={errors.user_type}
-                error={
-                  Boolean(errors.user_type) || Boolean(errors.user_type)
-                }
-                value={user_type}
                 onChange={handleChange}
               />
             </Grid>

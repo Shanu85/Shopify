@@ -5,13 +5,12 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import AppBar from "@material-ui/core/AppBar";
 import Badge from "@material-ui/core/Badge";
-import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
+import Toolbar from "@material-ui/core/Toolbar";
 import Link from "@material-ui/core/Link";
 import IconButton from "@material-ui/core/IconButton";
 import CartIcon from "@material-ui/icons/ShoppingCart";
 import ProfileIcon from "@material-ui/icons/Person";
-
 import Search from "@pages/productPages/products/components/Filters/Search";
 
 const useStyles = makeStyles(theme => ({
@@ -51,6 +50,7 @@ const Header = () => {
       <Button component={RouterLink} to="/login" color="inherit">
         Login
       </Button>
+
       <Button component={RouterLink} to="/register" color="inherit">
         Register
       </Button>
