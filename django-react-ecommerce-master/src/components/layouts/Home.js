@@ -45,7 +45,10 @@ const Home = () => {
             <Button component={RouterLink} to="/products" color="primary" variant="contained" style={{ margin: '50px' }}>
               SHOP NOW
             </Button>
-
+            
+            <Button component={RouterLink} to="/seller" color="primary" variant="contained" style={{ margin: '50px' }}>
+              Seller Testing
+            </Button>
           </div>
         </Grid>
 

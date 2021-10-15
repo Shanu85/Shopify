@@ -7,6 +7,8 @@ import AuthRoute from "./components/routes/AuthRoute";
 import ProtectedRoute from "./components/routes/ProtectedRoute";
 import Loading from "./components/loading/Loading";
 
+const Seller_Route=React.lazy(()=>import('./Seller/Seller_Routing'))
+
 const Header = React.lazy(() => import("./components/layouts/Header"));
 const Home = React.lazy(() => import("./components/layouts/Home"));
 
@@ -150,6 +152,7 @@ const Routes = () => {
         <ProtectedRoute exact path="/cart" component={Cart} />
         <ProtectedRoute exact path="/order" component={Order} />
         <ProtectedRoute exact path="/payment" component={Payment} />
+        <Route exact path={"/seller"} component={Seller_Route}/>
       </Switch>
     </React.Suspense>
   );
