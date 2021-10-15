@@ -95,9 +95,9 @@ const OrdersDetail = ({ match }) => {
             </Typography>
           </Grid>
           <Grid item md={6} xs={12}>
-            <Typography variant="body2">Purchase invoice:</Typography>
+            <Typography variant="body2">Payment Mode:</Typography>
             <Typography variant="h6">
-              {order.purchase_invoice ? "yes" : "no"}
+              {order.payment_mode}
             </Typography>
           </Grid>
           <Grid item md={6} xs={12}>

@@ -1,7 +1,6 @@
 import { Box, Button, Grid, Typography } from '@material-ui/core';
 import { Facebook, Instagram, Twitter } from "@material-ui/icons";
 import React from "react";
-import { useSelector } from "react-redux";
 import { Link as RouterLink } from "react-router-dom";
 import styled from "styled-components";
 import HomeModel from "./images/HomeModel.jpg";
@@ -64,7 +63,7 @@ const Home = () => {
 
           </SocialContainer>
 
-          <div style={{ margin: '10px 0px 0px' }}>
+          <div style={{ margin: '10px 0px 0px', padding: '0px 15px'}}>
             © 2021 Shopify
           </div>
         </Grid>

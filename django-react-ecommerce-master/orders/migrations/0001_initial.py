@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
             name='Order',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('purchase_invoice', models.BooleanField(default=False)),
+                ('payment_mode', models.CharField(max_length=50)),
                 ('shipping_status', models.CharField(max_length=50)),
                 ('code', models.CharField(max_length=8, unique=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),

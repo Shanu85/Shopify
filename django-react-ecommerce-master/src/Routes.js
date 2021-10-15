@@ -94,6 +94,10 @@ const Order = React.lazy(() =>
   import(/* webpackChunkName: "order" */ "./pages/checkoutPages/order")
 );
 
+const Payment = React.lazy(() =>
+  import(/* webpackChunkName: "order" */ "./pages/checkoutPages/payment")
+);
+
 const Routes = () => {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("xs"));
@@ -145,6 +149,7 @@ const Routes = () => {
         <ProtectedRoute exact path="/products/:slug" component={ProductsDetail} />
         <ProtectedRoute exact path="/cart" component={Cart} />
         <ProtectedRoute exact path="/order" component={Order} />
+        <ProtectedRoute exact path="/payment" component={Payment} />
       </Switch>
     </React.Suspense>
   );

@@ -20,7 +20,7 @@ class OrderListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = ('id', 'created_at', 'total_price', 'code',
-                  'items_count', 'shipping_status', 'purchase_invoice')
+                  'items_count', 'shipping_status', 'payment_mode')
 
     def get_total_price(self, obj):
         total_price = 0
@@ -70,7 +70,7 @@ class CreateOrderSerializer(serializers.ModelSerializer):
         cart.save()
         order = Order.objects.create(
             user=user, cart=cart, reciver=reciver_info,
-            purchase_invoice=data.get('purchase_invoice'), shipping_status="Preparation"
+            payment_mode = data.get('payment_mode'), shipping_status="Preparation"
         )
         # Create another cart model with ordered=False
         Cart.objects.create(user=user)

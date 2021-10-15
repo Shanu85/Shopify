@@ -10,7 +10,7 @@ class OrderAdmin(admin.ModelAdmin):
                     'total_price', 'shipping_status', 'created_at')
     list_display_links = ('id', 'user')
     list_editable = ('shipping_status',)
-    list_filter = ('shipping_status', 'purchase_invoice', 'created_at')
+    list_filter = ('shipping_status', 'payment_mode', 'created_at')
     list_per_page = 25
     search_fields = ('user__phone_number', 'user__email', 'code')
     readonly_fields = ('code',)

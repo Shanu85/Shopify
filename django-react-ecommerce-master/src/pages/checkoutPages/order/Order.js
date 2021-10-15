@@ -4,12 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
-import Paper from "@material-ui/core/Paper";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 import Box from "@material-ui/core/Box";
-
-import { createOrder } from "@actions/profileActions/orderActions";
 import { fetchCart } from "@actions/cartActions";
 import { fetchAddresses } from "@actions/profileActions/AddressActions";
 import SelectAddress from "./components/SelectAddress";
@@ -54,7 +49,6 @@ const Order = ({ history }) => {
     profile: { addresses }
   } = useSelector(state => state);
   const [address, setAddress] = useState(addresses[0] || "");
-  const [checked, setChecked] = useState(true);
   const dispatch = useDispatch();
   const classes = useStyles();
 
@@ -73,18 +67,6 @@ const Order = ({ history }) => {
     setAddress(addresses[0] || "");
   }, [addresses]);
 
-  const handleClick = () => {
-    const order = {
-      reciver: {
-        full_name: address.reciver_full_name,
-        phone_number: address.reciver_phone_number,
-        address: `${address.state} ${address.city} ${address.postal_address} ${address.postal_code}`
-      },
-      purchase_invoice: checked
-    };
-    dispatch(createOrder(order, history));
-  };
-
   if (loadingUI === true) {
     return null;
   }
@@ -98,19 +80,6 @@ const Order = ({ history }) => {
           addresses={addresses}
         />
         <CartItemsSummary items={cart.items} />
-        <Paper className={classes.mt1}>
-          <FormControlLabel
-            className={classes.m1}
-            control={
-              <Checkbox
-                color="primary"
-                checked={checked}
-                onChange={e => setChecked(e.target.checked)}
-              />
-            }
-            label="Send purchase invoice"
-          />
-        </Paper>
         <Box
           boxShadow={3}
           bgcolor="background.paper"
@@ -130,8 +99,9 @@ const Order = ({ history }) => {
             <Grid item md={5} xs className={classes.right}>
               <LoadingButton
                 className={classes.button}
+                component={Link}
+                to={"/payment"}
                 variant="contained"
-                onClick={handleClick}
                 color="primary"
                 fullWidth
               >

@@ -16,7 +16,7 @@ import ChangePasswordIcon from "@material-ui/icons/LockOutlined";
 import LogoutIcon from "@material-ui/icons/ExitToApp";
 
 import ListItemLink from "./ListItemLink";
-import ExpansionPanel from "@components/layouts/MyExpansionPanel";
+import MyExpansionPanel from "@components/layouts/MyExpansionPanel";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -36,7 +36,7 @@ const Sidebar = ({ activeItem, children }) => {
   return (
     <Grid container spacing={2}>
       <Grid item md="auto" xs={12} className={classes.root}>
-        <ExpansionPanel
+        <MyExpansionPanel
           defaultExpanded={location.pathname === "/profile" ? true : matches}
           detailClass={classes.detail}
           title="Your account"
@@ -97,7 +97,7 @@ const Sidebar = ({ activeItem, children }) => {
               <ListItemText primary="Logout" />
             </ListItemLink>
           </List>
-        </ExpansionPanel>
+        </MyExpansionPanel>
       </Grid>
       <Grid item md xs={12}>
         {children}

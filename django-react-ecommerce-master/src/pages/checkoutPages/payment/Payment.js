@@ -4,7 +4,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import SwipeableViews from 'react-swipeable-views';
-import { useTheme } from '@mui/material/styles';
+import { useTheme } from '@material-ui/core';
 import Cod from './components/Cod';  
 import CardPayment from './components/CardPayment';
 import UPI from './components/UPI';
@@ -28,7 +28,7 @@ function TabPanel(props) {
   );
 }
 
-export default function Payment() {
+export default function Payment({history}) {
   const theme = useTheme();
   const [selectedTab, setselectedTab] = React.useState(0);
 
@@ -68,9 +68,9 @@ export default function Payment() {
               
         </SwipeableViews>
         
-        {selectedTab===0 && <Cod/>}
-        {selectedTab===1 && <CardPayment/>}
-        {selectedTab==2 && <UPI/>}
+        {selectedTab===0 && <Cod history={history}/>}
+        {selectedTab===1 && <CardPayment history={history}/>}
+        {selectedTab==2 && <UPI  history={history}/>}
       </Box>
       
     </>

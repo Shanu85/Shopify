@@ -22,7 +22,7 @@ class Order(models.Model):
         User, on_delete=models.DO_NOTHING, related_name="orders")
     cart = models.ForeignKey(Cart, on_delete=models.DO_NOTHING)
     reciver = models.ForeignKey(ReciverInfo, on_delete=models.DO_NOTHING)
-    purchase_invoice = models.BooleanField(default=False)
+    payment_mode = models.CharField(max_length=50)
     shipping_status = models.CharField(max_length=50)
     code = models.CharField(max_length=8, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)

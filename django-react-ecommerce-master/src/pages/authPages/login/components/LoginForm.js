@@ -83,6 +83,7 @@ const LoginForm = props => {
           >
             Log In
           </LoadingButton>
+
           <Grid container>
             <Grid item xs>
               <MUILink component={Link} to="/reset-password" variant="body2">
