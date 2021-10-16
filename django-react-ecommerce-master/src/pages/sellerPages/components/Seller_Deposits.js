@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Typography from '@material-ui/core/Typography';
+import { Grid } from '@material-ui/core';
 
 function Title(props) {
     return (
@@ -23,15 +24,15 @@ const getCurrentDate=()=>{
 export default function Seller_Deposits() {
     
   return (
-    <React.Fragment>
+    <Grid style={{margin:"30px"}}>
       <Title>Recent Deposits</Title>
-      <Typography component="p" variant="h4">
+      <Typography component="p" variant="h6">
         $3,024.00
       </Typography>
       <Typography color="text.secondary" sx={{ flex: 1 }}>
         {getCurrentDate}
       </Typography>
       
-    </React.Fragment>
+    </Grid>
   );
 }

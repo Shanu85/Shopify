@@ -4,7 +4,7 @@ import { withStyles, makeStyles } from "@material-ui/core/styles";
 import queryString from "query-string";
 import useReactRouter from "use-react-router";
 import Typography from "@material-ui/core/Typography";
-import MUISlider from "@material-ui/core/Slider";
+import MUISlider from '@material-ui/core/Slider';
 
 import { appendQuery } from "./utils";
 
