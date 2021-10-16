@@ -5,7 +5,7 @@ import { TextField,Grid,Paper,Button} from '@material-ui/core'
 
 function AddProductFrom() {
     const paperStyle = { padding: '0 15px 40px 15px', width: 250, }
-    const btnStyle = { marginTop: 10 }
+    const btnStyle = { marginTop: 20 }
     
 
     const initialValues = {
@@ -82,7 +82,7 @@ function AddProductFrom() {
                             helperText={<ErrorMessage name='product_discription' />} required />
 
                             <Button type='submit' style={btnStyle} variant='contained'
-                                color='primary'>Register</Button>
+                                color='primary'>Add</Button>
                         </Form>
                     )}
                 </Formik>
