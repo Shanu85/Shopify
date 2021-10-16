@@ -4,7 +4,6 @@ import { ExpansionPanel, Grid, makeStyles } from '@material-ui/core'
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import ShopingCartIcon from "@material-ui/icons/ShoppingCartOutlined";
-import PersonIcon from "@material-ui/icons/PersonOutline";
 import ChangePasswordIcon from "@material-ui/icons/LockOutlined";
 import LogoutIcon from "@material-ui/icons/ExitToApp";
 import List from '@material-ui/core/List';
@@ -52,12 +51,6 @@ const Seller_Sidebar=({ activeItem, children }) =>{
                         <ListItemText primary="Orders" />
                         </ListItemLink>
 
-                        <ListItemLink selected={activeItem === "profile"} to="#">
-                        <ListItemIcon>
-                            <PersonIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Profile" />
-                        </ListItemLink>
 
                         <ListItemLink to="#">
                         <ListItemIcon>
