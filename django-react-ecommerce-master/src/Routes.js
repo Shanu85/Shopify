@@ -4,10 +4,9 @@ import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import AuthRoute from "./components/routes/AuthRoute";
-import ProtectedRoute from "./components/routes/ProtectedRoute";
+import BuyerProtectedRoute from "./components/routes/BuyerProtectedRoute";
+import SellerProtectedRoute from "./components/routes/SellerProtectedRoute";
 import Loading from "./components/loading/Loading";
-
-const Seller_Route=React.lazy(()=>import('./Seller/Seller_Routing'))
 
 const Header = React.lazy(() => import("./components/layouts/Header"));
 const Home = React.lazy(() => import("./components/layouts/Home"));
@@ -100,9 +99,30 @@ const Payment = React.lazy(() =>
   import(/* webpackChunkName: "order" */ "./pages/checkoutPages/payment")
 );
 
+const S_SideBar = React.lazy(() =>
+  import('./pages/sellerPages/Seller_Sidebar')
+);
+
+const S_Product = React.lazy(() =>
+  import('./pages/sellerPages/components/Seller_Products')
+);
+
+const S_Dash = React.lazy(() =>
+  import('./pages/sellerPages/components/Seller_Dashboard')
+);
+
+const S_header = React.lazy(() =>
+  import('./pages/sellerPages/Seller_header')
+);
+
+const S_order = React.lazy(() =>
+  import('./pages/sellerPages/components/Seller_Orders')
+);
+
 const Routes = () => {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("xs"));
+
 
   return (
     <React.Suspense fallback={<Loading />}>
@@ -110,7 +130,7 @@ const Routes = () => {
       <Loading inFetching />
       <Switch>
         <Route exact path="/" component={Home} />
-        <ProtectedRoute exact path="/logout" component={Logout} />
+        <BuyerProtectedRoute exact path="/logout" component={Logout} />
         <AuthRoute exact path="/login" component={Login} />
         <AuthRoute exact path="/register" component={Register} />
         <AuthRoute exact path="/reset-password" component={ResetPassword} />
@@ -119,40 +139,45 @@ const Routes = () => {
           path="/reset-password/:token"
           component={ResetPasswordConfirm}
         />
-        <ProtectedRoute
+        <BuyerProtectedRoute
           exact
           path="/change-password"
           component={ChangePassword}
         />
-        <ProtectedRoute exact path="/profile" component={Profile} />
-        <ProtectedRoute
+        <BuyerProtectedRoute exact path="/profile" component={Profile} />
+        <BuyerProtectedRoute
           exact
           path="/profile/personal-info"
           component={PersonalInfo}
         />
-        <ProtectedRoute
+        <BuyerProtectedRoute
           exact
           path="/profile/personal-info/edit"
           component={PersonalInfoEdit}
         />
-        <ProtectedRoute exact path="/profile/addresses" component={Addresses} />
-        <ProtectedRoute
+        <BuyerProtectedRoute exact path="/profile/addresses" component={Addresses} />
+        <BuyerProtectedRoute
           exact
           path="/profile/favorite-products"
           component={FavoriteProducts}
         />
-        <ProtectedRoute exact path="/profile/orders" component={Orders} />
-        <ProtectedRoute
+        <BuyerProtectedRoute exact path="/profile/orders" component={Orders} />
+        <BuyerProtectedRoute
           exact
           path="/profile/orders/:id"
           component={OrdersDetail}
         />
-        <ProtectedRoute exact path="/products" component={Products} />
-        <ProtectedRoute exact path="/products/:slug" component={ProductsDetail} />
-        <ProtectedRoute exact path="/cart" component={Cart} />
-        <ProtectedRoute exact path="/order" component={Order} />
-        <ProtectedRoute exact path="/payment" component={Payment} />
-        <Route exact path={"/seller"} component={Seller_Route}/>
+        <BuyerProtectedRoute exact path="/products" component={Products} />
+        <BuyerProtectedRoute exact path="/products/:slug" component={ProductsDetail} />
+        <BuyerProtectedRoute exact path="/cart" component={Cart} />
+        <BuyerProtectedRoute exact path="/order" component={Order} />
+        <BuyerProtectedRoute exact path="/payment" component={Payment} />
+
+        <SellerProtectedRoute exact path='/seller_dashboard' exact component={S_Dash} />
+        <SellerProtectedRoute exact path="/seller_product" exact component={S_Product} />
+        <SellerProtectedRoute exact path="/seller_dashboard" exact component={S_Dash} />
+        <SellerProtectedRoute exact path="/seller_Home" exact component={S_SideBar} />
+        <SellerProtectedRoute exact path="/seller_Order" exact component={S_order} />
       </Switch>
     </React.Suspense>
   );

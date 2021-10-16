@@ -1,6 +1,7 @@
 import { Box, Button, Grid, Typography } from '@material-ui/core';
 import { Facebook, Instagram, Twitter } from "@material-ui/icons";
 import React from "react";
+import { useSelector } from 'react-redux';
 import { Link as RouterLink } from "react-router-dom";
 import styled from "styled-components";
 import HomeModel from "./images/HomeModel.jpg";
@@ -23,6 +24,8 @@ const Home = () => {
   margin-right: 20px;
 `;
 
+  const role = useSelector(state => state.auth.role);
+
   return (
     <div>
       <Grid container style={{ margin: '40px 0px 0px' }}>
@@ -42,13 +45,14 @@ const Home = () => {
           <div style={{ padding: '250px 200px 0px 0px' }}>
             <Typography variant="h2">Find it, love it, buy it.</Typography>
 
-            <Button component={RouterLink} to="/products" color="primary" variant="contained" style={{ margin: '50px' }}>
-              SHOP NOW
-            </Button>
-            
-            <Button component={RouterLink} to="/seller" color="primary" variant="contained" style={{ margin: '50px' }}>
-              Seller Testing
-            </Button>
+            {role === "Seller" ?
+              <Button component={RouterLink} to="/seller_dashboard" color="primary" variant="contained" style={{ margin: '50px' }}>
+                GO TO YOUR PROFILE
+              </Button>
+              :
+              <Button component={RouterLink} to="/products" color="primary" variant="contained" style={{ margin: '50px' }}>
+                SHOP NOW
+              </Button>}
           </div>
         </Grid>
 
@@ -66,7 +70,7 @@ const Home = () => {
 
           </SocialContainer>
 
-          <div style={{ margin: '10px 0px 0px', padding: '0px 15px'}}>
+          <div style={{ margin: '10px 0px 0px', padding: '0px 15px' }}>
             © 2021 Shopify
           </div>
         </Grid>

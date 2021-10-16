@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
 
 const Header = () => {
   const classes = useStyles();
-  const { isAuthenticated, user } = useSelector(state => state.auth);
+  const { isAuthenticated, role, user } = useSelector(state => state.auth);
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("xs"));
 
@@ -63,7 +63,7 @@ const Header = () => {
         <Toolbar>
           <Link
             component={RouterLink}
-            to="/"
+            to={"/"}
             variant="h6"
             color="inherit"
             className={classes.title}
@@ -71,8 +71,8 @@ const Header = () => {
           >
             Shopify
           </Link>
-          {!matches && isAuthenticated && <Search />}
-          {isAuthenticated === false ? guestNav : authNav}
+          {!matches && role==="Buyer" && isAuthenticated && <Search />}
+          {isAuthenticated === false ? guestNav : (role==="Buyer" && authNav)}
         </Toolbar>
       </AppBar>
       {matches && <Search />}

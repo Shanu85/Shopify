@@ -2,8 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
 
-const ProtectedRoute = ({ component: Component, to, ...rest }) => {
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+const BuyerProtectedRoute = ({ component: Component, to, ...rest }) => {
+  const { isAuthenticated, role, user } = useSelector(state => state.auth);
 
   return (
     <Route
@@ -17,10 +17,12 @@ const ProtectedRoute = ({ component: Component, to, ...rest }) => {
       }
     />
   );
+
+
 };
 
-ProtectedRoute.defaultProps = {
+BuyerProtectedRoute.defaultProps = {
   to: "/login"
 };
 
-export default ProtectedRoute;
+export default BuyerProtectedRoute;

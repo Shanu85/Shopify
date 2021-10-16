@@ -28,7 +28,7 @@ export const loadSeller = () => dispatch => {
   axios
     .get("/api/seller/")
     .then(response => {
-      dispatch({ type: AUTH_SUCCESS, payload: response.data });
+      dispatch({ type: AUTH_SUCCESS, role: "Seller", payload: response.data });
       dispatch({ type: STOP_LOADING_UI });
     })
     .catch(() => {
@@ -41,7 +41,7 @@ export const login = (user, setErrors, resetForm) => (dispatch, getState) => {
   axios
     .post("/api/auth/login/", user)
     .then(response => {
-      dispatch({ type: AUTH_SUCCESS, payload: response.data });
+      dispatch({ type: AUTH_SUCCESS, role: "Buyer", payload: response.data });
       dispatch({ type: STOP_LOADING_BUTTON });
       resetForm();
       dispatch(
@@ -63,7 +63,7 @@ export const register = (user, setErrors, resetForm) => dispatch => {
   axios
     .post("/api/auth/register/", user)
     .then(response => {
-      dispatch({ type: AUTH_SUCCESS, payload: response.data });
+      dispatch({ type: AUTH_SUCCESS, role: user.user_type, payload: response.data });
       dispatch({ type: STOP_LOADING_BUTTON });
       resetForm();
       dispatch(addNotif({ message: "Your account registered successfully" }));

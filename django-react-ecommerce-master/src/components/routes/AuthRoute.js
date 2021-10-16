@@ -4,13 +4,14 @@ import { Route, Redirect } from "react-router-dom";
 
 const AuthRoute = ({ component: Component, to, ...rest }) => {
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  const role = useSelector(state => state.auth.role);
 
   return (
     <Route
       {...rest}
       render={props =>
         isAuthenticated === true ? (
-          <Redirect to={to} />
+          (role === "Seller"? <Redirect to={"/seller_dashboard"} /> : <Redirect to={"/products"}/>)
         ) : (
           isAuthenticated === false && <Component {...props} />
         )

@@ -8,21 +8,24 @@ import {
 
 const initialState = {
   isAuthenticated: null,
+  role: "NA",
   user: null
 };
 
 export default (state = initialState, action) => {
-  const { type, payload } = action;
+  const { type, role, payload } = action;
 
   switch (type) {
     case AUTH_SUCCESS:
       return {
         isAuthenticated: true,
+        role: role,
         user: payload
       };
     case AUTH_FAIL:
       return {
         isAuthenticated: false,
+        role: "NA",
         user: null
       };
     case REMOVE_FROM_CART:

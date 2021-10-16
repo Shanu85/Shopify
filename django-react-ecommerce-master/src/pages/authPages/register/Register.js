@@ -57,13 +57,12 @@ const Register = () => {
     <>
       {user_type === "NA" ?
         <UserType changeType={changeType} /> :
-
         <Formik
           initialValues={values}
           validationSchema={validationSchema}
           onSubmit={handleSubmit}
         >
-          {props => <RegisterForm {...props} />}
+          {props => <RegisterForm {...props}/>}
         </Formik>
       }
     </>
