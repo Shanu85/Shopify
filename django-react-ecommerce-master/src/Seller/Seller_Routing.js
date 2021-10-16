@@ -6,7 +6,7 @@ const S_Product=React.lazy(()=>(import('./components/Seller_Products')))
 const S_Dash=React.lazy(()=>(import('./components/Seller_Dashboard')))
 const S_header=React.lazy(()=>(import('./Seller_header')))
 const S_order=React.lazy(()=>(import('./components/Seller_Orders')))
-const S_addProduct=React.lazy(()=>import('./components/ManageProduct/OpenDialog'))
+
 
 
 
@@ -23,7 +23,7 @@ function Seller_Routing() {
                         <Route path="/seller_dashboard" exact component={S_Dash}/>
                         <Route path="/seller_Home" exact component={S_SideBar}/>
                         <Route path="/seller_Order" exact component={S_order}/>
-                        <Route path='/seller_addProduct' exact component={S_addProduct}/>
+                        
                     </Switch>
                 </React.Suspense>
                 
