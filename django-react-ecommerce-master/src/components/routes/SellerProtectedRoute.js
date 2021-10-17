@@ -3,8 +3,7 @@ import { useSelector } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
 
 const SellerProtectedRoute = ({ component: Component, to, ...rest }) => {
-    const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
-    const role = useSelector(state => state.auth.role);
+    const { isAuthenticated, role, user } = useSelector(state => state.auth);
 
     return (
         <Route

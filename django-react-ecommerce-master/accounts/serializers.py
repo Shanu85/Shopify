@@ -66,7 +66,7 @@ class LoginSerializer(serializers.ModelSerializer):
 
         if user:
             userData = UserSerializer(user).data
-            # print(userData)
+            print(userData)
             if userData['user_type'] == data['user_type']: 
                 # Login user (set session)
                 login(self.context.get('request'), user)

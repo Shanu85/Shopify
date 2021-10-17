@@ -19,23 +19,13 @@ const Register = React.lazy(() =>
   import(/* webpackChunkName: "register" */ "./pages/authPages/register")
 );
 
-const BuyerLogout = React.lazy(() =>
-  import(/* webpackChunkName: "logout" */ "./pages/authPages/buyerLogout")
+const Logout = React.lazy(() =>
+  import(/* webpackChunkName: "logout" */ "./pages/authPages/logout")
 );
 
-const SellerLogout = React.lazy(() =>
-  import(/* webpackChunkName: "logout" */ "./pages/authPages/sellerLogout")
-);
-
-const BuyerChangePassword = React.lazy(() =>
+const ChangePassword = React.lazy(() =>
   import(
-    /* webpackChunkName: "change-password" */ "./pages/authPages/buyerChangePassword"
-  )
-);
-
-const SellerChangePassword = React.lazy(() =>
-  import(
-    /* webpackChunkName: "change-password" */ "./pages/authPages/sellerChangePassword"
+    /* webpackChunkName: "change-password" */ "./pages/authPages/changePassword"
   )
 );
 
@@ -136,8 +126,7 @@ const Routes = () => {
       <Loading inFetching />
       <Switch>
         <Route exact path="/" component={Home} />
-        <BuyerProtectedRoute exact path="/buyer-logout" component={BuyerLogout} />
-        <SellerProtectedRoute exact path="/seller-logout" component={SellerLogout} />
+        <BuyerProtectedRoute exact path="/logout" component={Logout} />
         <AuthRoute exact path="/login" component={Login} />
         <AuthRoute exact path="/register" component={Register} />
         <AuthRoute exact path="/reset-password" component={ResetPassword} />
@@ -148,13 +137,8 @@ const Routes = () => {
         />
         <BuyerProtectedRoute
           exact
-          path="/buyer-change-password"
-          component={BuyerChangePassword}
-        />
-        <SellerProtectedRoute
-          exact
-          path="/seller-change-password"
-          component={SellerChangePassword}
+          path="/change-password"
+          component={ChangePassword}
         />
         <BuyerProtectedRoute exact path="/profile" component={Profile} />
         <BuyerProtectedRoute

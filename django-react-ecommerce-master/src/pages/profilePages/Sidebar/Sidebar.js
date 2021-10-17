@@ -84,13 +84,13 @@ const Sidebar = ({ activeItem, children }) => {
               </ListItemIcon>
               <ListItemText primary="Personal Info" />
             </ListItemLink>
-            <ListItemLink to="/buyer-change-password">
+            <ListItemLink to="/change-password">
               <ListItemIcon>
                 <ChangePasswordIcon />
               </ListItemIcon>
               <ListItemText primary="Change password" />
             </ListItemLink>
-            <ListItemLink to="/buyer-logout">
+            <ListItemLink to="/logout">
               <ListItemIcon>
                 <LogoutIcon />
               </ListItemIcon>
