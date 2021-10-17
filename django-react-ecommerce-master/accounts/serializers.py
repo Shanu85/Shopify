@@ -47,7 +47,7 @@ class LoginSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'phone_number_or_email', 'password')
+        fields = ('id', 'phone_number_or_email', 'password', 'user_type')
         extra_kwargs = {'password': {'write_only': True}}
 
     def validate(self, data):
@@ -56,12 +56,14 @@ class LoginSerializer(serializers.ModelSerializer):
         if '@' in data['phone_number_or_email']:
             user = authenticate(
                 email=data['phone_number_or_email'],
-                password=data['password']
+                password=data['password'],
+                user_type=data['user_type']
             )
         else:
             user = authenticate(
                 phone_number=data['phone_number_or_email'],
-                password=data['password']
+                password=data['password'],
+                user_type=data['user_type']
             )
         if user:
             # Login user (set session)

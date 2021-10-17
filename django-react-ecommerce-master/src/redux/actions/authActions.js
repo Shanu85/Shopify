@@ -41,7 +41,7 @@ export const login = (user, setErrors, resetForm) => (dispatch, getState) => {
   axios
     .post("/api/auth/login/", user)
     .then(response => {
-      dispatch({ type: AUTH_SUCCESS, role: "Buyer", payload: response.data });
+      dispatch({ type: AUTH_SUCCESS, role: user.user_type, payload: response.data });
       dispatch({ type: STOP_LOADING_BUTTON });
       resetForm();
       dispatch(

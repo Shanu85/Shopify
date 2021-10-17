@@ -111,10 +111,6 @@ const S_Dash = React.lazy(() =>
   import('./pages/sellerPages/components/Seller_Dashboard')
 );
 
-const S_header = React.lazy(() =>
-  import('./pages/sellerPages/Seller_header')
-);
-
 const S_order = React.lazy(() =>
   import('./pages/sellerPages/components/Seller_Orders')
 );
@@ -175,7 +171,6 @@ const Routes = () => {
 
         <SellerProtectedRoute exact path='/seller_dashboard' exact component={S_Dash} />
         <SellerProtectedRoute exact path="/seller_product" exact component={S_Product} />
-        <SellerProtectedRoute exact path="/seller_dashboard" exact component={S_Dash} />
         <SellerProtectedRoute exact path="/seller_Home" exact component={S_SideBar} />
         <SellerProtectedRoute exact path="/seller_Order" exact component={S_order} />
       </Switch>

@@ -47,12 +47,15 @@ class User(AbstractBaseUser):
     is_admin = models.BooleanField(default=False)
     last_login=models.DateTimeField(null=True,blank=True)
     date_joined = models.DateTimeField(auto_now_add=True)
+    user_type = models.CharField(max_length=50,null=True, blank=True)
 
     objects = UserMananger()
 
     USERNAME_FIELD = 'phone_number'
 
     class Meta:
+        unique_together = ('email', 'user_type')
+        unique_together = ('phone_number', 'user_type')
         ordering = ('-date_joined', )
 
     def __str__(self):
@@ -85,15 +88,3 @@ class User(AbstractBaseUser):
 @receiver(reset_password_token_created)
 def password_reset_token_created(sender, instance, reset_password_token, *args, **kwargs):
     print(reset_password_token.key)
-
-
-class user_type(models.Model):
-    is_seller=models.BooleanField(default=False)
-    is_buyer=models.BooleanField(default=False)
-    user=models.OneToOneField(User,on_delete=models.CASCADE)
-
-    def __str__(self):
-        if self.is_buyer==True:
-            return User.get_username(self.user)+"- is_buyer"
-        else:
-            return User.get_username(self.user)+"- is_seller"
