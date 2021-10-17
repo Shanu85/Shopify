@@ -13,7 +13,7 @@ import LoadingButton from "@components/loading/LoadingButton";
 
 const BuyerRegisterForm = props => {
   const {
-    values: { first_name, last_name, phone_number, email, password},
+    values: { first_name, last_name, phone_number, password},
     errors,
     handleSubmit,
     handleChange,
