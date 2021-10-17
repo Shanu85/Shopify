@@ -4,7 +4,7 @@ import * as Yup from 'yup'
 import { TextField,Grid,Paper,Button} from '@material-ui/core'
 
 function AddProductFrom() {
-    const paperStyle = { padding: '0 15px 40px 15px', width: 250, }
+    const paperStyle = { padding: '0 15px 40px 15px', width: 450, }
     const btnStyle = { marginTop: 20 }
     
 
@@ -14,13 +14,13 @@ function AddProductFrom() {
         product_name: '',
         stock: '',
         product_price: '',
-        product_discription:''
+        product_description:''
     }
     const validationSchema = Yup.object().shape({
         product_name: Yup.string().min(2, "It's too short").required("Required"),
         stock:Yup.number().min(5).required('Product stock must be atleast 5'),
         product_price:Yup.number().min(1).required('Please enter Price'),
-        product_discription:Yup.string().min(5,"Discription is too short").required("Required")
+        product_description:Yup.string().min(5,"Description is too short").required("Required")
     })
 
 // Helping Article
@@ -58,7 +58,8 @@ function AddProductFrom() {
                             onChange={(event) =>{
                                 props.setFieldValue("productImage", event.target.files[0]);
                               }}/>
-
+                            
+                            <br/>
                             <label style={{marginTop:"10px"}}>Product Proposal</label>
                             <input type='file' name="proposal_file" style={{margin:"10px"}}
                             onChange={(event) =>{
@@ -77,9 +78,9 @@ function AddProductFrom() {
                             error={props.errors.product_price && props.touched.product_price}
                             helperText={<ErrorMessage name='product_price' />} required />
 
-                            <Field as={TextField} name="product_discription" label='Discription' fullWidth required 
-                            error={props.errors.product_discription && props.touched.product_discription}
-                            helperText={<ErrorMessage name='product_discription' />} required />
+                            <Field as={TextField} name="product_description" label='Description' fullWidth required 
+                            error={props.errors.product_description && props.touched.product_description}
+                            helperText={<ErrorMessage name='product_description' />} required />
 
                             <Button type='submit' style={btnStyle} variant='contained'
                                 color='primary'>Add</Button>
