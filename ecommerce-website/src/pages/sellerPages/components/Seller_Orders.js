@@ -14,7 +14,8 @@ const useStyles = makeStyles(theme => ({
     overflowX: "auto"
   },
   header: {
-    color: "black"
+    color: "white",
+    fontWeight:"bold"
   }
 }));
 
@@ -85,7 +86,7 @@ export default function Orders() {
       <Paper className={classes.root}>
         <Table>
           <TableHead>
-            <TableRow>
+            <TableRow style={{background:"black"}}>
               
               <TableCell className={classes.header} align="center">
                 Date
