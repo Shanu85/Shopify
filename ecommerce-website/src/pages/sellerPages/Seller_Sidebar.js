@@ -19,7 +19,8 @@ const useStyle=makeStyles(theme => ({
     }
   }));
 
-
+// define attribute -> 
+// const user = useSelector(state => state.auth.user)
 
 const Seller_Sidebar=({ activeItem, children }) =>{
     const classes=useStyle();
@@ -52,14 +53,14 @@ const Seller_Sidebar=({ activeItem, children }) =>{
                         </ListItemLink>
 
 
-                        <ListItemLink to="#">
+                        <ListItemLink to="/seller-change-password">
                         <ListItemIcon>
                             <ChangePasswordIcon />
                         </ListItemIcon>
                         <ListItemText primary="Change password" />
                         </ListItemLink>
 
-                        <ListItemLink to="/logout">
+                        <ListItemLink to="/seller-logout">
                         <ListItemIcon>
                             <LogoutIcon />
                         </ListItemIcon>

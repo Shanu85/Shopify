@@ -11,9 +11,9 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import useStyles from "../../AuthFromsStyles";
 import LoadingButton from "@components/loading/LoadingButton";
 
-const RegisterForm = props => {
+const SellerRegisterForm = props => {
   const {
-    values: { first_name, last_name, phone_number, password },
+    values: { first_name, last_name, phone_number, email, password},
     errors,
     handleSubmit,
     handleChange,
@@ -87,6 +87,23 @@ const RegisterForm = props => {
                 variant="outlined"
                 required
                 fullWidth
+                id="email"
+                label="Email"
+                name="email"
+                helperText={errors.email}
+                error={
+                  Boolean(errors.email) ||
+                  Boolean(errors.non_field_errors)
+                }
+                value={email}
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
                 name="password"
                 label="Password"
                 type="password"
@@ -128,4 +145,4 @@ const RegisterForm = props => {
   );
 };
 
-export default RegisterForm;
+export default SellerRegisterForm;
