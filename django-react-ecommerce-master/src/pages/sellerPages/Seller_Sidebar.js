@@ -59,7 +59,7 @@ const Seller_Sidebar=({ activeItem, children }) =>{
                         <ListItemText primary="Change password" />
                         </ListItemLink>
 
-                        <ListItemLink to="#">
+                        <ListItemLink to="/logout">
                         <ListItemIcon>
                             <LogoutIcon />
                         </ListItemIcon>

@@ -26,7 +26,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'phone_number', 'password')
+        fields = ('first_name', 'last_name', 'phone_number', 'password', 'user_type')
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
@@ -47,7 +47,7 @@ class LoginSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'phone_number_or_email', 'password')
+        fields = ('id', 'phone_number_or_email', 'password', 'user_type')
         extra_kwargs = {'password': {'write_only': True}}
 
     def validate(self, data):
@@ -63,10 +63,15 @@ class LoginSerializer(serializers.ModelSerializer):
                 phone_number=data['phone_number_or_email'],
                 password=data['password']
             )
+
         if user:
-            # Login user (set session)
-            login(self.context.get('request'), user)
-            return user
+            userData = UserSerializer(user).data
+            print(userData)
+            if userData['user_type'] == data['user_type']: 
+                # Login user (set session)
+                login(self.context.get('request'), user)
+                return user
+            raise serializers.ValidationError("Incorrect Credentials")
         raise serializers.ValidationError("Incorrect Credentials")
 
 

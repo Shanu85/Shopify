@@ -49,7 +49,7 @@ const Register = () => {
       phone_number,
       password
     };
-    console.log(user_type);
+    // console.log(user_type);
     dispatch(register(user, setErrors, resetForm));
   };
 
