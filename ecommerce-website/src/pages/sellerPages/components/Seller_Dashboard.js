@@ -8,6 +8,7 @@ import Paper from '@material-ui/core/Paper';
 import Seller_Deposits from './Seller_Deposits';
 import { Typography } from '@material-ui/core';
 import { makeStyles,Button,Link } from '@material-ui/core';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -26,12 +27,14 @@ const useStyles = makeStyles(theme => ({
 
   
 function Seller_Dashboard() {
+    const {
+        first_name,
+        last_name,
+        phone_number,
+        national_code,
+        email
+    } = useSelector(state => state.auth.user);
     const classes = useStyles();
-    const first_name="Ravi";
-    const last_name="Kishan";
-    const phone_number="08967584938";
-    const national_code="110056";
-    const email="fd@gmail.com";
     
     return (
         <Seller_Sidebar activeItem="seller_dashboard">
