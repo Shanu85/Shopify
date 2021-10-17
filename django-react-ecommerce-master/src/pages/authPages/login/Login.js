@@ -36,9 +36,10 @@ const Login = () => {
   ) => {
     const user = {
       phone_number_or_email,
-      password
+      password,
+      user_type
     };
-    console.log(user_type);
+    //console.log(user_type);
     dispatch(login(user, setErrors, resetForm));
   };
 
