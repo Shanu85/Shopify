@@ -178,7 +178,11 @@ export const updateUser = (user, setErrors, history) => dispatch => {
   axios
     .put("/api/user/", user)
     .then(response => {
+<<<<<<< HEAD
       dispatch({ type: AUTH_SUCCESS,payload: response.data });
+=======
+      dispatch({ type: AUTH_SUCCESS, role: user.user_type, payload: response.data });
+>>>>>>> dfff0854055c8759ac3b07a4d0e622ccb6aa3666
       dispatch({ type: STOP_LOADING_BUTTON });
       
       history.push("/profile/personal-info");

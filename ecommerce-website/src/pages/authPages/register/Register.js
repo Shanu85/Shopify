@@ -35,25 +35,24 @@ const BuyerValidationSchema = Yup.object({
 });
 
 const Register = () => {
+
   const values = {
     phone_number: "",
     password: "",
     first_name: "",
     last_name: "",
-    email:"",
-    user_type: "NA"
+    email:""
   };
+  
   const dispatch = useDispatch();
 
   const [user_type, setType] = useState("NA");
   const changeType = {
     setBuyer: () => {
       setType("Buyer");
-      values[user_type] = "Buyer";
     },
     setSeller: () => {
       setType("Seller");
-      values[user_type] = "Seller"
     }
   }
 
@@ -69,7 +68,7 @@ const Register = () => {
       email,
       password
     };
-    // console.log(user_type);
+    console.log(user);
     dispatch(register(user, setErrors, resetForm));
   };
 
@@ -79,10 +78,10 @@ const Register = () => {
         <UserType changeType={changeType} /> :
         <Formik
           initialValues={values}
-          validationSchema={user_type === "Buyer" ? BuyerValidationSchema: SellerValidationSchema}
+          validationSchema={user_type === "Seller" ? SellerValidationSchema: ValidationSchema}
           onSubmit={handleSubmit}
         > 
-          {props => user_type === "Buyer" ? <BuyerRegisterForm {...props}/>:<SellerRegisterForm {...props}/>}
+          {props => user_type === "Seller" ? <SellerRegisterForm {...props}/>:<BuyerRegisterForm {...props}/>}
         </Formik>
       }
     </>

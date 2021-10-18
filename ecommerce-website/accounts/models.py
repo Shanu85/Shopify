@@ -36,7 +36,7 @@ class UserMananger(BaseUserManager):
 
 class User(AbstractBaseUser):
     email = models.EmailField(
-        verbose_name="email address", max_length=50, unique=True, null=True, blank=True)
+        verbose_name="email address", max_length=50, null=True, blank=True)
     phone_number = models.CharField(max_length=10, unique=True, validators=[
         RegexValidator('^(9|8|7)\d{9}$', message="Invalid phone number.")])
     first_name = models.CharField(max_length=50, null=True, blank=True)
@@ -55,8 +55,6 @@ class User(AbstractBaseUser):
     USERNAME_FIELD = 'phone_number'
 
     class Meta:
-        unique_together = ('email', 'user_type')
-        unique_together = ('phone_number', 'user_type')
         ordering = ('-date_joined', )
 
     def __str__(self):

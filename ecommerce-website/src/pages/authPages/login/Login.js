@@ -4,12 +4,12 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import LoginForm from "./components/LoginForm";
 import { login } from "@actions/authActions";
-import { phone_number_or_email_reg } from "../regexes";
+import { phone_number_reg } from "../regexes";
 import { UserType } from "./components/UserType";
 
 const validationSchema = Yup.object({
-  phone_number_or_email: Yup.string()
-    .matches(phone_number_or_email_reg, "Invalid phone number or email")
+  phone_number: Yup.string()
+    .matches(phone_number_reg, "Invalid phone number")
     .required("Required field"),
   password: Yup.string()
     .min(8, "Must be at least 8 characters")
@@ -17,7 +17,7 @@ const validationSchema = Yup.object({
 });
 
 const Login = () => {
-  const values = { phone_number_or_email: "", password: "" };
+  const values = { phone_number: "", password: "" };
   const dispatch = useDispatch();
 
   const [user_type, setType] = useState("NA");
@@ -31,11 +31,11 @@ const Login = () => {
   }
 
   const handleSubmit = (
-    { phone_number_or_email, password },
+    { phone_number, password },
     { setErrors, resetForm }
   ) => {
     const user = {
-      phone_number_or_email,
+      phone_number,
       password,
       user_type
     };
