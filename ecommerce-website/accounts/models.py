@@ -48,7 +48,7 @@ class User(AbstractBaseUser):
     last_login=models.DateTimeField(null=True,blank=True)
     date_joined = models.DateTimeField(auto_now_add=True)
     user_type = models.CharField(max_length=50,null=True, blank=True)
-    pay_balance = models.IntegerField(default=True)
+    pay_balance = models.IntegerField(default=False)
 
     objects = UserMananger()
 
