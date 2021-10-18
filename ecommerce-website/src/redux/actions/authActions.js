@@ -178,7 +178,7 @@ export const updateUser = (user, setErrors, history) => dispatch => {
   axios
     .put("/api/user/", user)
     .then(response => {
-      dispatch({ type: AUTH_SUCCESS, payload: response.data });
+      dispatch({ type: AUTH_SUCCESS, role: user.user_type, payload: response.data });
       dispatch({ type: STOP_LOADING_BUTTON });
       history.push("/profile/personal-info");
       dispatch(

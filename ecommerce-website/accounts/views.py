@@ -19,7 +19,7 @@ class RegisterView(generics.GenericAPIView):
         user = serializer.save()
         user = serializers.UserSerializer(
             user, context=self.get_serializer_context()).data
-        # print(user)
+        print(user)
         return Response(user)
 
 
@@ -32,7 +32,7 @@ class LoginView(generics.GenericAPIView):
         user = serializer.validated_data
         user = serializers.UserSerializer(
             user, context=self.get_serializer_context()).data
-        # print(user)
+        print(user)
         return Response(user)
 
 

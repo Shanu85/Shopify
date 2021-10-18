@@ -25,7 +25,7 @@ class UserView(RetrieveUpdateAPIView):
 
     def get_object(self):
         return self.request.user
-
+ 
 
 class AddressViewSet(ModelViewSet):
     serializer_class = AddressSerializer

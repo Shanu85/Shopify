@@ -13,7 +13,7 @@ import LoadingButton from "@components/loading/LoadingButton";
 
 const LoginForm = props => {
   const {
-    values: { phone_number_or_email, password },
+    values: { phone_number, password },
     errors,
     handleSubmit,
     handleChange,
@@ -36,16 +36,16 @@ const LoginForm = props => {
             margin="normal"
             required
             fullWidth
-            id="phone_number_or_email"
-            label="Phone Number OR Email Address"
-            name="phone_number_or_email"
-            autoComplete="phone_number_or_email"
-            helperText={errors.phone_number_or_email}
+            id="phone_number"
+            label="Phone Number"
+            name="phone_number"
+            autoComplete="phone_number"
+            helperText={errors.phone_number}
             error={
-              Boolean(errors.phone_number_or_email) ||
+              Boolean(errors.phone_number) ||
               Boolean(errors.non_field_errors)
             }
-            value={phone_number_or_email}
+            value={phone_number}
             onChange={handleChange}
             autoFocus
           />
