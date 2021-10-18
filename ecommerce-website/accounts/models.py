@@ -37,17 +37,18 @@ class UserMananger(BaseUserManager):
 class User(AbstractBaseUser):
     email = models.EmailField(
         verbose_name="email address", max_length=50, unique=True, null=True, blank=True)
-    phone_number = models.CharField(max_length=11, unique=True, validators=[
-        RegexValidator('^09\d{9}$', message="Invalid phone number.")])
+    phone_number = models.CharField(max_length=10, unique=True, validators=[
+        RegexValidator('^(9|8|7)\d{9}$', message="Invalid phone number.")])
     first_name = models.CharField(max_length=50, null=True, blank=True)
     last_name = models.CharField(max_length=50, null=True, blank=True)
     national_code = models.CharField(
-        validators=[validate_national_code], blank=True, null=True, max_length=10)
+        validators=[validate_national_code], blank=True, null=True, max_length=6)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     last_login=models.DateTimeField(null=True,blank=True)
     date_joined = models.DateTimeField(auto_now_add=True)
     user_type = models.CharField(max_length=50,null=True, blank=True)
+    pay_balance = models.IntegerField(default=True)
 
     objects = UserMananger()
 
@@ -80,6 +81,10 @@ class User(AbstractBaseUser):
     @property
     def username(self):
         return self.phone_number
+
+    @property
+    def paybalance(self):
+        return self.pay_balance
 
 
 

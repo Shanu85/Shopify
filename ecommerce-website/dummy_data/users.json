@@ -1,22 +1,22 @@
 [
   {
-    "phone_number": "09171234567",
+    "phone_number": "9171234567",
     "password": "password",
     "email": "admin@gmail.com",
     "is_admin": true,
     "user_type": "Admin"
   },
   {
-    "phone_number": "09177654321",
+    "phone_number": "9177654321",
     "password": "password",
     "first_name": "john",
     "last_name": "deo",
     "email": "john@gmail.com",
-    "national_code": "0081202471",
+    "national_code": "181202",
     "user_type": "Seller"
   },
   {
-    "phone_number": "09175559999",
+    "phone_number": "9175559999",
     "password": "password",
     "first_name": "alex",
     "last_name": "washington",
@@ -24,7 +24,7 @@
     "user_type": "Seller"
   },
   {
-    "phone_number": "09172589875",
+    "phone_number": "9172589875",
     "password": "password",
     "user_type": "Buyer"
   }
