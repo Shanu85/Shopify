@@ -8,7 +8,7 @@ router.register('addresses', views.AddressViewSet, base_name='addresses')
 
 urlpatterns = [
     path('', views.UserView.as_view(), name='user'),
-
+    
 ]
 
 urlpatterns += router.urls

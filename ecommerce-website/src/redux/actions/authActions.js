@@ -178,8 +178,9 @@ export const updateUser = (user, setErrors, history) => dispatch => {
   axios
     .put("/api/user/", user)
     .then(response => {
-      dispatch({ type: AUTH_SUCCESS, payload: response.data });
+      dispatch({ type: AUTH_SUCCESS,payload: response.data });
       dispatch({ type: STOP_LOADING_BUTTON });
+      
       history.push("/profile/personal-info");
       dispatch(
         addNotif({
@@ -193,3 +194,23 @@ export const updateUser = (user, setErrors, history) => dispatch => {
       dispatch({ type: STOP_LOADING_BUTTON });
     });
 };
+
+// export const updateSellerInfo = (user,history)=>dispatch=>{
+//   dispatch({ type: START_LOADING_BUTTON });
+//   axios
+//   .put("/api/sellerInfo/",user)
+//   .then(response=>{
+//     dispatch({type:AUTH_SUCCESS,role:"Seller",payload:response.data});
+//     dispatch({type:START_LOADING_BUTTON});
+//     history.push("/seller_dashboard");
+//     dispatch(
+//       addNotif({
+//         message:"Personal Info was updated",
+//         options:{variant:"info"}
+//       })
+//     )
+//   })
+//   .catch(error=>{
+//     dispatch({type:START_LOADING_BUTTON})
+//   })
+// };
