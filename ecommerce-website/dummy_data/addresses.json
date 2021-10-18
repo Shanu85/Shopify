@@ -6,7 +6,7 @@
     "state": "Virginia",
     "city": "Richmond",
     "postal_address": "2852  Corpening Drive",
-    "postal_code": "1885484759"
+    "postal_code": "188548"
   },
   {
     "user": 1,
@@ -15,7 +15,7 @@
     "state": "Florida",
     "city": "Daytona Beach",
     "postal_address": "3663  Spirit Drive",
-    "postal_code": "3211432114"
+    "postal_code": "321143"
   },
   {
     "user": 2,
@@ -24,6 +24,6 @@
     "state": "Mississippi",
     "city": "Hattiesburg",
     "postal_address": "4669  Walnut Street",
-    "postal_code": "3940139401"
+    "postal_code": "394013"
   }
 ]

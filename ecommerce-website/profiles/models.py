@@ -18,7 +18,7 @@ class Address(models.Model):
     city = models.CharField(max_length=120)
     postal_address = models.TextField()
     postal_code = models.CharField(max_length=6, validators=[RegexValidator(
-        '^[1-9]{6,6}$', message="Invalid postal code")])
+        '^((?!(0))[0-9]{6,6})$', message="Invalid postal code")])
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
