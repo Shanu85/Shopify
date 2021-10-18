@@ -178,11 +178,7 @@ export const updateUser = (user, setErrors, history) => dispatch => {
   axios
     .put("/api/user/", user)
     .then(response => {
-<<<<<<< HEAD
-      dispatch({ type: AUTH_SUCCESS,payload: response.data });
-=======
       dispatch({ type: AUTH_SUCCESS, role: user.user_type, payload: response.data });
->>>>>>> dfff0854055c8759ac3b07a4d0e622ccb6aa3666
       dispatch({ type: STOP_LOADING_BUTTON });
       
       history.push("/profile/personal-info");
@@ -199,22 +195,33 @@ export const updateUser = (user, setErrors, history) => dispatch => {
     });
 };
 
-// export const updateSellerInfo = (user,history)=>dispatch=>{
-//   dispatch({ type: START_LOADING_BUTTON });
-//   axios
-//   .put("/api/sellerInfo/",user)
+export const updateSellerInfo = (user,history)=>dispatch=>{
+  dispatch({ type: START_LOADING_BUTTON });
+  axios
+  .put("/api/user/", user)
+  .then(response=>{
+    dispatch({type:AUTH_SUCCESS,role: user.user_type,payload:response.data});
+    dispatch({type:STOP_LOADING_BUTTON});
+    history.push("/seller_dashboard");
+    dispatch(
+      addNotif({
+        message:"Personal Info was updated",
+        options:{variant:"info"}
+      })
+    )
+  })
+  .catch(error=>{
+    dispatch({type:START_LOADING_BUTTON})
+  })
+};
+
+
+// export const addNewProduct=(data,history)=>dispatch=>{
+//   dispatch({type:START_LOADING_BUTTON})
+//   axios.put("/api/AddNewProduct")
 //   .then(response=>{
-//     dispatch({type:AUTH_SUCCESS,role:"Seller",payload:response.data});
-//     dispatch({type:START_LOADING_BUTTON});
-//     history.push("/seller_dashboard");
-//     dispatch(
-//       addNotif({
-//         message:"Personal Info was updated",
-//         options:{variant:"info"}
-//       })
-//     )
+//     dispatch({type:AUTH_SUCCESS,role:user.user_type,payload:response.data});
+//     dispatch({type:STOP_LOADING_BUTTON});
+//     history.pu
 //   })
-//   .catch(error=>{
-//     dispatch({type:START_LOADING_BUTTON})
-//   })
-// };
+// }
