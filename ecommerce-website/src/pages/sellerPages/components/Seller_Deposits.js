@@ -13,7 +13,7 @@ function Title(props) {
 }
 
 
-export default function Seller_Deposits() {
+export default function Seller_Deposits({pay_balance}) {
   const [currDate, setCurrDate] = useState("- - -");
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export default function Seller_Deposits() {
     <Grid style={{ margin: "30px" }}>
       <Title>Recent Deposits</Title>
       <Typography component="p" variant="h6">
-        $3,024.00
+        ${pay_balance}
       </Typography>
       <Typography color="text.secondary" sx={{ flex: 1 }}>
         {currDate}

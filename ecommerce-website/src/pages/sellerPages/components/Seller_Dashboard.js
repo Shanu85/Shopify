@@ -32,7 +32,8 @@ function Seller_Dashboard() {
         last_name,
         phone_number,
         national_code,
-        email
+        email,
+        pay_balance
     } = useSelector(state => state.auth.user);
     const classes = useStyles();
     
@@ -113,7 +114,7 @@ function Seller_Dashboard() {
                             height: 170,
                         }}
                         >
-                        <Seller_Deposits/>
+                        <Seller_Deposits pay_balance={pay_balance}/>
                         </Paper>
                     </Grid>
                 </Grid>

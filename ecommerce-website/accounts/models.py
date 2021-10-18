@@ -17,10 +17,10 @@ class UserMananger(BaseUserManager):
         user = self.model(
             phone_number=phone_number,
             **extra_fields
-        )
+        )        
         user.set_password(password)
         user.save(using=self._db)
-
+        # print(user)
         return user
 
     def create_superuser(self, phone_number, password):
@@ -48,7 +48,7 @@ class User(AbstractBaseUser):
     last_login=models.DateTimeField(null=True,blank=True)
     date_joined = models.DateTimeField(auto_now_add=True)
     user_type = models.CharField(max_length=50,null=True, blank=True)
-    pay_balance = models.IntegerField(default=True)
+    pay_balance = models.IntegerField(default=False)
 
     objects = UserMananger()
 
