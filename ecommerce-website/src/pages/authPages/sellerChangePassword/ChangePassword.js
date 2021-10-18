@@ -5,7 +5,7 @@ import useReactRouter from "use-react-router";
 import * as Yup from "yup";
 
 import ChangePasswordForm from "./components/ChangePasswordForm";
-import { changePassword } from "@actions/authActions";
+import { sellerChangePassword } from "@actions/authActions";
 
 const validationSchema = Yup.object({
   old_password: Yup.string()
@@ -32,7 +32,7 @@ const ChangePassword = () => {
       old_password,
       new_password: new_password
     };
-    dispatch(changePassword(data, setErrors, resetForm, history));
+    dispatch(sellerChangePassword(data, setErrors, resetForm, history));
   };
 
   return (

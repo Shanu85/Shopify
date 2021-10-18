@@ -19,9 +19,6 @@ const useStyle=makeStyles(theme => ({
     }
   }));
 
-// define attribute -> 
-// const user = useSelector(state => state.auth.user)
-
 const Seller_Sidebar=({ activeItem, children }) =>{
     const classes=useStyle();
 
