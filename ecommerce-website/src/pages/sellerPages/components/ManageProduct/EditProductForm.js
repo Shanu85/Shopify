@@ -30,7 +30,7 @@ function EditProductForm({productStock,productPrice}) {
                 
                 <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
                     {(props) => (
-                        <Form noValidate>
+                        <Form onSubmit={onSubmit}>
                             
                             <Field as={TextField} name='stock' label="Product Stock" placeholder={initialValues.stock} fullWidth
                                 error={props.errors.stock && props.touched.stock}

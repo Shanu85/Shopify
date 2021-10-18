@@ -7,9 +7,22 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Seller_Deposits from './Seller_Deposits';
 import { Typography } from '@material-ui/core';
-import { makeStyles,Button,Link } from '@material-ui/core';
+import { makeStyles,Button,Modal } from '@material-ui/core';
 import { useSelector } from 'react-redux';
+import Info_Edit_form from './EditPersonalInformation/Info_Edit_form';
 
+const modal_Style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 500,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
+  
 const useStyles = makeStyles(theme => ({
     root: {
       marginTop: theme.spacing(3)
@@ -25,7 +38,14 @@ const useStyles = makeStyles(theme => ({
     }
   }));
 
-  
+  function Title(props) {
+    return (
+      <Typography component="h2" variant="h6" color="primary" gutterBottom style={{marginTop:"10px"}}>
+        {props.children}
+      </Typography>
+    );
+  }
+
 function Seller_Dashboard() {
     const {
         first_name,
@@ -37,6 +57,10 @@ function Seller_Dashboard() {
     } = useSelector(state => state.auth.user);
     const classes = useStyles();
     
+    const [Editopen,setEditopen]=React.useState(false);
+    const handleOpen=()=>setEditopen(true);
+    const handleClose=()=>setEditopen(false);
+
     return (
         <Seller_Sidebar activeItem="seller_dashboard">
              <Box
@@ -91,16 +115,17 @@ function Seller_Dashboard() {
                                     <Typography variant="h8">{email || "-"}</Typography>
                                 </Grid>
                                 </Grid>
-                                <Button
-                                component={Link}
-                                
-                                color="primary"
-                                fullWidth
-                                size="large"
-                                className={classes.button}
-                                >
+                                <Button onClick={handleOpen} color="primary" fullWidth size="large" className={classes.button}>
                                 Edit
                                 </Button>
+
+                                <Modal open={Editopen} onClose={handleClose} aria-labelledby="modal-modal-title"
+                                    aria-describedby="modal-modal-description">
+                                        <Box sx={modal_Style}>
+                                        <Title>Edit Information</Title>
+                                        <Info_Edit_form First_Name={first_name} Last_Name={last_name} Phone_No={phone_number} National_Code={national_code} Email={email}/>
+                                        </Box>
+                                </Modal>
                             </Paper>
                         </Paper>
                     </Grid>
