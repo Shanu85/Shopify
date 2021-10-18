@@ -48,6 +48,7 @@ class User(AbstractBaseUser):
     last_login=models.DateTimeField(null=True,blank=True)
     date_joined = models.DateTimeField(auto_now_add=True)
     user_type = models.CharField(max_length=50,null=True, blank=True)
+    pay_balance = models.IntegerField(default=True)
 
     objects = UserMananger()
 
@@ -80,6 +81,10 @@ class User(AbstractBaseUser):
     @property
     def username(self):
         return self.phone_number
+
+    @property
+    def paybalance(self):
+        return self.pay_balance
 
 
 
