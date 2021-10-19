@@ -27,7 +27,7 @@ function AllProduct_Modal({ProductName,ProductImage1,ProductImage2,ProductPropos
                         Product Proposal
                         </Grid>
                         <Grid item xs={7}>
-                            <a href="https://www.tutorialspoint.com/operating_system/operating_system_tutorial.pdf" download>Download</a>
+                            <a href="https://www.tutorialspoint.com/operating_system/operating_system_tutorial.pdf" download target="_blank">Download</a>
                         </Grid>
                     </>:<></>}
                     
