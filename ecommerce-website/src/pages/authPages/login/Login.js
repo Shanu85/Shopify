@@ -27,6 +27,9 @@ const Login = () => {
     },
     setSeller: () => {
       setType("Seller");
+    },
+    setAdmin: () => {
+      setType("Admin");
     }
   }
 

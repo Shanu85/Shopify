@@ -64,14 +64,14 @@ const Admin_Sidebar=({ activeItem, children }) =>{
                         </ListItemLink>
 
 
-                        <ListItemLink >
+                        <ListItemLink to="/admin-change-password">
                         <ListItemIcon>
                             <ChangePasswordIcon />
                         </ListItemIcon>
                         <ListItemText primary="Change password" />
                         </ListItemLink>
 
-                        <ListItemLink >
+                        <ListItemLink to="/admin-logout">
                         <ListItemIcon>
                             <LogoutIcon />
                         </ListItemIcon>

@@ -88,6 +88,29 @@ export const logout = () => dispatch => {
   });
 };
 
+export const adminChangePassword = (
+  data,
+  setErrors,
+  resetForm,
+  history
+) => dispatch => {
+  dispatch({ type: START_LOADING_BUTTON });
+  axios
+    .put("/api/auth/change-password/", data)
+    .then(response => {
+      dispatch({ type: STOP_LOADING_BUTTON });
+      resetForm();
+      history.push("/admin_dashboard");
+      dispatch(
+        addNotif({ message: "Your password has been changed successfully" })
+      );
+    })
+    .catch(error => {
+      setErrors(error.response.data);
+      dispatch({ type: STOP_LOADING_BUTTON });
+    });
+};
+
 export const buyerChangePassword = (
   data,
   setErrors,

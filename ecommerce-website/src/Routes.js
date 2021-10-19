@@ -2,8 +2,8 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-
 import AuthRoute from "./components/routes/AuthRoute";
+import AdminProtectedRoute from "./components/routes/AdminProtectedRoute";
 import BuyerProtectedRoute from "./components/routes/BuyerProtectedRoute";
 import SellerProtectedRoute from "./components/routes/SellerProtectedRoute";
 import Loading from "./components/loading/Loading";
@@ -19,12 +19,22 @@ const Register = React.lazy(() =>
   import(/* webpackChunkName: "register" */ "./pages/authPages/register")
 );
 
+const AdminLogout = React.lazy(() =>
+  import(/* webpackChunkName: "logout" */ "./pages/authPages/adminLogout")
+);
+
 const BuyerLogout = React.lazy(() =>
   import(/* webpackChunkName: "logout" */ "./pages/authPages/buyerLogout")
 );
 
 const SellerLogout = React.lazy(() =>
   import(/* webpackChunkName: "logout" */ "./pages/authPages/sellerLogout")
+);
+
+const AdminChangePassword = React.lazy(() =>
+  import(
+    /* webpackChunkName: "change-password" */ "./pages/authPages/adminChangePassword"
+  )
 );
 
 const BuyerChangePassword = React.lazy(() =>
@@ -155,6 +165,7 @@ const Routes = () => {
       <Loading inFetching />
       <Switch>
         <Route exact path="/" component={Home} />
+        <AdminProtectedRoute exact path="/admin-logout" component={AdminLogout} />
         <BuyerProtectedRoute exact path="/buyer-logout" component={BuyerLogout} />
         <SellerProtectedRoute exact path="/seller-logout" component={SellerLogout} />
         <AuthRoute exact path="/login" component={Login} />
@@ -164,6 +175,11 @@ const Routes = () => {
           exact
           path="/reset-password/:token"
           component={ResetPasswordConfirm}
+        />
+        <AdminProtectedRoute
+          exact
+          path="/admin-change-password"
+          component={AdminChangePassword}
         />
         <BuyerProtectedRoute
           exact
@@ -209,12 +225,11 @@ const Routes = () => {
         <SellerProtectedRoute exact path="/seller_Home" exact component={S_SideBar} />
         <SellerProtectedRoute exact path="/seller_Order" exact component={S_order} />
 
-        <Route exact path='/admin_Home' exact component={A_Sidebar}/>
-        <Route exact path='/admin_dashboard' exact component={A_Dash}/>
-        <Route exact path='/All_Seller' exact component={A_allSeller}/>
-        <Route exact path='/All_Buyer' exact component={A_allBuyer}/>
-        <Route exact path='/All_Products' exact component={A_allProducts}/>
-        <Route exact path='/Pending_Products' exact component={A_pendingProducts}/>
+        <AdminProtectedRoute exact path='/admin_dashboard' exact component={A_Dash}/>
+        <AdminProtectedRoute exact path='/All_Seller' exact component={A_allSeller}/>
+        <AdminProtectedRoute exact path='/All_Buyer' exact component={A_allBuyer}/>
+        <AdminProtectedRoute exact path='/All_Products' exact component={A_allProducts}/>
+        <AdminProtectedRoute exact path='/Pending_Products' exact component={A_pendingProducts}/>
 
       </Switch>
     </React.Suspense>

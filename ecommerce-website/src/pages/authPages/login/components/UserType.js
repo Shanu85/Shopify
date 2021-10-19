@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, Box, Grid, Typography } from "@material-ui/core";
 import Buyer from "./images/buyer.png";
 import Seller from "./images/seller.png";
+import Admin from "./images/admin.png";
 
 export const UserType = ({changeType}) => {
     return (
@@ -11,7 +12,7 @@ export const UserType = ({changeType}) => {
             </div>
 
             <Grid container style={{ margin: '20px 0px 0px', textAlign: 'center' }}>
-                <Grid item xs={6} style={{ marginBottom: '50px' }}>
+                <Grid item xs={4} style={{ marginBottom: '50px' }}>
                     <Box
                         component="img"
                         sx={{
@@ -22,7 +23,7 @@ export const UserType = ({changeType}) => {
                         src={Buyer}
                     />
                 </Grid>
-                <Grid item xs={6} style={{ marginBottom: '50px' }}>
+                <Grid item xs={4} style={{ marginBottom: '50px' }}>
                     <Box
                         component="img"
                         sx={{
@@ -33,14 +34,30 @@ export const UserType = ({changeType}) => {
                         src={Seller}
                     />
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={4} style={{ marginBottom: '50px' }}>
+                    <Box
+                        component="img"
+                        sx={{
+                            height: 'auto',
+                            width: 'auto'
+                        }}
+                        alt="Admin"
+                        src={Admin}
+                    />
+                </Grid>
+                <Grid item xs={4}>
                     <Button color="primary" variant="contained" onClick={changeType.setBuyer}>
                         Buyer
                     </Button>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={4}>
                     <Button color="primary" variant="contained" onClick={changeType.setSeller}>
                         Seller
+                    </Button>
+                </Grid>
+                <Grid item xs={4}>
+                    <Button color="primary" variant="contained" onClick={changeType.setAdmin}>
+                        Admin
                     </Button>
                 </Grid>
             </Grid>
