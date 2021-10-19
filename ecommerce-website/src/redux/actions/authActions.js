@@ -15,7 +15,7 @@ export const loadUser = () => dispatch => {
   axios
     .get("/api/user/")
     .then(response => {
-      dispatch({ type: AUTH_SUCCESS, payload: response.data });
+      dispatch({ type: AUTH_SUCCESS, role: "Buyer", payload: response.data });
       dispatch({ type: STOP_LOADING_UI });
     })
     .catch(() => {
@@ -23,6 +23,8 @@ export const loadUser = () => dispatch => {
       dispatch({ type: STOP_LOADING_UI });
     });
 };
+
+
 export const loadSeller = () => dispatch => {
   dispatch({ type: START_LOADING_UI });
   axios
@@ -36,6 +38,8 @@ export const loadSeller = () => dispatch => {
       dispatch({ type: STOP_LOADING_UI });
     });
 };
+
+
 export const login = (user, setErrors, resetForm) => (dispatch, getState) => {
   dispatch({ type: START_LOADING_BUTTON });
   axios
@@ -180,7 +184,6 @@ export const updateUser = (user, setErrors, history) => dispatch => {
     .then(response => {
       dispatch({ type: AUTH_SUCCESS, role: user.user_type, payload: response.data });
       dispatch({ type: STOP_LOADING_BUTTON });
-      
       history.push("/profile/personal-info");
       dispatch(
         addNotif({
@@ -195,13 +198,15 @@ export const updateUser = (user, setErrors, history) => dispatch => {
     });
 };
 
-export const updateSellerInfo = (user,history)=>dispatch=>{
+export const updateSellerInfo = (user, setErrors, resetForm, history)=>dispatch=>{
   dispatch({ type: START_LOADING_BUTTON });
   axios
   .put("/api/user/", user)
   .then(response=>{
-    dispatch({type:AUTH_SUCCESS,role: user.user_type,payload:response.data});
+    // console.log(user);
+    dispatch({type:AUTH_SUCCESS,role: user.user_type, payload:response.data});
     dispatch({type:STOP_LOADING_BUTTON});
+    resetForm();
     history.push("/seller_dashboard");
     dispatch(
       addNotif({
@@ -211,6 +216,7 @@ export const updateSellerInfo = (user,history)=>dispatch=>{
     )
   })
   .catch(error=>{
+    setErrors(error.response.data);
     dispatch({type:START_LOADING_BUTTON})
   })
 };
