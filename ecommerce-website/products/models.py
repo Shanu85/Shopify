@@ -37,6 +37,7 @@ class ProductManager(models.Manager):
 
 
 class Product(models.Model):
+    phone_number = models.CharField(max_length=10)
     title = models.CharField(max_length=120)
     slug = AutoSlugField(populate_from='title',
                          unique_with=['title'], unique=True)
@@ -59,6 +60,7 @@ class Product(models.Model):
     sale_count = models.IntegerField(default=0)
     code = models.CharField(max_length=40, unique=True, editable=False)
     created_at = models.DateTimeField(auto_now_add=True)
+    status = models.BooleanField(default = False)
 
     objects = ProductManager()
 
@@ -71,6 +73,10 @@ class Product(models.Model):
     def save(self, *args, **kwargs):
         self.code = id_generator()
         super(Product, self).save(*args, **kwargs)
+
+    @property
+    def status(self):
+        return self.status==1
 
     @property
     def available(self):

@@ -9,7 +9,7 @@ import { register } from "@actions/authActions";
 import { phone_number_reg } from "../regexes";
 import { UserType } from "./components/UserType";
 
-const SellerValidationSchema = Yup.object({
+const validationSchema = Yup.object({
   first_name: Yup.string().required("Required field"),
   last_name: Yup.string().required("Required field"),
   phone_number: Yup.string()
@@ -17,17 +17,6 @@ const SellerValidationSchema = Yup.object({
     .required("Required field"),
   email: Yup.string()
     .email()
-    .required("Required field"),
-  password: Yup.string()
-    .min(8, "Must be at least 8 characters")
-    .required("Required field")
-});
-
-const BuyerValidationSchema = Yup.object({
-  first_name: Yup.string().required("Required field"),
-  last_name: Yup.string().required("Required field"),
-  phone_number: Yup.string()
-    .matches(phone_number_reg, "Invalid phone number")
     .required("Required field"),
   password: Yup.string()
     .min(8, "Must be at least 8 characters")
@@ -68,7 +57,7 @@ const Register = () => {
       email,
       password
     };
-    console.log(user);
+    // console.log(user);
     dispatch(register(user, setErrors, resetForm));
   };
 
@@ -78,7 +67,7 @@ const Register = () => {
         <UserType changeType={changeType} /> :
         <Formik
           initialValues={values}
-          validationSchema={user_type === "Seller" ? SellerValidationSchema: ValidationSchema}
+          validationSchema={validationSchema}
           onSubmit={handleSubmit}
         > 
           {props => user_type === "Seller" ? <SellerRegisterForm {...props}/>:<BuyerRegisterForm {...props}/>}
