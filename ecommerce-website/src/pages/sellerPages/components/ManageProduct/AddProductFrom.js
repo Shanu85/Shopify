@@ -75,7 +75,7 @@ function AddProductFrom() {
                         <label>Product Image</label>
                     </Grid>
                     <Grid item xs={7}>
-                    <input type="file" accept=".png,.jpg"
+                    <input type="file" accept=".png,.jpg" multiple
                         onChange={(e) => setProductImage(e.target.files[0])} required/>
                     </Grid>
 
