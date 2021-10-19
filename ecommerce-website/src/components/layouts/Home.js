@@ -53,6 +53,8 @@ const Home = () => {
               <Button component={RouterLink} to="/products" color="primary" variant="contained" style={{ margin: '50px' }}>
                 SHOP NOW
               </Button>}
+
+              <Button component={RouterLink} to="/admin_dashboard" style={{ margin: '50px' }} color="primary" variant="contained">Admin</Button>
           </div>
         </Grid>
 

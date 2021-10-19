@@ -1,5 +1,5 @@
 import React from 'react'
-import ListItemLink from '@pages/profilePages/Sidebar/ListItemLink'
+import ListItemLink from '../../pages/profilePages/Sidebar/ListItemLink'
 import { ExpansionPanel, Grid, makeStyles } from '@material-ui/core'
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -7,8 +7,8 @@ import ShopingCartIcon from "@material-ui/icons/ShoppingCartOutlined";
 import ChangePasswordIcon from "@material-ui/icons/LockOutlined";
 import LogoutIcon from "@material-ui/icons/ExitToApp";
 import List from '@material-ui/core/List';
-import ShoppingCart from '@material-ui/icons/ShoppingCart';
-import { Dashboard } from '@material-ui/icons';
+import { Dashboard, Group, People,ThumbUp } from '@material-ui/icons';
+
 
 const useStyle=makeStyles(theme => ({
     root: {
@@ -19,7 +19,7 @@ const useStyle=makeStyles(theme => ({
     }
   }));
 
-const Seller_Sidebar=({ activeItem, children }) =>{
+const Admin_Sidebar=({ activeItem, children }) =>{
     const classes=useStyle();
 
     return (
@@ -28,36 +28,50 @@ const Seller_Sidebar=({ activeItem, children }) =>{
                 <Grid item md="auto" xs={12} className={classes.root}>
                     <ExpansionPanel>
                     <List style={{ width: "100%" }}>
-                        <ListItemLink selected={activeItem === "seller_dashboard"} to="/seller_dashboard">
+                        <ListItemLink selected={activeItem === "admin_dashboard"} to="/admin_dashboard">
                         <ListItemIcon>
                             <Dashboard />
                         </ListItemIcon>
                         <ListItemText primary="Dashboard" />
                         </ListItemLink>
                         
-                        <ListItemLink selected={activeItem === "seller_product"} to="/seller_product" >
+                        <ListItemLink selected={activeItem === "all_seller"} to='/All_Seller'>
+                        <ListItemIcon>
+                            <People />
+                        </ListItemIcon>
+                        <ListItemText primary="All Seller" />
+                        </ListItemLink>
+
+                        <ListItemLink selected={activeItem === "all_buyer"} to='/All_Buyer'>
+                        <ListItemIcon>
+                            <Group />
+                        </ListItemIcon>
+                        <ListItemText primary="All Buyer" />
+                        </ListItemLink>
+
+                        <ListItemLink selected={activeItem === "all_product"} to='/All_Products'>
                         <ListItemIcon>
                             <ShopingCartIcon color="action" />
                         </ListItemIcon>
-                        <ListItemText primary="Products" />
+                        <ListItemText primary="All Products" />
                         </ListItemLink>
 
-                        <ListItemLink selected={activeItem === "seller_orders"} to="/seller_Order">
+                        <ListItemLink selected={activeItem === "pending_products"} to='/Pending_Products'>
                         <ListItemIcon>
-                            <ShoppingCart />
+                            <ThumbUp/>
                         </ListItemIcon>
-                        <ListItemText primary="Orders" />
+                        <ListItemText primary="Pending Products" />
                         </ListItemLink>
 
 
-                        <ListItemLink to="/seller-change-password">
+                        <ListItemLink >
                         <ListItemIcon>
                             <ChangePasswordIcon />
                         </ListItemIcon>
                         <ListItemText primary="Change password" />
                         </ListItemLink>
 
-                        <ListItemLink to="/seller-logout">
+                        <ListItemLink >
                         <ListItemIcon>
                             <LogoutIcon />
                         </ListItemIcon>
@@ -76,4 +90,4 @@ const Seller_Sidebar=({ activeItem, children }) =>{
     )
 }
 
-export default Seller_Sidebar
+export default Admin_Sidebar

@@ -7,21 +7,21 @@ function AddProductFrom() {
     const btnStyle = { marginTop: 20 }
     
 
-    const[ProductImage,setProductImage]=useState('');
-    const[ProductProposal,setProductProposal]=useState('');
+    const[ProductImage,setProductImage]=useState(null);
+    const[ProductProposal,setProductProposal]=useState(null);
     const [ProductName,setProudctName]=useState('');
     const [Stock,setStock]=useState(0);
     const [ProductPrice,setProudctPrice]=useState(0);
     const [ProductDes,setProductDes]=useState('');
 
 
-    function handleSubmit(){
-        if(ProductImage==='')
+    const handleSubmit=async()=>{
+        if(ProductImage===null)
         {
             alert("Please upload your product Image");
             return;
         }
-        if(ProductProposal==='')
+        if(ProductProposal===null)
         {
             alert("Please upload your product proposal");
             return;
@@ -46,7 +46,23 @@ function AddProductFrom() {
             alert("Product description should be aleast 10 characters long");
             return;
         }
-        alert(`${ProductImage.name} ${ProductProposal.name}`)
+        let formdata=new FormData();
+
+            formdata.append('ProductName',ProductName);
+            formdata.append('ProductStock',Stock);
+            formdata.append('ProductPrice',ProductPrice);
+            formdata.append('ProductDes',ProductDes);
+            if(ProductImage!==null)
+            {
+                formdata.append("ProductImage",ProductImage);
+            }
+            
+            if(ProductProposal!==null)
+            {
+                formdata.append("ProductProposal",ProductProposal);
+            }
+        
+            
     }
 
     return (
