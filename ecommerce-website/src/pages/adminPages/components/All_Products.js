@@ -141,7 +141,7 @@ export default function All_Product() {
               <Box sx={modal_Style}>
                   <Title >Product Information</Title>
                     <AllProduct_Modal ProductName={ProductName} ProductImage1={ProductImage1} ProductImage2={ProductImage2} SellerName={SellerName} 
-                    SellerPhoneNo={SellerPhoneNo} Stock={ProductStock} Price={ProductPrice} description={ProductDes}/>
+                    SellerPhoneNo={SellerPhoneNo} Stock={ProductStock} Price={ProductPrice} description={ProductDes} VisitingForProposal={false}/>
               </Box>
             </Modal>
 
