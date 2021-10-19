@@ -1,0 +1,47 @@
+[
+    {"phone_number": "9971497398",
+        "title":"Levis Shirt",
+        "sale_count":100,
+        "price":1000,
+        "status":0,
+        "description":"Perfect for your on-the-go life, this shirt makes outfitting easier then ever. We cut this button-up to flatter your shape in the most subtle way, while still providing an easy fit and drape.",
+        "photo_1": "./dummy_data/img/715sLBgFvBL._AC_UX466_.jpg",
+        "photo_main": "./dummy_data/img/JLKFALK32.jpg"
+    },
+    {"phone_number": "9971497318", 
+        "title":"Adidas Shoes", 
+        "sale_count":120, 
+        "price":2000,
+        "status":1,
+        "description":"Move with comfort fuelled by the plush cushioning and flexible design that adapts to the changing shape of your foot.", 
+        "photo_main": "./dummy_data/img/JLKFALK32.jpg",
+        "photo_1": "./dummy_data/img/715sLBgFvBL._AC_UX466_.jpg"
+    },
+    {"phone_number": "9971497328", 
+        "title":"Puma TShirt", 
+        "sale_count":170, 
+        "price":800,
+        "status":1,
+        "description":"Eye-catching graphic elements elevate this cotton crew neck tee from casual to ultra-cool.", 
+        "photo_main": "./dummy_data/img/JLKFALK32.jpg",
+        "photo_1": "./dummy_data/img/715sLBgFvBL._AC_UX466_.jpg"
+    },
+    {"phone_number": "9971497338",
+        "title":"Trousers",
+        "sale_count":130,
+        "price":670,
+        "status":0,
+        "description":"Grey solid mid-rise chinos, has a button closure and a zip fly, has a waistband with belt loops, five pockets", 
+        "photo_main": "./dummy_data/img/JLKFALK32.jpg",
+        "photo_1": "./dummy_data/img/715sLBgFvBL._AC_UX466_.jpg"
+    },
+    {"phone_number": "9971497348", 
+        "title":"Socks", 
+        "sale_count":160, 
+        "price":490,
+        "status":1,
+        "description":"Pack of 3 solid ankle-length socks in grey, charcoal grey and black  each has a ribbed mouth and a flat toe seam",
+        "photo_main": "./dummy_data/img/JLKFALK32.jpg",
+        "photo_1": "./dummy_data/img/715sLBgFvBL._AC_UX466_.jpg"
+    }
+  ]
