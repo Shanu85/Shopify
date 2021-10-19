@@ -32,6 +32,3 @@ class AddressViewSet(ModelViewSet):
 
     def perform_create(self, serailizer):
         serailizer.save(user=self.request.user)
-
-
-
