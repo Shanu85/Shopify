@@ -24,7 +24,7 @@ const Home = () => {
   margin-right: 20px;
 `;
 
-  const role = useSelector(state => state.auth.role);
+  const { isAuthenticated, user } = useSelector(state => state.auth);
 
   return (
     <div>
@@ -45,7 +45,7 @@ const Home = () => {
           <div style={{ padding: '250px 200px 0px 0px' }}>
             <Typography variant="h2">Find it, love it, buy it.</Typography>
 
-            {role === "Seller" ?
+            {isAuthenticated && user.user_type === "Seller" ?
               <Button component={RouterLink} to="/seller_dashboard" color="primary" variant="contained" style={{ margin: '50px' }}>
                 GO TO YOUR PROFILE
               </Button>

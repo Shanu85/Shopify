@@ -19,7 +19,7 @@ const validationSchema = Yup.object({
 const Login = () => {
   const values = { phone_number: "", password: "" };
   const dispatch = useDispatch();
-
+  
   const [user_type, setType] = useState("NA");
   const changeType = {
     setBuyer: () => {
@@ -39,7 +39,7 @@ const Login = () => {
       password,
       user_type
     };
-    //console.log(user_type);
+    
     dispatch(login(user, setErrors, resetForm));
   };
 
