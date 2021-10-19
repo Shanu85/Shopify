@@ -15,7 +15,7 @@ export const loadUser = () => dispatch => {
   axios
     .get("/api/user/")
     .then(response => {
-      dispatch({ type: AUTH_SUCCESS, role: "Buyer", payload: response.data });
+      dispatch({ type: AUTH_SUCCESS, role: response.data.user.user_type, payload: response.data });
       dispatch({ type: STOP_LOADING_UI });
     })
     .catch(() => {
@@ -204,7 +204,7 @@ export const updateSellerInfo = (user, setErrors, resetForm, history)=>dispatch=
   .put("/api/user/", user)
   .then(response=>{
     // console.log(user);
-    dispatch({type:AUTH_SUCCESS,role: user.user_type, payload:response.data});
+    dispatch({type:AUTH_SUCCESS,role: "Seller", payload:response.data});
     dispatch({type:STOP_LOADING_BUTTON});
     resetForm();
     history.push("/seller_dashboard");
