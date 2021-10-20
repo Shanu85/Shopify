@@ -15,7 +15,7 @@ export const loadUser = () => dispatch => {
   axios
     .get("/api/user/")
     .then(response => {
-      dispatch({ type: AUTH_SUCCESS, role: response.data.user.user_type, payload: response.data });
+      dispatch({ type: AUTH_SUCCESS, payload: response.data });
       dispatch({ type: STOP_LOADING_UI });
     })
     .catch(() => {
@@ -30,7 +30,7 @@ export const loadSeller = () => dispatch => {
   axios
     .get("/api/seller/")
     .then(response => {
-      dispatch({ type: AUTH_SUCCESS, role: "Seller", payload: response.data });
+      dispatch({ type: AUTH_SUCCESS, payload: response.data });
       dispatch({ type: STOP_LOADING_UI });
     })
     .catch(() => {
@@ -45,7 +45,7 @@ export const login = (user, setErrors, resetForm) => (dispatch, getState) => {
   axios
     .post("/api/auth/login/", user)
     .then(response => {
-      dispatch({ type: AUTH_SUCCESS, role: user.user_type, payload: response.data });
+      dispatch({ type: AUTH_SUCCESS, payload: response.data });
       dispatch({ type: STOP_LOADING_BUTTON });
       resetForm();
       dispatch(
@@ -67,7 +67,8 @@ export const register = (user, setErrors, resetForm) => dispatch => {
   axios
     .post("/api/auth/register/", user)
     .then(response => {
-      dispatch({ type: AUTH_SUCCESS, role: user.user_type, payload: response.data });
+      if (user.user_type)
+      dispatch({ type: AUTH_SUCCESS, payload: response.data });
       dispatch({ type: STOP_LOADING_BUTTON });
       resetForm();
       dispatch(addNotif({ message: "Your account registered successfully" }));
@@ -85,6 +86,29 @@ export const logout = () => dispatch => {
     dispatch({ type: AUTH_FAIL });
     dispatch({ type: STOP_LOADING_UI });
   });
+};
+
+export const adminChangePassword = (
+  data,
+  setErrors,
+  resetForm,
+  history
+) => dispatch => {
+  dispatch({ type: START_LOADING_BUTTON });
+  axios
+    .put("/api/auth/change-password/", data)
+    .then(response => {
+      dispatch({ type: STOP_LOADING_BUTTON });
+      resetForm();
+      history.push("/admin_dashboard");
+      dispatch(
+        addNotif({ message: "Your password has been changed successfully" })
+      );
+    })
+    .catch(error => {
+      setErrors(error.response.data);
+      dispatch({ type: STOP_LOADING_BUTTON });
+    });
 };
 
 export const buyerChangePassword = (
@@ -182,7 +206,7 @@ export const updateUser = (user, setErrors, history) => dispatch => {
   axios
     .put("/api/user/", user)
     .then(response => {
-      dispatch({ type: AUTH_SUCCESS, role: user.user_type, payload: response.data });
+      dispatch({ type: AUTH_SUCCESS, payload: response.data });
       dispatch({ type: STOP_LOADING_BUTTON });
       history.push("/profile/personal-info");
       dispatch(
@@ -204,7 +228,7 @@ export const updateSellerInfo = (user, setErrors, resetForm, history)=>dispatch=
   .put("/api/user/", user)
   .then(response=>{
     // console.log(user);
-    dispatch({type:AUTH_SUCCESS,role: "Seller", payload:response.data});
+    dispatch({type:AUTH_SUCCESS, payload:response.data});
     dispatch({type:STOP_LOADING_BUTTON});
     resetForm();
     history.push("/seller_dashboard");

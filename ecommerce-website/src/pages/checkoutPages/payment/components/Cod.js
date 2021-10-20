@@ -72,7 +72,7 @@ function Cod({ history }) {
 
     setData(generatedCaptcha);
 
-    console.log(data);
+    // console.log(data);
     pen.fillText(generatedCaptcha, 40, 40);
   }, []);
 

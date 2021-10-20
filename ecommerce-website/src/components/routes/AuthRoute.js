@@ -3,15 +3,16 @@ import { useSelector } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
 
 const AuthRoute = ({ component: Component, to, ...rest }) => {
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
-  const role = useSelector(state => state.auth.role);
+
+  const { isAuthenticated, user } = useSelector(state => state.auth);
 
   return (
     <Route
       {...rest}
       render={props =>
         isAuthenticated === true ? (
-          (role === "Seller"? <Redirect to={"/seller_dashboard"} /> : <Redirect to={"/products"}/>)
+          (user.user_type === "Admin"? <Redirect to={"/admin_dashboard"} />:
+          (user.user_type === "Seller"? <Redirect to={"/seller_dashboard"} /> : <Redirect to={"/products"}/>))
         ) : (
           isAuthenticated === false && <Component {...props} />
         )

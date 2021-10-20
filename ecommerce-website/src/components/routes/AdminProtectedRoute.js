@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
 
-const BuyerProtectedRoute = ({ component: Component, to, ...rest }) => {
+const AdminProtectedRoute = ({ component: Component, to, ...rest }) => {
   const { isAuthenticated, user } = useSelector(state => state.auth);
 
   return (
@@ -12,7 +12,7 @@ const BuyerProtectedRoute = ({ component: Component, to, ...rest }) => {
         isAuthenticated === false ? (
           <Redirect to={to} />
         ) : (
-          isAuthenticated === true && user.user_type === "Buyer" ? <Component {...props} />:
+          isAuthenticated === true && user.user_type === "Admin" ? <Component {...props} />:
           <Redirect to={"/"} />
         )
       }
@@ -22,8 +22,8 @@ const BuyerProtectedRoute = ({ component: Component, to, ...rest }) => {
 
 };
 
-BuyerProtectedRoute.defaultProps = {
+AdminProtectedRoute.defaultProps = {
   to: "/login"
 };
 
-export default BuyerProtectedRoute;
+export default AdminProtectedRoute;

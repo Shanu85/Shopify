@@ -37,7 +37,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 
 
 class LoginSerializer(serializers.ModelSerializer):
-    phone_number_or_email = serializers.CharField(validators=[
+    phone_number = serializers.CharField(validators=[
         RegexValidator(
             phone_number_reg,
             message="Invalid phone number."
@@ -59,10 +59,10 @@ class LoginSerializer(serializers.ModelSerializer):
 
         if user:
             userData = UserSerializer(user).data
-            # print(userData)
             if userData['user_type'] == data['user_type']: 
                 # Login user (set session)
                 login(self.context.get('request'), user)
+                print(data['user_type'])
                 return user
             raise serializers.ValidationError("Incorrect Credentials")
         raise serializers.ValidationError("Incorrect Credentials")

@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
 
 const Header = () => {
   const classes = useStyles();
-  const { isAuthenticated, role, user } = useSelector(state => state.auth);
+  const { isAuthenticated, user } = useSelector(state => state.auth);
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("xs"));
 
@@ -71,8 +71,8 @@ const Header = () => {
           >
             Shopify
           </Link>
-          {!matches && role==="Buyer" && isAuthenticated && <Search />}
-          {isAuthenticated === false ? guestNav : (role==="Buyer" && authNav)}
+          {!matches && isAuthenticated && user.user_type === "Buyer" && <Search />}
+          {!matches && isAuthenticated ?  user.user_type === "Buyer" ? authNav: "": guestNav}
         </Toolbar>
       </AppBar>
       {matches && <Search />}

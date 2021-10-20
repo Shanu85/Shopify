@@ -75,7 +75,7 @@ export default function Orders() {
   if (total_orders.length < 1) {
     return (
       <Typography className={classes.root} variant="h5">
-        Your orders is empty
+        No order
       </Typography>
     );
   }
