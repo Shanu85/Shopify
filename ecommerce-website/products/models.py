@@ -2,6 +2,9 @@ from django.db import models
 from autoslug import AutoSlugField
 from web.utils import id_generator
 
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 class SizeManager(models.Manager):
     def available_sizes(self):
@@ -37,7 +40,7 @@ class ProductManager(models.Manager):
 
 
 class Product(models.Model):
-    phone_number = models.CharField(max_length=10)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="Seller_products")
     title = models.CharField(max_length=120)
     slug = AutoSlugField(populate_from='title',
                          unique_with=['title'], unique=True)
@@ -61,7 +64,6 @@ class Product(models.Model):
     code = models.CharField(max_length=40, unique=True, editable=False)
     created_at = models.DateTimeField(auto_now_add=True)
     status = models.BooleanField(default = False)
-
     objects = ProductManager()
 
     class Meta:

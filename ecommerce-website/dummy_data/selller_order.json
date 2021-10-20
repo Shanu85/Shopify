@@ -1,6 +1,6 @@
 [
     {
-        "phone_number": "9971497398",
+        "user": 1,
         "date":"16 Mar, 2019",
         "Name":"Elvis Presley",
         "Ship To":"Tupelo, MS",
@@ -8,7 +8,7 @@
         "Sale Amount": 312.44
     },
     {
-        "phone_number": "9971497398",
+        "user": 2,
         "date":"16 Mar, 2019",
         "Name":"Paul Presley",
         "Ship To":"Tupelo, Mxicp",
@@ -16,7 +16,7 @@
         "Sale Amount": 866.99
     },
     {
-        "phone_number": "9971497398",
+        "user": 2,
         "date":"16 Mar, 2019",
         "Name":"Tom Scholor",
         "Ship To":"Shanu, sapna wla",
@@ -24,7 +24,7 @@
         "Sale Amount": 100.81
     },
     {
-        "phone_number": "9971497398",
+        "user": 1,
         "date":"16 Mar, 2019",
         "Name":"Michel Scholor",
         "Ship To":"Sapna, mukesh wla",
@@ -32,7 +32,7 @@
         "Sale Amount": 600.89
     },
     {
-        "phone_number": "9971497398",
+        "user": 1,
         "date":"15 Mar, 2020",
         "Name":"Michel Bruce",
         "Ship To":"Akansha wla",

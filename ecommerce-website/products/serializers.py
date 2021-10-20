@@ -78,3 +78,20 @@ class ProductDetailSerializer(serializers.ModelSerializer):
         if user.is_authenticated:
             return user.carts.get(ordered=False).items.filter(product=obj.id).exists()
         return False
+
+
+class ProductSellerSerializer(serializers.ModelSerializer):
+    available = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Product
+        fields = ('__all__')
+
+    def get_available(self, obj):
+        user = self.context.get('request').user
+        #print(user.id)
+        if obj.user==user.id:
+            return obj.available
+        else:
+            #print(obj.user.id,user.id)
+            return obj.available
