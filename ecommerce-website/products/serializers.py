@@ -1,5 +1,5 @@
 from rest_framework import serializers
-
+from rest_framework.response import Response
 from .models import Product, Size
 from profiles.models import FavoritesProducts
 
@@ -81,17 +81,7 @@ class ProductDetailSerializer(serializers.ModelSerializer):
 
 
 class ProductSellerSerializer(serializers.ModelSerializer):
-    available = serializers.SerializerMethodField()
-
     class Meta:
         model = Product
         fields = ('__all__')
-
-    def get_available(self, obj):
-        user = self.context.get('request').user
-        #print(user.id)
-        if obj.user==user.id:
-            return obj.available
-        else:
-            #print(obj.user.id,user.id)
-            return obj.available
+        

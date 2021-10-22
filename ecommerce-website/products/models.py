@@ -77,10 +77,6 @@ class Product(models.Model):
         super(Product, self).save(*args, **kwargs)
 
     @property
-    def status(self):
-        return self.status==1
-
-    @property
     def available(self):
         return self.sizes.available_sizes().exists()
 
