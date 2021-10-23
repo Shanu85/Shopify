@@ -38,6 +38,7 @@ class ProductListView(ListAPIView):
             queryset = queryset.order_by('-sale_count')
         return queryset
 
+
 class ProductSellerView(ListAPIView):
     permission_classes = (IsAuthenticated, )
     #queryset = Product.objects.all()
@@ -79,11 +80,12 @@ class ProductAddView(ListAPIView):
         #print("Tunak tunak tun",sizes)
         object = self.get_object
         product = Product.objects.create(user=user, title=data['title'], photo_main=data['photo_main'], photo_1=data['photo_1'], photo_2=data['photo_2'],
-            photo_3=data['photo_3'], photo_4=data['photo_4'], description=data['description'], price=data['price'],
+            description=data['description'], price=data['price'],
             sale_count=data['sale_count'], discount_price=data['discount_price'])
         for size in sizes:
             product.sizes.add(size)
         return self.list(request, *args, **kwargs)
+
 
 class DeleteProductSellerView(ListAPIView):
     permission_classes = (IsAuthenticated, )
@@ -121,6 +123,7 @@ class UpdateProductSellerView(ListAPIView):
         if serializer.is_valid():
             serializer.save()
         return Response(serializer.data)
+
 
 class ProductDetailView(RetrieveAPIView):
     queryset = Product.objects.all()
