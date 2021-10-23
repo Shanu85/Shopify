@@ -5,12 +5,14 @@ from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.status import HTTP_204_NO_CONTENT, HTTP_400_BAD_REQUEST
-from .serializers import ProductListSerializer, ProductDetailSerializer, ProductSellerSerializer
+from .serializers import ProductListSerializer, ProductDetailSerializer, ProductSellerSerializer, ProductUpdateSerializer
 from .models import Product
 from .pagination import ProductPagination
 from .filters import ProductFilter
 from . import serializers
+from django.shortcuts import get_object_or_404
 from django.contrib.auth import get_user_model, logout, login, update_session_auth_hash
+from django.core.cache import cache
 
 User = get_user_model()
 
@@ -40,61 +42,87 @@ class ProductSellerView(ListAPIView):
     permission_classes = (IsAuthenticated, )
     #queryset = Product.objects.all()
     serializer_class = ProductSellerSerializer
+    cache.clear()
 
     def get_queryset(self):
         user = self.request.user
         if(user.user_type=='Buyer'):
             return {}
         
-        print(user.user_type)
+        #print(user.user_type)
+        return Product.objects.all().filter(user=user)
+
+
+class ProductAddView(ListAPIView):
+    permission_classes = (IsAuthenticated, )
+    #queryset = Product.objects.all()
+    serializer_class = ProductUpdateSerializer
+    cache.clear()
+
+    def get_queryset(self):
+        user = self.request.user
+        if(user.user_type=='Buyer'):
+            return {}
+        
+        #print(user.user_type)
         return Product.objects.all().filter(user=user)
 
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        print("wow")
+        #print("wow")
         if(self.request.user.user_type=='Buyer'):
             return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
         user = self.request.user
         data = request.data
         sizes = data['sizes']
-        colors = data['colors']
-        #print(data)
-        if data['status']=='true':
-            data['status'] = True    
-        else:
-            data['status'] = False
+        print("Tunak tunak tun",sizes)
         object = self.get_object
-        #print("Tunak tunak tun", object)
         product = Product.objects.create(user=user, title=data['title'], photo_main=data['photo_main'], photo_1=data['photo_1'], photo_2=data['photo_2'],
             photo_3=data['photo_3'], photo_4=data['photo_4'], description=data['description'], price=data['price'],
-            sale_count=data['sale_count'], discount_price=data['discount_price'], status=data['status'])
+            sale_count=data['sale_count'], discount_price=data['discount_price'])
         for size in sizes:
             product.sizes.add(size)
-        if colors:
-            for color in colors:
-                product.colors.add(color)
         return self.list(request, *args, **kwargs)
-    
-    def update(self, request, *args, **kwargs):
-        if(self.request.user.user_type=='Buyer'):
-            return  Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
-        self.object = self.get_object()
-        serializer = self.get_serializer(data=request.data)
-        user = self.request.user
-        data = request.data
-        if serializer.is_valid():
-            self.object.set_title(data['title'])
-            self.object.set_password(serializer.data.get("new_password"))
-            self.object.save()
-            update_session_auth_hash(request, self.object)
-            return Response("Password changed successfully.")
-        return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
 
+class DeleteProductSellerView(ListAPIView):
+    permission_classes = (IsAuthenticated, )
+    serializer_class = ProductSellerSerializer
+    cache.clear()
+    #Product.objects.all().filter(id=data['id']).delete()
+    def get(self,request,id):
+        user = self.request.user
+        if(user.user_type=='Buyer'):
+            return Response("You don't have the authorizations.")
+        pro_object = Product.objects.get(id=id)
+        pro_object.delete()
+        return Response('Deleted')
+
+
+class UpdateProductSellerView(ListAPIView):
+    cache.clear()
+    serializer_class = ProductUpdateSerializer
+    permission_classes = (IsAuthenticated, )
+
+    def get_queryset(self):
+        user = self.request.user
+        #print(user)
+        if(user.user_type=='Buyer'):
+            return {}
+        return Product.objects.all().filter(user=user)
+
+    def post(self, request, id):
+        user = self.request.user
+        #print("tunak tunak tun",user)
+        if(user.user_type=='Buyer'):
+            return Response("You don't have the authorizations.")
+        obj = Product.objects.get(id=id)
+        serializer = ProductUpdateSerializer(instance=obj, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+        return Response(serializer.data)
 
 class ProductDetailView(RetrieveAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductDetailSerializer
     lookup_field = 'slug'
-
-    
