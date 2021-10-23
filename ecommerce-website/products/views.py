@@ -75,8 +75,8 @@ class ProductAddView(ListAPIView):
             return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
         user = self.request.user
         data = request.data
-        sizes = data['sizes']
-        print("Tunak tunak tun",sizes)
+        sizes = data.get('sizes', [])
+        #print("Tunak tunak tun",sizes)
         object = self.get_object
         product = Product.objects.create(user=user, title=data['title'], photo_main=data['photo_main'], photo_1=data['photo_1'], photo_2=data['photo_2'],
             photo_3=data['photo_3'], photo_4=data['photo_4'], description=data['description'], price=data['price'],
