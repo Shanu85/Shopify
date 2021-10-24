@@ -14,26 +14,23 @@ import { addNotif } from "../notifActions";
 
 export const fetchSellerProducts = () => dispatch => {
     dispatch({ type: START_LOADING_UI });
-    //   axios.get("/api/products").then(response => {
-    //     dispatch({ type: FETCH_SELLER_PRODUCTS, payload: response.data });
-    //     dispatch({ type: STOP_LOADING_UI });
-    //   });
-    dispatch({ type: FETCH_SELLER_PRODUCTS, payload: ["Hello Gandu"] });
-    dispatch({ type: STOP_LOADING_UI });
+    axios.get("/api/products/seller/productsss/").then(response => {
+        dispatch({ type: FETCH_SELLER_PRODUCTS, payload: response.data });
+        dispatch({ type: STOP_LOADING_UI });
+    });
 };
 
-export const createSellerProduct = (product, setErrors, handleClose) => dispatch => {
+export const createSellerProduct = (newSellerProduct) => dispatch => {
     dispatch({ type: START_LOADING_BUTTON });
     axios
-        .post("/api/products/", product)
+        .post("/api/products/seller/productsss/", newSellerProduct)
         .then(response => {
             dispatch({ type: CREATE_SELLER_PRODUCT, payload: response.data });
-            handleClose();
             dispatch(addNotif({ message: "Product has been added" }));
             dispatch({ type: STOP_LOADING_BUTTON });
         })
         .catch(error => {
-            setErrors(error.response.data);
+            console.log(error);
             dispatch({ type: STOP_LOADING_BUTTON });
         });
 };

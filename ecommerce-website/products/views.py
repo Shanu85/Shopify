@@ -41,7 +41,7 @@ class ProductListView(ListAPIView):
 
 class ProductSellerView(ListAPIView):
     permission_classes = (IsAuthenticated, )
-    #queryset = Product.objects.all()
+    # queryset = Product.objects.all()
     serializer_class = ProductSellerSerializer
     cache.clear()
 

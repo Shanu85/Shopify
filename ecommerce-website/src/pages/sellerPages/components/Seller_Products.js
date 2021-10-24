@@ -8,13 +8,14 @@ import { Avatar, Grid } from '@material-ui/core';
 import Seller_Sidebar from '../Seller_Sidebar';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles, Typography, Box } from '@material-ui/core';
-import { Edit, Image } from '@material-ui/icons';
+import { Image } from '@material-ui/icons';
 import { Button, Modal } from "@material-ui/core";
 import AddProductFrom from './ManageProduct/AddProductFrom';
 import EditProductForm from './ManageProduct/EditProductForm';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSellerProducts } from "@actions/sellerActions/ProductActions";
+import { createSellerProduct } from "@actions/sellerActions/ProductActions";
 
 const modal_Style = {
   position: 'absolute',
@@ -35,18 +36,6 @@ function Title(props) {
     </Typography>
   );
 }
-
-function createData(ID, ProductName, Stock, Price, Status, description) {
-  return { ID, ProductName, Stock, Price, Status, description };
-}
-
-const rows = [
-  createData(1, ProductDetails("Levis Shirt"), 100, 1000, "Not Approved", "Perfect for your on-the-go life, this shirt makes outfitting easier then ever. We cut this button-up to flatter your shape in the most subtle way, while still providing an easy fit and drape."),
-  createData(2, ProductDetails("Adidas Shoes"), 120, 2000, "Not Approved", "Move with comfort fuelled by the plush cushioning and flexible design that adapts to the changing shape of your foot."),
-  createData(3, ProductDetails("Puma TShirt"), 170, 800, "Approved", "Eye-catching graphic elements elevate this cotton crew neck tee from casual to ultra-cool."),
-  createData(4, ProductDetails("Trousers"), 130, 670, "Not Approved", "Grey solid mid-rise chinos, has a button closure and a zip fly, has a waistband with belt loops, five pockets"),
-  createData(5, ProductDetails("Socks"), 160, 490, "Approved", "Pack of 3 solid ankle-length socks in grey, charcoal grey and black  each has a ribbed mouth and a flat toe seam"),
-];
 
 const useStyle = makeStyles(theme => ({
   root: {
@@ -72,27 +61,26 @@ function ProductDetails(Product_name) {
   )
 }
 
-// function helper(productName,productDes,productStock,productPrice)
-// {
-//   alert(productPrice);
-//   <EditProductForm productName={productName} productDes ={productDes} productStock={productStock} productPrice={productPrice}/>
-// }
-
 export default function Seller_Products() {
-  const {
-    seller: { products }
-  } = useSelector(state => state);
   const dispatch = useDispatch();
+  const sellerProducts = useSelector(state => state.seller.sellerProducts);
 
   useEffect(() => {
     dispatch(fetchSellerProducts());
-    console.log(products);
-  }, [dispatch]);
+  }, []);
 
   const classes = useStyle();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = (newSellerProduct) => {
+    dispatch(createSellerProduct(newSellerProduct));
+    setOpen(false);
+    dispatch(fetchSellerProducts());
+  }
+
+  const forceClose = () => {
+    setOpen(false);
+  }
 
   const [Editopen, setEditopen] = React.useState(false);
   const handleEditopen = () => setEditopen(true);
@@ -104,7 +92,7 @@ export default function Seller_Products() {
 
 
   function EditHelper(productStock, productPrice, productStatus) {
-    if (productStatus === "Approved") {
+    if (productStatus === true) {
       handleEditopen();
 
       set_model_productStock(productStock);
@@ -124,13 +112,12 @@ export default function Seller_Products() {
             <Button onClick={handleOpen} style={{ background: "green", color: "white" }}>Add Product</Button>
             <Modal
               open={open}
-              onClose={handleClose}
               aria-labelledby="modal-modal-title"
               aria-describedby="modal-modal-description"
             >
               <Box sx={modal_Style}>
                 <Title>Add Product</Title>
-                <AddProductFrom />
+                <AddProductFrom onClose={handleClose} forceClose={forceClose}/>
               </Box>
             </Modal>
           </Grid>
@@ -164,17 +151,18 @@ export default function Seller_Products() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map(order => (
-              <TableRow key={order.ID}>
-                <TableCell align="center">{order.ID}</TableCell>
-                <TableCell align="center" style={{ alignItems: "center" }}>{order.ProductName}</TableCell>
-                <TableCell align="center">{order.Stock}</TableCell>
-                <TableCell align="center">{order.Price}</TableCell>
-                {order.Status === "Approved" ? <TableCell align="center" style={{ color: "green", fontWeight: "bold" }}>{order.Status}</TableCell> :
-                  <TableCell align="center" style={{ color: "red", fontWeight: "bold" }}>{order.Status}</TableCell>
+
+            {sellerProducts.map((sellerProduct, id) => (
+              <TableRow key={id + 1}>
+                <TableCell align="center">{id + 1}</TableCell>
+                <TableCell align="center" style={{ alignItems: "center" }}>{sellerProduct['title']}</TableCell>
+                <TableCell align="center">{sellerProduct['sale_count']}</TableCell>
+                <TableCell align="center">{sellerProduct['price']}</TableCell>
+                {sellerProduct['status'] === true ? <TableCell align="center" style={{ color: "green", fontWeight: "bold" }}>{"Approved"}</TableCell> :
+                  <TableCell align="center" style={{ color: "red", fontWeight: "bold" }}>{"Pending"}</TableCell>
                 }
                 {
-                  order.Status === "Approved" ? <TableCell Button align="center" onClick={() => EditHelper(order.Stock, order.Price, order.Status)} style={{ background: "red", color: "white", fontSize: "16px", fontWeight: "bold", cursor: "pointer" }}>Edit</TableCell>
+                  sellerProduct['status'] === true ? <TableCell Button align="center" onClick={() => EditHelper(sellerProduct['sale_count'],sellerProduct['price'], sellerProduct['status'])} style={{ background: "red", color: "white", fontSize: "16px", fontWeight: "bold", cursor: "pointer" }}>Edit</TableCell>
                     : <TableCell></TableCell>
                 }
 
