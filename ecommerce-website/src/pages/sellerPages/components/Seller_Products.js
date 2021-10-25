@@ -12,11 +12,13 @@ import { Image } from '@material-ui/icons';
 import { Button, Modal } from "@material-ui/core";
 import AddProductFrom from './ManageProduct/AddProductFrom';
 import EditProductForm from './ManageProduct/EditProductForm';
+import SellerProductView from './ManageProduct/SellerProductView';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSellerProducts } from "@actions/sellerActions/ProductActions";
 import { createSellerProduct } from "@actions/sellerActions/ProductActions";
 import { updateSellerProduct } from "@actions/sellerActions/ProductActions";
+
 
 const modal_Style = {
   position: 'absolute',
@@ -52,43 +54,48 @@ const useStyle = makeStyles(theme => ({
 }));
 
 export default function Seller_Products() {
+  const classes = useStyle();
   const dispatch = useDispatch();
   const sellerProducts = useSelector(state => state.seller.sellerProducts);
-
   useEffect(() => {
     dispatch(fetchSellerProducts());
   }, [dispatch]);
 
-  const classes = useStyle();
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+
+  const [addOpen, setAddOpen] = React.useState(false);
+  const handleAddOpen = () => setAddOpen(true);
   const addClose = (newSellerProduct) => {
     dispatch(createSellerProduct(newSellerProduct));
-    setOpen(false);
+    setAddOpen(false);
   }
-
-  const forceClose = () => {
-    setOpen(false);
+  const forceAddClose = () => {
+    setAddOpen(false);
   }
 
   const [Editopen, setEditopen] = React.useState(false);
   const handleEditopen = () => setEditopen(true);
   const handleEditclose = () => setEditopen(false);
-
-
   const [editSellerProduct, set_edit_sellerProduct] = React.useState(null);
-
   function EditHelper(sellerProduct) {
     if (sellerProduct['status'] === true) {
       handleEditopen();
       set_edit_sellerProduct(sellerProduct);
     }
   };
-
   const editClose = (updatedSellerProduct) => {
     handleEditclose();
     dispatch(updateSellerProduct(updatedSellerProduct, updatedSellerProduct['id']));
   }
+
+
+  const [viewSellerProduct, setViewSellerProduct] = React.useState(null);
+  const[viewOpen,setViewOpen]=React.useState(false);
+  const handleViewOpen = () => setViewOpen(true);
+  const handleViewClose = () => setViewOpen(false);
+  function ViewHelper(sellerProduct) {
+    handleViewOpen();
+    setViewSellerProduct(sellerProduct);
+  };
 
   return (
     <Seller_Sidebar activeItem="seller_product">
@@ -98,15 +105,15 @@ export default function Seller_Products() {
             <Title>Products</Title>
           </Grid>
           <Grid item xs={3}>
-            <Button onClick={handleOpen} style={{ background: "green", color: "white" }}>Add Product</Button>
+            <Button onClick={handleAddOpen} style={{ background: "green", color: "white" }}>Add Product</Button>
             <Modal
-              open={open}
+              open={addOpen}
               aria-labelledby="modal-modal-title"
               aria-describedby="modal-modal-description"
             >
               <Box sx={modal_Style}>
                 <Title>Add Product</Title>
-                <AddProductFrom onClose={addClose} forceClose={forceClose}/>
+                <AddProductFrom onClose={addClose} forceClose={forceAddClose}/>
               </Box>
             </Modal>
           </Grid>
@@ -131,6 +138,9 @@ export default function Seller_Products() {
                 Price
               </TableCell>
               <TableCell className={classes.header} align="center">
+                View
+              </TableCell>
+              <TableCell className={classes.header} align="center">
                 Status
               </TableCell>
               <TableCell className={classes.header} align="center">
@@ -147,6 +157,9 @@ export default function Seller_Products() {
                 <TableCell align="center" style={{ alignItems: "center" }}>{sellerProduct['title']}</TableCell>
                 <TableCell align="center">{sellerProduct['sale_count']}</TableCell>
                 <TableCell align="center">{sellerProduct['price']}</TableCell>
+
+                <TableCell Button align="center" onClick={()=>ViewHelper(sellerProduct)} style={{background:"green",color:"white",fontSize:"16px",fontWeight:"bold",cursor:"pointer"}}>View</TableCell>
+
                 {sellerProduct['status'] === true ? <TableCell align="center" style={{ color: "green", fontWeight: "bold" }}>{"Approved"}</TableCell> :
                   <TableCell align="center" style={{ color: "red", fontWeight: "bold" }}>{"Pending"}</TableCell>
                 }
@@ -157,6 +170,16 @@ export default function Seller_Products() {
 
               </TableRow>
             ))}
+
+            <Modal open={viewOpen} onClose={handleViewClose} aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description">
+              <Box sx={modal_Style}>
+                  <Title >Product Information</Title>
+                  <SellerProductView sellerProduct={viewSellerProduct}/>
+              </Box>
+            </Modal>
+
+
             <Modal open={Editopen} onClose={handleEditclose} aria-labelledby="modal-modal-title"
               aria-describedby="modal-modal-description">
               <Box sx={modal_Style}>
