@@ -88,4 +88,4 @@ class ProductSellerSerializer(serializers.ModelSerializer):
 class ProductUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ('title', 'photo_main', 'photo_1', 'photo_2', 'photo_3', 'photo_4', 'description', 'price', 'discount_price', 'sale_count', 'sizes')
+        fields = ('price', 'discount_price', 'sale_count')

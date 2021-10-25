@@ -16,6 +16,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSellerProducts } from "@actions/sellerActions/ProductActions";
 import { createSellerProduct } from "@actions/sellerActions/ProductActions";
+import { updateSellerProduct } from "@actions/sellerActions/ProductActions";
 
 const modal_Style = {
   position: 'absolute',
@@ -50,32 +51,20 @@ const useStyle = makeStyles(theme => ({
   }
 }));
 
-function ProductDetails(Product_name) {
-  return (
-    <div style={{ display: "flex", alignItems: "center", margin: "auto" }}>
-      <Avatar sx={{ width: 40, height: 40 }}>
-        <Image />
-      </Avatar>
-      <span style={{ marginLeft: "20px" }}>{Product_name}</span>
-    </div>
-  )
-}
-
 export default function Seller_Products() {
   const dispatch = useDispatch();
   const sellerProducts = useSelector(state => state.seller.sellerProducts);
 
   useEffect(() => {
     dispatch(fetchSellerProducts());
-  }, []);
+  }, [dispatch]);
 
   const classes = useStyle();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = (newSellerProduct) => {
+  const addClose = (newSellerProduct) => {
     dispatch(createSellerProduct(newSellerProduct));
     setOpen(false);
-    dispatch(fetchSellerProducts());
   }
 
   const forceClose = () => {
@@ -87,19 +76,19 @@ export default function Seller_Products() {
   const handleEditclose = () => setEditopen(false);
 
 
-  const [model_productStock, set_model_productStock] = React.useState('');
-  const [model_productPrice, set_model_productPrice] = React.useState('');
+  const [editSellerProduct, set_edit_sellerProduct] = React.useState(null);
 
-
-  function EditHelper(productStock, productPrice, productStatus) {
-    if (productStatus === true) {
+  function EditHelper(sellerProduct) {
+    if (sellerProduct['status'] === true) {
       handleEditopen();
-
-      set_model_productStock(productStock);
-      set_model_productPrice(productPrice);
-
+      set_edit_sellerProduct(sellerProduct);
     }
   };
+
+  const editClose = (updatedSellerProduct) => {
+    handleEditclose();
+    dispatch(updateSellerProduct(updatedSellerProduct, updatedSellerProduct['id']));
+  }
 
   return (
     <Seller_Sidebar activeItem="seller_product">
@@ -117,7 +106,7 @@ export default function Seller_Products() {
             >
               <Box sx={modal_Style}>
                 <Title>Add Product</Title>
-                <AddProductFrom onClose={handleClose} forceClose={forceClose}/>
+                <AddProductFrom onClose={addClose} forceClose={forceClose}/>
               </Box>
             </Modal>
           </Grid>
@@ -162,7 +151,7 @@ export default function Seller_Products() {
                   <TableCell align="center" style={{ color: "red", fontWeight: "bold" }}>{"Pending"}</TableCell>
                 }
                 {
-                  sellerProduct['status'] === true ? <TableCell Button align="center" onClick={() => EditHelper(sellerProduct['sale_count'],sellerProduct['price'], sellerProduct['status'])} style={{ background: "red", color: "white", fontSize: "16px", fontWeight: "bold", cursor: "pointer" }}>Edit</TableCell>
+                  sellerProduct['status'] === true ? <TableCell Button align="center" onClick={() => EditHelper(sellerProduct)} style={{ background: "red", color: "white", fontSize: "16px", fontWeight: "bold", cursor: "pointer" }}>Edit</TableCell>
                     : <TableCell></TableCell>
                 }
 
@@ -172,7 +161,7 @@ export default function Seller_Products() {
               aria-describedby="modal-modal-description">
               <Box sx={modal_Style}>
                 <Title>Edit</Title>
-                <EditProductForm productStock={model_productStock} productPrice={model_productPrice} />
+                <EditProductForm onClose={editClose} sellerProduct={editSellerProduct}/>
               </Box>
             </Modal>
           </TableBody>

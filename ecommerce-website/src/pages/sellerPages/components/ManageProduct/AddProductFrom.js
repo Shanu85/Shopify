@@ -42,20 +42,19 @@ function AddProductFrom({ onClose, forceClose }) {
             alert("Product description should be aleast 10 characters long");
         }
         else {
-            const newSellerProduct = {
-                title: ProductName,
-                sale_count: Stock,
-                price: ProductPrice,
-                discount_price: DiscountPrice,
-                proposal: ProductProposal,
-                description: ProductDes,
-                photo_main: ProductImage1,
-                photo_1: ProductImage1,
-                photo_2: ProductImage2,
-                size: Size
-            };
+            let form_data = new FormData();
+            form_data.append('title', ProductName);
+            form_data.append('sale_count', Stock);
+            form_data.append('price', ProductPrice);
+            form_data.append('discount_price', DiscountPrice);
+            form_data.append('proposal', ProductProposal);
+            form_data.append('description', ProductDes);
+            form_data.append('photo_main', ProductImage1);
+            form_data.append('photo_1', ProductImage1);
+            form_data.append('photo_2', ProductImage2);
+            form_data.append('size', Size);
 
-            onClose(newSellerProduct);
+            onClose(form_data);
         }
 
         forceClose();
@@ -80,7 +79,7 @@ function AddProductFrom({ onClose, forceClose }) {
                         </Grid>
                         <Grid item xs={7}>
                             <input type="file" accept=".png,.jpg" multiple
-                                onChange={(e) => setProductImage2(e.target.files[0])} required />
+                                onChange={(e) => {setProductImage2(e.target.files[0])}} required />
                         </Grid>
 
                         <Grid item xs={5}>
