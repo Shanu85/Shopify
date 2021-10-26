@@ -6,35 +6,36 @@ import {
 } from "../types";
 
 const initialState = {
-    products: ["Hello"]
+    sellerProducts: []
 };
 
 export default (state = initialState, action) => {
     const { type, payload } = action;
+   
     switch (type) {
         case FETCH_SELLER_PRODUCTS:
-            return { ...state, products: payload };
+            return { ...state, sellerProducts: payload };
         case CREATE_SELLER_PRODUCT:
             return {
                 ...state,
-                products: [...state.products, payload]
+                sellerProducts: [...state.sellerProducts, payload]
             };
               
         case DELETE_SELLER_PRODUCT:
             return {
                 ...state,
-                products: state.products.filter(product => product.id !== payload)
+                sellerProducts: state.sellerProducts.filter(sellerProduct => sellerProduct.id !== payload)
             };
         case UPDATE_SELLER_PRODUCT:
-            const updatedProducts = state.products.map(product => {
-                if (product.id === action.id) {
-                    return { ...product, ...action.payload };
+            const updatedSellerProducts = state.sellerProducts.map(sellerProduct => {
+                if (sellerProduct.id === action.id) {
+                    return { ...sellerProduct, ...action.payload };
                 }
-                return product;
+                return sellerProduct;
             });
             return {
                 ...state,
-                products: updatedProducts
+                sellerProducts: updatedSellerProducts
             };
         default:
             return state;

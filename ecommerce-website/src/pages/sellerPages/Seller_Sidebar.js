@@ -9,6 +9,8 @@ import LogoutIcon from "@material-ui/icons/ExitToApp";
 import List from '@material-ui/core/List';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import { Dashboard } from '@material-ui/icons';
+import { useDispatch } from "react-redux";
+import { fetchSellerProducts } from "@actions/sellerActions/ProductActions";
 
 const useStyle=makeStyles(theme => ({
     root: {
@@ -21,6 +23,7 @@ const useStyle=makeStyles(theme => ({
 
 const Seller_Sidebar=({ activeItem, children }) =>{
     const classes=useStyle();
+    const dispatch = useDispatch();
 
     return (
         
@@ -35,7 +38,7 @@ const Seller_Sidebar=({ activeItem, children }) =>{
                         <ListItemText primary="Dashboard" />
                         </ListItemLink>
                         
-                        <ListItemLink selected={activeItem === "seller_product"} to="/seller_product" >
+                        <ListItemLink selected={activeItem === "seller_product"} to="/seller_product">
                         <ListItemIcon>
                             <ShopingCartIcon color="action" />
                         </ListItemIcon>

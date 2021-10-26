@@ -43,6 +43,7 @@ const Login = () => {
       user_type
     };
     
+    user_type === "NA";
     dispatch(login(user, setErrors, resetForm));
   };
 

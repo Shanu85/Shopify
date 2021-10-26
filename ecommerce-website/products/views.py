@@ -41,7 +41,7 @@ class ProductListView(ListAPIView):
 
 class ProductSellerView(ListAPIView):
     permission_classes = (IsAuthenticated, )
-    #queryset = Product.objects.all()
+    # queryset = Product.objects.all()
     serializer_class = ProductSellerSerializer
     cache.clear()
 
@@ -69,9 +69,8 @@ class ProductAddView(ListAPIView):
         return Product.objects.all().filter(user=user)
 
     def post(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
+        serializer = self.get_serializer(data=request.data.dict())
         serializer.is_valid(raise_exception=True)
-        #print("wow")
         if(self.request.user.user_type=='Buyer'):
             return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
         user = self.request.user
@@ -108,18 +107,17 @@ class UpdateProductSellerView(ListAPIView):
 
     def get_queryset(self):
         user = self.request.user
-        #print(user)
         if(user.user_type=='Buyer'):
             return {}
         return Product.objects.all().filter(user=user)
 
     def post(self, request, id):
         user = self.request.user
-        #print("tunak tunak tun",user)
         if(user.user_type=='Buyer'):
             return Response("You don't have the authorizations.")
         obj = Product.objects.get(id=id)
-        serializer = ProductUpdateSerializer(instance=obj, data=request.data)
+
+        serializer = self.get_serializer(instance=obj, data=request.data)
         if serializer.is_valid():
             serializer.save()
         return Response(serializer.data)
