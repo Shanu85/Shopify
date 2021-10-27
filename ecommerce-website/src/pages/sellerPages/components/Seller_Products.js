@@ -18,6 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchSellerProducts } from "@actions/sellerActions/ProductActions";
 import { createSellerProduct } from "@actions/sellerActions/ProductActions";
 import { updateSellerProduct } from "@actions/sellerActions/ProductActions";
+import { deleteSellerProduct } from "@actions/sellerActions/ProductActions";
 
 
 const modal_Style = {
@@ -83,8 +84,8 @@ export default function Seller_Products() {
     }
   };
   const editClose = (updatedSellerProduct) => {
-    handleEditclose();
     dispatch(updateSellerProduct(updatedSellerProduct, updatedSellerProduct['id']));
+    handleEditclose();
   }
 
 
@@ -93,9 +94,14 @@ export default function Seller_Products() {
   const handleViewOpen = () => setViewOpen(true);
   const handleViewClose = () => setViewOpen(false);
   function ViewHelper(sellerProduct) {
-    handleViewOpen();
     setViewSellerProduct(sellerProduct);
+    handleViewOpen();
   };
+  const handleRemove = (sellerProduct) => {
+    dispatch(deleteSellerProduct(sellerProduct['id']));
+    handleViewClose();
+  }
+
 
   return (
     <Seller_Sidebar activeItem="seller_product">
@@ -175,7 +181,7 @@ export default function Seller_Products() {
                     aria-describedby="modal-modal-description">
               <Box sx={modal_Style}>
                   <Title >Product Information</Title>
-                  <SellerProductView sellerProduct={viewSellerProduct}/>
+                  <SellerProductView sellerProduct={viewSellerProduct} handleRemove={handleRemove}/>
               </Box>
             </Modal>
 

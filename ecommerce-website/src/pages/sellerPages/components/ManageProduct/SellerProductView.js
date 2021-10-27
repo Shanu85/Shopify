@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Grid, Paper } from '@material-ui/core'
 
 
-function SellerProductView({ sellerProduct }) {
+function SellerProductView({ sellerProduct, handleRemove }) {
     const paperStyle = { padding: '0 10px 40px 25px', width: 400, }
     const {
         title,
@@ -68,7 +68,7 @@ function SellerProductView({ sellerProduct }) {
 
                         </Grid>
                         <Grid item xs={6}>
-                            <Button type="submit" style={{ background: "red", color: "white", fontWeight: "bold" }}>Remove Product</Button>
+                            <Button type="submit" onClick={()=>handleRemove(sellerProduct)} style={{ background: "red", color: "white", fontWeight: "bold" }}>Remove Product</Button>
                         </Grid>
 
                     </Grid>

@@ -39,12 +39,11 @@ export const createSellerProduct = (newSellerProduct) => dispatch => {
         });
 };
 
-export const deleteSellerProduct = (id, handleClose) => dispatch => {
+export const deleteSellerProduct = (id) => dispatch => {
     dispatch({ type: START_LOADING_BUTTON });
-    axios.delete(`/api/products/${id}/`).then(() => {
+    axios.get(`/api/products/del/${id}/`).then(() => {
         dispatch({ type: DELETE_SELLER_PRODUCT, payload: id });
         dispatch({ type: STOP_LOADING_BUTTON });
-        handleClose();
         dispatch(
             addNotif({
                 message: "Product has been deleted",
