@@ -13,17 +13,17 @@ workbox.routing.registerNavigationRoute(
   }
 );
 
-workbox.routing.registerRoute(
-  new RegExp("/api/products/*"),
-  new workbox.strategies.CacheFirst({
-    cacheName: "products",
-    plugins: [
-      new workbox.expiration.Plugin({
-        maxAgeSeconds: 5 * 60
-      })
-    ]
-  })
-);
+// workbox.routing.registerRoute(
+//   new RegExp("/api/products/*"),
+//   new workbox.strategies.CacheFirst({
+//     cacheName: "products",
+//     plugins: [
+//       new workbox.expiration.Plugin({
+//         maxAgeSeconds: 5 * 60
+//       })
+//     ]
+//   })
+// );
 
 // Images
 workbox.routing.registerRoute(
