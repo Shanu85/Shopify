@@ -224,7 +224,7 @@ const Routes = () => {
         <SellerProtectedRoute exact path="/seller_product" exact component={S_Product} />
         <SellerProtectedRoute exact path="/seller_Home" exact component={S_SideBar} />
         <SellerProtectedRoute exact path="/seller_Order" exact component={S_order} />
-
+        
         {/* <AdminProtectedRoute exact path='/admin_dashboard' exact component={A_Dash}/>
         <AdminProtectedRoute exact path='/All_Seller' exact component={A_allSeller}/>
         <AdminProtectedRoute exact path='/All_Buyer' exact component={A_allBuyer}/>
