@@ -67,7 +67,6 @@ export const register = (user, setErrors, resetForm) => dispatch => {
   axios
     .post("/api/auth/register/", user)
     .then(response => {
-      if (user.user_type)
       dispatch({ type: AUTH_SUCCESS, payload: response.data });
       dispatch({ type: STOP_LOADING_BUTTON });
       resetForm();

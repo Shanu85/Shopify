@@ -39,9 +39,10 @@ class ProductListView(ListAPIView):
             queryset = queryset.order_by('-sale_count')
         return queryset
 
+
 class ProductSellerView(ListAPIView):
     permission_classes = (IsAuthenticated, )
-    #queryset = Product.objects.all()
+    # queryset = Product.objects.all()
     serializer_class = ProductSellerSerializer
     cache.clear()
 
@@ -69,9 +70,8 @@ class ProductAddView(ListAPIView):
         return Product.objects.all().filter(user=user)
 
     def post(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
+        serializer = self.get_serializer(data=request.data.dict())
         serializer.is_valid(raise_exception=True)
-        #print("wow")
         if(self.request.user.user_type=='Buyer'):
             return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
         user = self.request.user
@@ -80,11 +80,12 @@ class ProductAddView(ListAPIView):
         #print("Tunak tunak tun",sizes)
         object = self.get_object
         product = Product.objects.create(user=user, title=data['title'], photo_main=data['photo_main'], photo_1=data['photo_1'], photo_2=data['photo_2'],
-            photo_3=data['photo_3'], photo_4=data['photo_4'], description=data['description'], price=data['price'],
-            sale_count=data['sale_count'], discount_price=data['discount_price'], proposals=data['proposals'])
+            description=data['description'], price=data['price'],
+            sale_count=data['sale_count'], discount_price=data['discount_price'])
         for size in sizes:
             product.sizes.add(size)
         return self.list(request, *args, **kwargs)
+
 
 class DeleteProductSellerView(ListAPIView):
     permission_classes = (IsAuthenticated, )
@@ -119,7 +120,6 @@ class UpdateProductSellerView(ListAPIView):
 
     def get_queryset(self):
         user = self.request.user
-        #print(user)
         if(user.user_type=='Buyer'):
             return Response("Invalid user type")
         return Product.objects.all().filter(user=user)
@@ -136,11 +136,13 @@ class UpdateProductSellerView(ListAPIView):
         if(user.user_type=='Buyer' or seller_products.count(Product.objects.get(id=id))==0):
             return Response("You don't have the authorizations.")
         obj = Product.objects.get(id=id)
-        serializer = ProductUpdateSerializer(instance=obj, data=request.data)
+
+        serializer = self.get_serializer(instance=obj, data=request.data)
         if serializer.is_valid():
             serializer.save()
         #serializer.saveslug()
         return Response(serializer.data)
+
 
 class ProductDetailView(RetrieveAPIView):
     permission_classes = (IsAuthenticated, )

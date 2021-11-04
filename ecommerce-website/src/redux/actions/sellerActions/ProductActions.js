@@ -14,36 +14,36 @@ import { addNotif } from "../notifActions";
 
 export const fetchSellerProducts = () => dispatch => {
     dispatch({ type: START_LOADING_UI });
-    //   axios.get("/api/products").then(response => {
-    //     dispatch({ type: FETCH_SELLER_PRODUCTS, payload: response.data });
-    //     dispatch({ type: STOP_LOADING_UI });
-    //   });
-    dispatch({ type: FETCH_SELLER_PRODUCTS, payload: ["Hello Gandu"] });
-    dispatch({ type: STOP_LOADING_UI });
+    axios.get("/api/products/seller/productss/").then(response => {
+        dispatch({ type: FETCH_SELLER_PRODUCTS, payload: response.data });
+        dispatch({ type: STOP_LOADING_UI });
+    });
 };
 
-export const createSellerProduct = (product, setErrors, handleClose) => dispatch => {
+export const createSellerProduct = (newSellerProduct) => dispatch => {
     dispatch({ type: START_LOADING_BUTTON });
     axios
-        .post("/api/products/", product)
+        .post("/api/products/seller/add/", newSellerProduct, {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        })
         .then(response => {
             dispatch({ type: CREATE_SELLER_PRODUCT, payload: response.data });
-            handleClose();
             dispatch(addNotif({ message: "Product has been added" }));
             dispatch({ type: STOP_LOADING_BUTTON });
         })
         .catch(error => {
-            setErrors(error.response.data);
+            console.log(error, newSellerProduct);
             dispatch({ type: STOP_LOADING_BUTTON });
         });
 };
 
-export const deleteSellerProduct = (id, handleClose) => dispatch => {
+export const deleteSellerProduct = (id) => dispatch => {
     dispatch({ type: START_LOADING_BUTTON });
-    axios.delete(`/api/products/${id}/`).then(() => {
+    axios.get(`/api/products/del/${id}/`).then(() => {
         dispatch({ type: DELETE_SELLER_PRODUCT, payload: id });
         dispatch({ type: STOP_LOADING_BUTTON });
-        handleClose();
         dispatch(
             addNotif({
                 message: "Product has been deleted",
@@ -54,18 +54,15 @@ export const deleteSellerProduct = (id, handleClose) => dispatch => {
 };
 
 export const updateSellerProduct = (
-    product,
-    id,
-    setErrors,
-    handleClose
+    updatedSellerProduct,
+    id
 ) => dispatch => {
     dispatch({ type: START_LOADING_BUTTON });
     axios
-        .put(`/api/seller/product/${id}/`, product)
+        .post(`/api/products/upd/${id}/`, updatedSellerProduct)
         .then(response => {
             dispatch({ type: UPDATE_SELLER_PRODUCT, id, payload: response.data });
             dispatch({ type: STOP_LOADING_BUTTON });
-            handleClose();
             dispatch(
                 addNotif({
                     message: "Product has been updated",
@@ -74,7 +71,7 @@ export const updateSellerProduct = (
             );
         })
         .catch(error => {
-            setErrors(error.response.data);
+            console.log(error);
             dispatch({ type: STOP_LOADING_BUTTON });
         });
 };

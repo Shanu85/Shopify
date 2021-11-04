@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
       return { ...state, ...payload };
     case CREATE_ORDER:
       return initialState;
-    default:
+    default:   
       return state;
   }
 };
