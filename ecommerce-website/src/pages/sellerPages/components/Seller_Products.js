@@ -62,7 +62,6 @@ export default function Seller_Products() {
     dispatch(fetchSellerProducts());
   }, [dispatch]);
 
-
   const [addOpen, setAddOpen] = React.useState(false);
   const handleAddOpen = () => setAddOpen(true);
   const addClose = (newSellerProduct) => {
@@ -131,7 +130,7 @@ export default function Seller_Products() {
             <TableRow style={{ background: 'black' }}>
 
               <TableCell className={classes.header} align="center">
-                ID
+                SNo.
               </TableCell>
               <TableCell className={classes.header} align="center">
                 Product

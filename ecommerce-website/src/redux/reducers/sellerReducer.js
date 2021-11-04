@@ -1,12 +1,14 @@
 import {
     FETCH_SELLER_PRODUCTS,
+    FETCH_SELLER_ORDERS,
     CREATE_SELLER_PRODUCT,
     DELETE_SELLER_PRODUCT,
     UPDATE_SELLER_PRODUCT
 } from "../types";
 
 const initialState = {
-    sellerProducts: []
+    sellerProducts: [],
+    sellerOrders: []
 };
 
 export default (state = initialState, action) => {
@@ -15,6 +17,8 @@ export default (state = initialState, action) => {
     switch (type) {
         case FETCH_SELLER_PRODUCTS:
             return { ...state, sellerProducts: payload };
+        case FETCH_SELLER_ORDERS:
+            return { ...state, sellerOrders: payload };
         case CREATE_SELLER_PRODUCT:
             return {
                 ...state,

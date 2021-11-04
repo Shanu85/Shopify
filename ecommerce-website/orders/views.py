@@ -39,19 +39,19 @@ class OrderFilterView(ListAPIView):
         ordersall = []
         ides=[]
         user = self.request.user
-        #print(user.id)
+        # print(user.id)
         products = Product.objects.filter(user=user)
         for product in products:
             ides.append(product.id)
         for user in users:
             orders = user.orders.all()
-            #print(user.id,orders.count())
+            # print(user.id,orders.count())
             for order in orders:
                 if(order.id in ides):
                     item = CartItem.objects.get(id=order.id)
-                    ordersall.append({'title':item.product.title,'size':item.size,'quantity':item.quantity,'payment_mode':order.payment_mode, 'date':order.created_at, 'location':order.reciver.address})
+                    ordersall.append({'title':item.product.title, 'quantity':item.quantity, 'total_price': item.total_price, 'payment_mode':order.payment_mode, 'date':order.created_at, 'location':order.reciver.address})
         
-        #print(ordersall)
+        # print(ordersall)
         return ordersall
 
 
