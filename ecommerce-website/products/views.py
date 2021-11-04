@@ -5,7 +5,7 @@ from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.status import HTTP_204_NO_CONTENT, HTTP_400_BAD_REQUEST
-from .serializers import ProductListSerializer, ProductDetailSerializer, ProductSellerSerializer, ProductUpdateSerializer
+from .serializers import ProductListSerializer, ProductDetailSerializer, ProductSellerSerializer, ProductUpdateSerializer,  ProductFrontendSerializer
 from .models import Product
 from .pagination import ProductPagination
 from .filters import ProductFilter
@@ -17,6 +17,7 @@ from django.core.cache import cache
 User = get_user_model()
 
 class ProductListView(ListAPIView):
+    permission_classes = (IsAuthenticated, )
     queryset = Product.objects.all()
     serializer_class = ProductListSerializer
     pagination_class = ProductPagination
@@ -48,7 +49,7 @@ class ProductSellerView(ListAPIView):
     def get_queryset(self):
         user = self.request.user
         if(user.user_type=='Buyer'):
-            return {}
+            return Response("Invalid user type")
         
         #print(user.user_type)
         return Product.objects.all().filter(user=user)
@@ -63,7 +64,7 @@ class ProductAddView(ListAPIView):
     def get_queryset(self):
         user = self.request.user
         if(user.user_type=='Buyer'):
-            return {}
+            return Response("Invalid user type")
         
         #print(user.user_type)
         return Product.objects.all().filter(user=user)
@@ -79,7 +80,7 @@ class ProductAddView(ListAPIView):
         #print("Tunak tunak tun",sizes)
         object = self.get_object
         product = Product.objects.create(user=user, title=data['title'], photo_main=data['photo_main'], photo_1=data['photo_1'], photo_2=data['photo_2'],
-            description=data['description'], price=data['price'],
+            description=data['description'], price=data['price'], proposal=data['proposal'],
             sale_count=data['sale_count'], discount_price=data['discount_price'])
         for size in sizes:
             product.sizes.add(size)
@@ -93,8 +94,20 @@ class DeleteProductSellerView(ListAPIView):
     #Product.objects.all().filter(id=data['id']).delete()
     def get(self,request,id):
         user = self.request.user
+        
+        seller_products = []
+        products = Product.objects.all().filter(user=user)
+        a = False
+        for product in products:
+            if(int(id)==int(product.id)):
+                a = True
+            seller_products.append(product)
+            #print(product.id, id)
+
         if(user.user_type=='Buyer'):
             return Response("You don't have the authorizations.")
+        if(not a):
+            return Response("Product does not exist")
         pro_object = Product.objects.get(id=id)
         pro_object.delete()
         return Response('Deleted')
@@ -108,22 +121,45 @@ class UpdateProductSellerView(ListAPIView):
     def get_queryset(self):
         user = self.request.user
         if(user.user_type=='Buyer'):
-            return {}
+            return Response("Invalid user type")
         return Product.objects.all().filter(user=user)
 
     def post(self, request, id):
         user = self.request.user
-        if(user.user_type=='Buyer'):
+        #print("tunak tunak tun",user)
+        seller_products = []
+        products = Product.objects.all().filter(user=user)
+        for product in products:
+            seller_products.append(product)
+            #print(product.id, seller_products.count(Product.objects.get(id=id)))
+
+        if(user.user_type=='Buyer' or seller_products.count(Product.objects.get(id=id))==0):
             return Response("You don't have the authorizations.")
         obj = Product.objects.get(id=id)
 
         serializer = self.get_serializer(instance=obj, data=request.data)
         if serializer.is_valid():
             serializer.save()
+        #serializer.saveslug()
         return Response(serializer.data)
 
 
 class ProductDetailView(RetrieveAPIView):
+    permission_classes = (IsAuthenticated, )
     queryset = Product.objects.all()
     serializer_class = ProductDetailSerializer
     lookup_field = 'slug'
+
+
+class ProductFrontendView(ListAPIView):
+    permission_classes = (IsAuthenticated, )
+    #queryset = Product.objects.all()
+    serializer_class = ProductFrontendSerializer
+    cache.clear()
+
+    def get_queryset(self):
+        user = self.request.user
+        if(user.user_type=='Buyer'):
+            return Response("Invalid user type")
+
+        return Product.objects.all().filter(user=user)

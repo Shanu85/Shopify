@@ -1,6 +1,7 @@
 from django.db import models
 from autoslug import AutoSlugField
 from web.utils import id_generator
+from django.template.defaultfilters import slugify
 
 from django.contrib.auth import get_user_model
 
@@ -42,8 +43,7 @@ class ProductManager(models.Manager):
 class Product(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="Seller_products")
     title = models.CharField(max_length=120)
-    slug = AutoSlugField(populate_from='title',
-                         unique_with=['title'], unique=True)
+    slug = AutoSlugField(populate_from='title', unique_with=['title'], unique=True)
     photo_main = models.ImageField(upload_to='product_photos/%Y/%m/%d/')
     photo_1 = models.ImageField(
         upload_to='product_photos/%Y/%m/%d/', blank=True, null=True)
@@ -54,9 +54,9 @@ class Product(models.Model):
     photo_4 = models.ImageField(
         upload_to='product_photos/%Y/%m/%d/', blank=True, null=True)
     description = models.TextField()
+    proposal = models.FileField(upload_to='product_pdfs/%Y/%m/%d')
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    discount_price = models.DecimalField(
-        max_digits=10, decimal_places=2, blank=True, null=True)
+    discount_price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     sizes = models.ManyToManyField(Size, blank=True)
     colors = models.ManyToManyField('self', blank=True, related_name='colors')
     active = models.BooleanField(default=True)
@@ -74,6 +74,7 @@ class Product(models.Model):
 
     def save(self, *args, **kwargs):
         self.code = id_generator()
+        self.slug = slugify(self.title)
         super(Product, self).save(*args, **kwargs)
 
     @property

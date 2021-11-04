@@ -66,8 +66,7 @@ export default function Seller_Products() {
   const [addOpen, setAddOpen] = React.useState(false);
   const handleAddOpen = () => setAddOpen(true);
   const addClose = (newSellerProduct) => {
-    dispatch(createSellerProduct(newSellerProduct));
-    setAddOpen(false);
+    dispatch(createSellerProduct(newSellerProduct, setAddOpen));
   }
   const forceAddClose = () => {
     setAddOpen(false);
@@ -97,7 +96,7 @@ export default function Seller_Products() {
     setViewSellerProduct(sellerProduct);
     handleViewOpen();
   };
-  const handleRemove = (sellerProduct) => {
+  const handleRemove = (sellerProduct) => {    
     dispatch(deleteSellerProduct(sellerProduct['id']));
     handleViewClose();
   }
