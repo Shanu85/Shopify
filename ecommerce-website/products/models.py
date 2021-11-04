@@ -54,7 +54,7 @@ class Product(models.Model):
     photo_4 = models.ImageField(
         upload_to='product_photos/%Y/%m/%d/', blank=True, null=True)
     description = models.TextField()
-    proposal = models.FileField(upload_to='product_photos/pdfs/%Y/%m/%d')
+    proposal = models.FileField(upload_to='product_pdfs/%Y/%m/%d')
     price = models.DecimalField(max_digits=10, decimal_places=2)
     discount_price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     sizes = models.ManyToManyField(Size, blank=True)

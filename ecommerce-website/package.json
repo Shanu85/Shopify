@@ -17,6 +17,7 @@
     "react": "^16.12.0",
     "react-clipboard.js": "^2.0.16",
     "react-dom": "^16.12.0",
+    "react-google-recaptcha": "^2.1.0",
     "react-id-swiper": "^2.4.0",
     "react-native-razorpay": "^2.2.8",
     "react-redux": "^7.1.3",

@@ -80,7 +80,7 @@ class ProductAddView(ListAPIView):
         #print("Tunak tunak tun",sizes)
         object = self.get_object
         product = Product.objects.create(user=user, title=data['title'], photo_main=data['photo_main'], photo_1=data['photo_1'], photo_2=data['photo_2'],
-            description=data['description'], price=data['price'],
+            description=data['description'], price=data['price'], proposal=data['proposal'],
             sale_count=data['sale_count'], discount_price=data['discount_price'])
         for size in sizes:
             product.sizes.add(size)
@@ -150,6 +150,7 @@ class ProductDetailView(RetrieveAPIView):
     serializer_class = ProductDetailSerializer
     lookup_field = 'slug'
 
+
 class ProductFrontendView(ListAPIView):
     permission_classes = (IsAuthenticated, )
     #queryset = Product.objects.all()
@@ -160,6 +161,5 @@ class ProductFrontendView(ListAPIView):
         user = self.request.user
         if(user.user_type=='Buyer'):
             return Response("Invalid user type")
-        
-        #print(user.user_type)
+
         return Product.objects.all().filter(user=user)

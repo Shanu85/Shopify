@@ -13,7 +13,7 @@ import LoadingButton from "@components/loading/LoadingButton";
 
 const BuyerRegisterForm = props => {
   const {
-    values: { first_name, last_name, phone_number, password},
+    values: { first_name, last_name, phone_number, password, confirm_password},
     errors,
     handleSubmit,
     handleChange,
@@ -96,6 +96,23 @@ const BuyerRegisterForm = props => {
                   Boolean(errors.password) || Boolean(errors.non_field_errors)
                 }
                 value={password}
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="confirm_password"
+                label="Confirm Password"
+                type="password"
+                id="confirm_password"
+                helperText={errors.confirm_password}
+                error={
+                  Boolean(errors.confirm_password) || Boolean(errors.non_field_errors)
+                }
+                value={confirm_password}
                 onChange={handleChange}
               />
             </Grid>

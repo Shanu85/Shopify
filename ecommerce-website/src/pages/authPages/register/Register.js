@@ -19,6 +19,9 @@ const SellerValidationSchema = Yup.object({
     .required("Required field"),
   password: Yup.string()
     .min(8, "Must be at least 8 characters")
+    .required("Required field"),
+  confirm_password: Yup.string()
+    .min(8, "Must be at least 8 characters")
     .required("Required field")
 });
 
@@ -30,6 +33,9 @@ const BuyerValidationSchema = Yup.object({
     .required("Required field"),
   password: Yup.string()
     .min(8, "Must be at least 8 characters")
+    .required("Required field"),
+  confirm_password: Yup.string()
+    .min(8, "Must be at least 8 characters")
     .required("Required field")
 });
 
@@ -38,11 +44,12 @@ const Register = () => {
   const values = {
     phone_number: "",
     password: "",
+    confirm_password: "",
     first_name: "",
     last_name: "",
-    email:""
+    email: ""
   };
-  
+
   const dispatch = useDispatch();
 
   const [user_type, setType] = useState("NA");
@@ -56,9 +63,13 @@ const Register = () => {
   }
 
   const handleSubmit = (
-    { first_name, last_name, phone_number, email, password },
+    { first_name, last_name, phone_number, email, password, confirm_password },
     { setErrors, resetForm }
   ) => {
+    if (password !== confirm_password) {
+      alert("Passwords don't match!");
+      return;
+    }
     const user = {
       first_name,
       last_name,
@@ -67,7 +78,7 @@ const Register = () => {
       email,
       password
     };
-    
+
     dispatch(register(user, setErrors, resetForm));
   };
 
@@ -77,10 +88,10 @@ const Register = () => {
         <UserType changeType={changeType} /> :
         <Formik
           initialValues={values}
-          validationSchema={user_type === "Seller" ? SellerValidationSchema: BuyerValidationSchema}
+          validationSchema={user_type === "Seller" ? SellerValidationSchema : BuyerValidationSchema}
           onSubmit={handleSubmit}
-        > 
-          {props => user_type === "Seller" ? <SellerRegisterForm {...props}/>:<BuyerRegisterForm {...props}/>}
+        >
+          {props => user_type === "Seller" ? <SellerRegisterForm {...props} /> : <BuyerRegisterForm {...props} />}
         </Formik>
       }
     </>
