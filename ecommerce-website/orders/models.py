@@ -24,7 +24,7 @@ class Order(models.Model):
     reciver = models.ForeignKey(ReciverInfo, on_delete=models.DO_NOTHING)
     payment_mode = models.CharField(max_length=50)
     shipping_status = models.CharField(max_length=50)
-    code = models.CharField(max_length=8, unique=True)
+    code = models.CharField(max_length=100, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -34,5 +34,7 @@ class Order(models.Model):
         return f"{self.user} - {self.code}"
 
     def save(self, *args, **kwargs):
-        self.code = id_generator()
+        print(self.payment_mode,self.code)
+        if self.payment_mode == "Cash On Delievery":
+            self.code = id_generator()
         super(Order, self).save(*args, **kwargs)

@@ -46,15 +46,18 @@ function UPI({history}) {
               alert("Payment unsuccessful");
             } else {
     
+              //alert(response.razorpay_payment_id);
               
               //console.log('data',pay_instance.payments.fetch(response.razorpay_payment_id));
               const order = {
                 reciver: {
+                    
                   full_name: address.reciver_full_name,
                   phone_number: address.reciver_phone_number,
                   address: `${address.state} ${address.city} ${address.postal_address} ${address.postal_code}`
                 },
-                payment_mode: paymentMethod
+                payment_mode: paymentMethod,
+                code:response.razorpay_payment_id,
               };
               dispatch(createOrder(order, history));
               
@@ -132,7 +135,7 @@ function UPI({history}) {
                             <Button variant="contained" color="success" size="large" style={{background:"green", color:"white"}} onClick={() => handleClick("card")}>Pay Now</Button>
                         </Grid>
                     </Grid>
-
+                    
                 </Grid>
             </Box>
         </>

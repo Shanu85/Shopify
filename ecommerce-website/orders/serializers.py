@@ -52,12 +52,14 @@ class OrderFilterSerializer(serializers.Serializer):
     location = serializers.CharField(max_length=200)
 
 
+# exclude = ('code',)
+
 class CreateOrderSerializer(serializers.ModelSerializer):
     reciver = ReciverInfoSerializer()
 
     class Meta:
         model = Order
-        exclude = ('code',)
+        exclude = ()
         read_only_fields = (
             'shipping_status', 'cart', 'user',
             'shipping_method',
@@ -76,13 +78,18 @@ class CreateOrderSerializer(serializers.ModelSerializer):
             )
         # Create reaciver info model
         reciver_info = ReciverInfo.objects.create(**data.get('reciver'))
+        code=data.get('code',None)
         # Create order model
         cart.ordered = True
+
+        print(code,data.get('payment_mode'))
+        
         cart.save()
         order = Order.objects.create(
-            user=user, cart=cart, reciver=reciver_info,
+            user=user, cart=cart, reciver=reciver_info,code=code,
             payment_mode = data.get('payment_mode'), shipping_status="Preparation"
         )
         # Create another cart model with ordered=False
         Cart.objects.create(user=user)
+
         return order
