@@ -4,7 +4,10 @@ from django.db.models import F
 from .models import Order, ReciverInfo
 from carts.models import Cart
 from carts.serializers import CartSerializer
+from products.serializers import ProductUpdateSerializer
 from products.models import Product
+from carts.models import CartItem
+from accounts.models import User
 
 
 class ReciverInfoSerializer(serializers.ModelSerializer):
@@ -39,6 +42,14 @@ class OrderDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = '__all__'
+
+class OrderFilterSerializer(serializers.Serializer):
+    title = serializers.CharField(max_length=200)
+    size = serializers.CharField(max_length=200)
+    quantity = serializers.CharField(max_length=200)
+    payment_mode = serializers.CharField(max_length=200)
+    date = serializers.CharField(max_length=200)
+    location = serializers.CharField(max_length=200)
 
 
 class CreateOrderSerializer(serializers.ModelSerializer):
