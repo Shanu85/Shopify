@@ -24,7 +24,7 @@ class Order(models.Model):
     reciver = models.ForeignKey(ReciverInfo, on_delete=models.DO_NOTHING)
     payment_mode = models.CharField(max_length=50)
     shipping_status = models.CharField(max_length=50)
-    code = models.CharField(max_length=100, unique=True)
+    code = models.CharField(max_length=100, null=True,  unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

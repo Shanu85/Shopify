@@ -16,6 +16,7 @@ class OrderListView(ListCreateAPIView):
         return self.request.user.orders.all()
 
     def get_serializer_class(self):
+        print(self.request.method)
         if self.request.method == "POST":
             return CreateOrderSerializer
         return OrderListSerializer

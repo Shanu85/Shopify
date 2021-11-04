@@ -66,6 +66,7 @@ class CreateOrderSerializer(serializers.ModelSerializer):
         )
 
     def create(self, data):
+        print(self.context.get('request').user)
         user = self.context.get('request').user
         cart = user.carts.get(ordered=False)
         # Validate cart
