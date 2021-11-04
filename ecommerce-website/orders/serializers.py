@@ -45,7 +45,7 @@ class OrderDetailSerializer(serializers.ModelSerializer):
 
 class OrderFilterSerializer(serializers.Serializer):
     title = serializers.CharField(max_length=200)
-    size = serializers.CharField(max_length=200)
+    total_price = serializers.CharField(max_length=200)
     quantity = serializers.CharField(max_length=200)
     payment_mode = serializers.CharField(max_length=200)
     date = serializers.CharField(max_length=200)
