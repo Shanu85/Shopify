@@ -4,7 +4,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import LoginForm from "./components/LoginForm";
 import { login } from "@actions/authActions";
-import { phone_number_reg } from "../regexes";
+import { phone_number_reg, otp_reg } from "../regexes";
 import { UserType } from "./components/UserType";
 
 const validationSchema = Yup.object({
@@ -13,11 +13,14 @@ const validationSchema = Yup.object({
     .required("Required field"),
   password: Yup.string()
     .min(8, "Must be at least 8 characters")
-    .required("Required field")
+    .required("Required field"),
+  otp: Yup.string()
+    .matches(otp_reg, "Invalid OTP")
+    .required("Required Field"),
 });
 
 const Login = () => {
-  const values = { phone_number: "", password: "" };
+  const values = { phone_number: "", password: "", otp: "" };
   const dispatch = useDispatch();
   
   const [user_type, setType] = useState("NA");
@@ -34,7 +37,7 @@ const Login = () => {
   }
 
   const handleSubmit = (
-    { phone_number, password },
+    { phone_number, password, otp },
     { setErrors, resetForm }
   ) => {
     const user = {
