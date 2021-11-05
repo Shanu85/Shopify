@@ -6,6 +6,7 @@ import BuyerRegisterForm from "./components/BuyerRegisterForm";
 import SellerRegisterForm from "./components/SellerRegisterForm";
 import { register } from "@actions/authActions";
 import { phone_number_reg } from "../regexes";
+import { password_reg } from "../regexes";
 import { UserType } from "./components/UserType";
 
 const SellerValidationSchema = Yup.object({
@@ -17,11 +18,12 @@ const SellerValidationSchema = Yup.object({
   email: Yup.string()
     .email()
     .required("Required field"),
+    //Minimum eight and maximum 10 characters, at least one uppercase letter, one lowercase letter, one number and one special character:
   password: Yup.string()
-    .min(8, "Must be at least 8 characters")
+    .matches(password_reg, "Weak Password ")
     .required("Required field"),
   confirm_password: Yup.string()
-    .min(8, "Must be at least 8 characters")
+    .matches(password, "Passwords dont match")
     .required("Required field")
 });
 
