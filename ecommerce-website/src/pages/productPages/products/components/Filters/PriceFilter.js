@@ -59,7 +59,7 @@ const PriceFilter = () => {
     setValue(newValue);
   };
 
-  const hadnleSubmit = (event, value) => {
+  const handleSubmit = (event, value) => {
     if (value) {
       history.push(
         appendQuery(location, { min_price: value[0], max_price: value[1] })
@@ -74,7 +74,7 @@ const PriceFilter = () => {
         min={min_price}
         value={value}
         onChange={handleChange}
-        onChangeCommitted={hadnleSubmit}
+        onChangeCommitted={handleSubmit}
         valueLabelDisplay="auto"
       />
       <Typography gutterBottom>

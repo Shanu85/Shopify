@@ -158,7 +158,7 @@ export default function Seller_Products() {
             {sellerProducts.map((sellerProduct, id) => (
               <TableRow key={id + 1}>
                 <TableCell align="center">{id + 1}</TableCell>
-                <TableCell align="center" style={{ alignItems: "center" }}>{sellerProduct['title']}</TableCell>
+                <TableCell align="center" style={{ alignItems: "center" }}>{sellerProduct.title.substring(0, sellerProduct.title.lastIndexOf(' '))}</TableCell>
                 <TableCell align="center">{sellerProduct['sale_count']}</TableCell>
                 <TableCell align="center">{sellerProduct['price']}</TableCell>
 

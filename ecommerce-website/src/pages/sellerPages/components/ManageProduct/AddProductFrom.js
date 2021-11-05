@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Grid, Paper } from '@material-ui/core';
 import { useState } from 'react';
+import CategoryFilter from '../../../productPages/products/components/Filters/CategoryFilter';
 
 function AddProductFrom({ onClose, forceClose }) {
     const paperStyle = { padding: '0 15px 40px 15px', width: 450, }
@@ -14,6 +15,7 @@ function AddProductFrom({ onClose, forceClose }) {
     const [DiscountPrice, setDiscountPrice] = useState(0);
     const [ProductDes, setProductDes] = useState('');
     const [Size, setSize] = useState('NA');
+    const [Category, setCategory] = useState('topwear');
 
     const handleSubmit = async () => {
 
@@ -43,7 +45,7 @@ function AddProductFrom({ onClose, forceClose }) {
         }
         else {
             let form_data = new FormData();
-            form_data.append('title', ProductName);
+            form_data.append('title', ProductName+" "+Category);
             form_data.append('sale_count', Stock);
             form_data.append('price', ProductPrice);
             form_data.append('discount_price', DiscountPrice);
@@ -136,6 +138,20 @@ function AddProductFrom({ onClose, forceClose }) {
                                 (event) => {
                                     setProductDes(event.target.value)
                                 }} required style={{ height: "200px", width: "250px" }} />
+                        </Grid>
+                    
+                        <Grid item xs={5}>
+                            <label>Category</label>
+                        </Grid>
+                        <Grid item xs={7}>
+                            <select onChange={
+                                (event) => {
+                                    setCategory(event.target.value)
+                                }}>
+                                <option selected value="topwear">Topwear</option>
+                                <option value="bottomwear">Bottomwear</option>
+                                <option value="footwear">Footwear</option>
+                            </select>
                         </Grid>
 
                         <Grid item xs={5}>

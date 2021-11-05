@@ -94,7 +94,7 @@ const CartItem = ({ editable, item, item: { product } }) => {
             component={Link}
             to={`/products/${product.slug}`}
           >
-            {product.title}
+            {product.title.substring(0, product.title.lastIndexOf(' '))}
           </Typography>
           <Typography className={classes.mt1} variant="subtitle1">
             Size: {item.size.size}

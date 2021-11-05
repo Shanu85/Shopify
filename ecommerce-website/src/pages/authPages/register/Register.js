@@ -18,12 +18,12 @@ const SellerValidationSchema = Yup.object({
   email: Yup.string()
     .email()
     .required("Required field"),
-    //Minimum eight and maximum 10 characters, at least one uppercase letter, one lowercase letter, one number and one special character:
+  //Minimum eight and maximum 10 characters, at least one uppercase letter, one lowercase letter, one number and one special character:
   password: Yup.string()
     .matches(password_reg, "Weak Password ")
     .required("Required field"),
   confirm_password: Yup.string()
-    .matches(password, "Passwords dont match")
+    .matches(password_reg, "Passwords don't match")
     .required("Required field")
 });
 
@@ -33,11 +33,12 @@ const BuyerValidationSchema = Yup.object({
   phone_number: Yup.string()
     .matches(phone_number_reg, "Invalid phone number")
     .required("Required field"),
+  //Minimum eight and maximum 10 characters, at least one uppercase letter, one lowercase letter, one number and one special character:
   password: Yup.string()
-    .min(8, "Must be at least 8 characters")
+    .matches(password_reg, "Weak Password ")
     .required("Required field"),
   confirm_password: Yup.string()
-    .min(8, "Must be at least 8 characters")
+    .matches(password_reg, "Passwords don't match")
     .required("Required field")
 });
 

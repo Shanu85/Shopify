@@ -37,12 +37,12 @@ const ProductItem = ({ product, history }) => {
               component="img"
               className={classes.image}
               src={product.photo_main}
-              title={product.title}
+              title={product.title.substring(0, product.title.lastIndexOf(' '))}
             />
           </div>
           <CardContent>
             <Typography noWrap gutterBottom variant="subtitle1" component="h2">
-              {product.title}
+              {product.title.substring(0, product.title.lastIndexOf(' '))}
             </Typography>
             {product.available === false ? (
               <Typography

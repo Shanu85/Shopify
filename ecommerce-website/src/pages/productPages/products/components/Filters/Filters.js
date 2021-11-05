@@ -5,8 +5,9 @@ import PriceFilter from "./PriceFilter";
 import OnlyAvailable from "./OnlyAvailable";
 import SearchInResults from "./SearchInResults";
 import SubmittedFilters from "./SubmittedFilters";
+import CategoryFilter from "./CategoryFilter";
 
-const Filters = () => {
+const Filters = ({location}) => {
   return (
     <React.Fragment>
       <SubmittedFilters />
@@ -15,6 +16,7 @@ const Filters = () => {
       <MyExpansionPanel title="Price range">
         <PriceFilter />
       </MyExpansionPanel>
+      <CategoryFilter location={location}/>
     </React.Fragment>
   );
 };
