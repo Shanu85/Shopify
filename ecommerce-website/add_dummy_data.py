@@ -83,7 +83,7 @@ def add_products():
         if colors:
             for color in colors:
                 product.colors.add(color)
-    print("Products added.")
+    #print("Products added.")
     with open('./dummy_data/seller_products.json') as f:
         products = json.load(f)
     for product in products:
