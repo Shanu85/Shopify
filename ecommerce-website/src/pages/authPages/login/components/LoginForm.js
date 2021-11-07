@@ -13,7 +13,7 @@ import LoadingButton from "@components/loading/LoadingButton";
 
 const LoginForm = props => {
   const {
-    values: { phone_number, password },
+    values: { phone_number, password, otp },
     errors,
     handleSubmit,
     handleChange,
@@ -31,48 +31,73 @@ const LoginForm = props => {
           Log In
         </Typography>
         <form className={classes.form} noValidate onSubmit={handleSubmit}>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="phone_number"
-            label="Phone Number"
-            name="phone_number"
-            autoComplete="phone_number"
-            helperText={errors.phone_number}
-            error={
-              Boolean(errors.phone_number) ||
-              Boolean(errors.non_field_errors)
-            }
-            value={phone_number}
-            onChange={handleChange}
-            autoFocus
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            helperText={errors.password}
-            error={Boolean(errors.password) || Boolean(errors.non_field_errors)}
-            value={password}
-            onChange={handleChange}
-          />
-          {errors.non_field_errors && (
-            <Typography
-              variant="body1"
-              className={classes.customError}
-              color="error"
-            >
-              {errors.non_field_errors}
-            </Typography>
-          )}
+          <Grid container>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="phone_number"
+                label="Phone Number"
+                name="phone_number"
+                autoComplete="phone_number"
+                helperText={errors.phone_number}
+                error={
+                  Boolean(errors.phone_number) ||
+                  Boolean(errors.non_field_errors)
+                }
+                value={phone_number}
+                onChange={handleChange}
+              />
+            </Grid>
+
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                helperText={errors.password}
+                error={Boolean(errors.password) || Boolean(errors.non_field_errors)}
+                value={password}
+                onChange={handleChange}
+              />
+            </Grid>
+
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="otp"
+                label="OTP"
+                name="otp"
+                helperText={errors.otp}
+                error={
+                  Boolean(errors.otp) ||
+                  Boolean(errors.non_field_errors)
+                }
+                value={otp}
+                onChange={handleChange}
+              />
+            </Grid>
+            {errors.non_field_errors && (
+              <Typography
+                variant="body1"
+                className={classes.customError}
+                color="error"
+              >
+                {errors.non_field_errors}
+              </Typography>
+            )}
+          </Grid>
           <LoadingButton
             type="submit"
             fullWidth

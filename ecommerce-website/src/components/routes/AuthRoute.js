@@ -11,8 +11,8 @@ const AuthRoute = ({ component: Component, to, ...rest }) => {
       {...rest}
       render={props =>
         isAuthenticated === true ? (
-          (user.user_type === "Admin"? <Redirect to={"/admin/"} />:
-          (user.user_type === "Seller"? <Redirect to={"/seller_dashboard"} /> : <Redirect to={"/products"}/>))
+          (user.user_type === "Admin" ? <Redirect to={"/admin/"} /> :
+            (user.user_type === "Seller" ? <Redirect to={"/seller_dashboard"} /> : <Redirect to={"/products"} />))
         ) : (
           isAuthenticated === false && <Component {...props} />
         )

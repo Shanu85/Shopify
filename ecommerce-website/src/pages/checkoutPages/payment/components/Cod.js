@@ -21,9 +21,9 @@ function Cod({ history }) {
   const handleClick = (payment_mode) => {
     if (typedCaptcha === data) {
       const order = {
-        reciver: {
-          full_name: address.reciver_full_name,
-          phone_number: address.reciver_phone_number,
+        receiver: {
+          full_name: address.receiver_full_name,
+          phone_number: address.receiver_phone_number,
           address: `${address.state} ${address.city} ${address.postal_address} ${address.postal_code}`
         },
         payment_mode: payment_mode

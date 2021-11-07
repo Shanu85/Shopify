@@ -10,8 +10,8 @@ import LoadingButton from "@components/loading/LoadingButton";
 const EditAddressForm = props => {
   const {
     values: {
-      reciver_full_name,
-      reciver_phone_number,
+      receiver_full_name,
+      receiver_phone_number,
       state,
       city,
       postal_address,
@@ -31,15 +31,15 @@ const EditAddressForm = props => {
         <Grid container spacing={2}>
           <Grid item md={6} xs={12}>
             <TextField
-              label="Reciver full name"
-              placeholder="Enter reciver full name"
+              label="receiver full name"
+              placeholder="Enter receiver full name"
               variant="outlined"
               margin="normal"
-              name="reciver_full_name"
-              autoComplete="reciver_full_name"
-              helperText={errors.reciver_full_name}
-              error={Boolean(errors.reciver_full_name)}
-              value={reciver_full_name}
+              name="receiver_full_name"
+              autoComplete="receiver_full_name"
+              helperText={errors.receiver_full_name}
+              error={Boolean(errors.receiver_full_name)}
+              value={receiver_full_name}
               onChange={handleChange}
               required
               fullWidth
@@ -48,15 +48,15 @@ const EditAddressForm = props => {
           </Grid>
           <Grid item md={6} xs={12}>
             <TextField
-              label="Reciver phone number"
-              placeholder="Enter reciver phone number"
+              label="receiver phone number"
+              placeholder="Enter receiver phone number"
               variant="outlined"
               margin="normal"
-              name="reciver_phone_number"
-              autoComplete="reciver_phone_number"
-              helperText={errors.reciver_phone_number}
-              error={Boolean(errors.reciver_phone_number)}
-              value={reciver_phone_number}
+              name="receiver_phone_number"
+              autoComplete="receiver_phone_number"
+              helperText={errors.receiver_phone_number}
+              error={Boolean(errors.receiver_phone_number)}
+              value={receiver_phone_number}
               onChange={handleChange}
               required
               fullWidth

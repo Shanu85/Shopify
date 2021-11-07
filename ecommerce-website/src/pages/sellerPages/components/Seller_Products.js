@@ -100,6 +100,11 @@ export default function Seller_Products() {
     handleViewClose();
   }
 
+  function parseTitle(title) {
+    title = title + "";
+    return title.substr(0, title.lastIndexOf(' '));
+  }
+
 
   return (
     <Seller_Sidebar activeItem="seller_product">
@@ -158,7 +163,7 @@ export default function Seller_Products() {
             {sellerProducts.map((sellerProduct, id) => (
               <TableRow key={id + 1}>
                 <TableCell align="center">{id + 1}</TableCell>
-                <TableCell align="center" style={{ alignItems: "center" }}>{sellerProduct['title']}</TableCell>
+                <TableCell align="center" style={{ alignItems: "center" }}>{parseTitle(sellerProduct.title)}</TableCell>
                 <TableCell align="center">{sellerProduct['sale_count']}</TableCell>
                 <TableCell align="center">{sellerProduct['price']}</TableCell>
 

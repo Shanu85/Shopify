@@ -37,12 +37,12 @@ const ProductItem = ({ product, history }) => {
               component="img"
               className={classes.image}
               src={product.photo_main}
-              title={product.title}
+              title={product.title.substring(0, product.title.lastIndexOf(' '))}
             />
           </div>
           <CardContent>
             <Typography noWrap gutterBottom variant="subtitle1" component="h2">
-              {product.title}
+              {product.title.substring(0, product.title.lastIndexOf(' '))}
             </Typography>
             {product.available === false ? (
               <Typography
@@ -66,12 +66,12 @@ const ProductItem = ({ product, history }) => {
                       {product.discount_percent}%
                     </Typography>
                     <Typography gutterBottom variant="h6" component="h2">
-                      <del>{product.price}</del> {product.discount_price}
+                      ₹ <del>{product.price}</del> {product.discount_price}
                     </Typography>
                   </React.Fragment>
                 ) : (
                   <Typography gutterBottom variant="h6" component="h2">
-                    {product.price}
+                    ₹ {product.price}
                   </Typography>
                 )}
               </React.Fragment>

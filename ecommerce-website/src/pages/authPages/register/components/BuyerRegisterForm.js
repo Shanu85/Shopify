@@ -13,7 +13,7 @@ import LoadingButton from "@components/loading/LoadingButton";
 
 const BuyerRegisterForm = props => {
   const {
-    values: { first_name, last_name, phone_number, password, confirm_password},
+    values: { first_name, last_name, phone_number, password, confirm_password, otp},
     errors,
     handleSubmit,
     handleChange,
@@ -116,6 +116,25 @@ const BuyerRegisterForm = props => {
                 onChange={handleChange}
               />
             </Grid>
+
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="otp"
+                label="OTP"
+                name="otp"
+                helperText={errors.otp}
+                error={
+                  Boolean(errors.otp) ||
+                  Boolean(errors.non_field_errors)
+                }
+                value={otp}
+                onChange={handleChange}
+              />
+            </Grid>
+
             {errors.non_field_errors && (
               <Typography
                 variant="body1"

@@ -1,7 +1,7 @@
 [
   {
     "user": 1,
-    "title": "tall pretty pant",
+    "title": "tall pretty pant bottomwear",
     "photo_main": "./dummy_data/img/4224243423.jpg",
     "photo_1": "./dummy_data/img/verve-leda-pant-tall-620.jpg",
     "photo_2": "./dummy_data/img/roamans-plus-size-tall-ponte-pants.jpg",
@@ -14,7 +14,7 @@
   },
   {
     "user": 2,
-    "title": "Suspender Skirts Basic High Waist",
+    "title": "Suspender Skirts Basic High Waist bottomwear",
     "photo_main": "./dummy_data/img/JFISDJ34IO432.jpg",
     "photo_1": "./dummy_data/img/715sLBgFvBL._AC_UX466_.jpg",
     "photo_2": "./dummy_data/img/813fO-Ig3OL._AC_UX466_.jpg",
@@ -30,7 +30,7 @@
   },
   {
     "user": 2,
-    "title": "Suspender Skirts Basic High Waist",
+    "title": "Suspender Skirts Basic High Waist bottomwear",
     "photo_main": "./dummy_data/img/JLKFALK32.jpg",
     "photo_1": "./dummy_data/img/619UEhD+4KL._AC_SX466._SX._UX._SY._UY_.jpg",
     "proposal": "./dummy_data/pdf/ED596830.pdf",
@@ -43,7 +43,7 @@
   },
   {
     "user": 2,
-    "title": "Suspender Skirts Basic High Waist",
+    "title": "Suspender Skirts Basic High Waist bottomwear",
     "photo_main": "./dummy_data/img/61Oj3JAS-wL._AC_SX466._SX._UX._SY._UY_.jpg",
     "proposal": "./dummy_data/pdf/ED596830.pdf",
     "description": "Please check your size with our SIZE CHART before you buy it . Size may be 2cm/1 inch inaccuracy due to hand measure. Color may be little different due to monitor.\nHand wash is recommended. Suitable for casual wear with a white t-shirt.",
@@ -55,7 +55,7 @@
   },
   {
     "user": 2,
-    "title": "Raglan Jersey Henley T Shirt Baseball Shirts",
+    "title": "Raglan Jersey Henley T Shirt Baseball Shirts topwear",
     "photo_main": "./dummy_data/img/71Y8dOm2qxL._AC_UX466_.jpg",
     "photo_1": "./dummy_data/img/81s9-mtOYrL._AC_UX466_.jpg",
     "proposal": "./dummy_data/pdf/ED596830.pdf",
@@ -68,7 +68,7 @@
   },
   {
     "user": 2,
-    "title": "Stretch Knit Jersey Denim Five Pocket Jean",
+    "title": "Stretch Knit Jersey Denim Five Pocket Jean bottomwear",
     "photo_main": "./dummy_data/img/71aTYwch-8L._AC_UY606_.jpg",
     "proposal": "./dummy_data/pdf/ED596830.pdf",
     "description": "Tall, dark, and handsome define these dark wash jeans. The definition of luxury.\ndenim, all without the unnecessary markup. Wear these comfortable jean to both dinner and drinks with friends.",
@@ -79,7 +79,7 @@
   },
   {
     "user": 2,
-    "title": "Stretch Knit Jersey Denim Five Pocket Jean",
+    "title": "Stretch Knit Jersey Denim Five Pocket Jean bottomwear",
     "photo_main": "./dummy_data/img/71+DZQpPzuL._AC_SY606._SX._UX._SY._UY_.jpg",
     "proposal": "./dummy_data/pdf/ED596830.pdf",
     "description": "Tall, dark, and handsome define these dark wash jeans. The definition of luxury.\ndenim, all without the unnecessary markup. Wear these comfortable jean to both dinner and drinks with friends.",
@@ -92,7 +92,7 @@
   },
   {
     "user": 4,
-    "title": "Just Love Womens Utility Solid Scrub Pants",
+    "title": "Just Love Womens Utility Solid Scrub Pants bottomwear",
     "photo_main": "./dummy_data/img/71gbdnsSu9L._AC_UY741_.jpg",
     "proposal": "./dummy_data/pdf/ED596830.pdf",
     "description": "These medical scrubs for women feel soft on the skin, are comfortably roomy, and are designed with a functional drawstring and elastic band for a great fit at the hips.",

@@ -37,6 +37,7 @@ class ProductListView(ListAPIView):
             queryset = queryset.order_by('price')
         if ordering is not None and ordering == "best_seller":
             queryset = queryset.order_by('-sale_count')
+
         return queryset
 
 

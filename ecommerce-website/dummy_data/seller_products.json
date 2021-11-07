@@ -1,7 +1,7 @@
 [
     {
         "user": 1,
-        "title":"Levis Shirt",
+        "title":"Levis Shirt topwear",
         "sale_count":100,
         "price":1000,
         "status":false,
@@ -11,7 +11,7 @@
     },
     {
         "user": 2,
-        "title":"Adidas Shoes", 
+        "title":"Adidas Shoes footwear", 
         "sale_count":120, 
         "price":2000,
         "status":true,
@@ -21,7 +21,7 @@
     },
     {
         "user": 1,
-        "title":"Puma TShirt", 
+        "title":"Puma TShirt topwear", 
         "sale_count":170, 
         "price":800,
         "status":true,
@@ -31,7 +31,7 @@
     },
     {
         "user": 1,
-        "title":"Trousers",
+        "title":"Trousers bottomwear",
         "sale_count":130,
         "price":670,
         "status":false,
@@ -41,7 +41,7 @@
     },
     {
         "user": 1,
-        "title":"Socks", 
+        "title":"Socks footwear", 
         "sale_count":160, 
         "price":490,
         "status":true,

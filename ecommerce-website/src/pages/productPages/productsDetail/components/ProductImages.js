@@ -44,7 +44,7 @@ const ProductImages = ({ product }) => {
     <Swiper {...params}>
       {photos.map(photo => (
         <div key={product.id}>
-          <img src={photo} alt={product.title} className={classes.image} />
+          <img src={photo} alt={product.title.substring(0, product.title.lastIndexOf(' '))} className={classes.image} />
         </div>
       ))}
     </Swiper>

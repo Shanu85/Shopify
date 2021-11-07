@@ -1,14 +1,14 @@
 [
   {
     "phone_number": "9171234567",
-    "password": "password",
+    "password": "Sapna1@34",
     "email": "admin@gmail.com",
     "is_admin": true,
     "user_type": "Admin"
   },
   {
     "phone_number": "9177654321",
-    "password": "password",
+    "password": "Sapna1@34",
     "first_name": "john",
     "last_name": "deo",
     "email": "john@gmail.com",
@@ -18,7 +18,7 @@
   },
   {
     "phone_number": "9175559999",
-    "password": "password",
+    "password": "Sapna1@34",
     "first_name": "alex",
     "last_name": "washington",
     "email": "alex@yahoo.com",
@@ -26,7 +26,7 @@
   },
   {
     "phone_number": "9172589875",
-    "password": "password",
+    "password": "Sapna1@34",
     "user_type": "Buyer"
   }
 ]

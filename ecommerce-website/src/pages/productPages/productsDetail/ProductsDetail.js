@@ -68,6 +68,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+function parseTitle(title) {
+  title = title + "";
+  return title.substr(0, title.lastIndexOf(' '));
+}
+
 const ProductsDetail = ({ match, history }) => {
   const { slug } = match.params;
   const dispatch = useDispatch();
@@ -142,7 +147,7 @@ const ProductsDetail = ({ match, history }) => {
         </Grid>
         <Grid item md xs={12} className={classes.mb2}>
           <Typography variant="h4" gutterBottom>
-            {product.title}
+            {parseTitle(product.title)}
           </Typography>
           {product.available === false ? (
             <Typography gutterBottom color="error" variant="h5" component="h2">
@@ -161,12 +166,12 @@ const ProductsDetail = ({ match, history }) => {
                     {product.discount_percent}%
                   </Typography>
                   <Typography gutterBottom variant="h4" component="h2">
-                    <del>{product.price}</del> {product.discount_price}
+                    ₹ <del>{product.price}</del> {product.discount_price}
                   </Typography>
                 </React.Fragment>
               ) : (
                 <Typography gutterBottom variant="h4" component="h2">
-                  {product.price}
+                  {product.price} INR
                 </Typography>
               )}
             </div>

@@ -14,6 +14,7 @@ function AddProductFrom({ onClose, forceClose }) {
     const [DiscountPrice, setDiscountPrice] = useState(0);
     const [ProductDes, setProductDes] = useState('');
     const [Size, setSize] = useState('NA');
+    const [Category, setCategory] = useState('topwear');
 
     const handleSubmit = async () => {
 
@@ -30,20 +31,26 @@ function AddProductFrom({ onClose, forceClose }) {
             alert("Product name is too short");
         }
         else if (Stock < 5) {
-            alert("Product stock should be atleast 5");
+            alert("Product stock should be greater or equal to 5");
         }
-        else if (ProductPrice < 10) {
-            alert("Product price should be atleast 10");
+        else if (parseFloat(Stock) % 1 !== 0) {
+            alert("Product stock should be integer only");
         }
-        else if (DiscountPrice > ProductPrice) {
+        else if (parseFloat(ProductPrice) < 10) {
+            alert("Product price should be greater or equal to 10");
+        }
+        else if (parseFloat(DiscountPrice) > parseFloat(ProductPrice)) {
             alert("Discount price should be less or equal to product price");
+        }
+        else if (parseFloat(DiscountPrice) < 0) {
+            alert("Discount price should be greater or equal to 0");
         }
         else if (ProductDes.length < 10) {
             alert("Product description should be aleast 10 characters long");
         }
         else {
             let form_data = new FormData();
-            form_data.append('title', ProductName);
+            form_data.append('title', ProductName+" "+Category);
             form_data.append('sale_count', Stock);
             form_data.append('price', ProductPrice);
             form_data.append('discount_price', DiscountPrice);
@@ -53,10 +60,9 @@ function AddProductFrom({ onClose, forceClose }) {
             form_data.append('photo_1', ProductImage1);
             form_data.append('photo_2', ProductImage2);
             form_data.append('size', Size);
-
             onClose(form_data);
         }
-
+        
         forceClose();
     }
 
@@ -136,6 +142,20 @@ function AddProductFrom({ onClose, forceClose }) {
                                 (event) => {
                                     setProductDes(event.target.value)
                                 }} required style={{ height: "200px", width: "250px" }} />
+                        </Grid>
+                    
+                        <Grid item xs={5}>
+                            <label>Category</label>
+                        </Grid>
+                        <Grid item xs={7}>
+                            <select onChange={
+                                (event) => {
+                                    setCategory(event.target.value)
+                                }}>
+                                <option selected value="topwear">Topwear</option>
+                                <option value="bottomwear">Bottomwear</option>
+                                <option value="footwear">Footwear</option>
+                            </select>
                         </Grid>
 
                         <Grid item xs={5}>

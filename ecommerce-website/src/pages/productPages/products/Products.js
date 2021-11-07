@@ -27,7 +27,7 @@ const Products = ({ history, location }) => {
   return (
     <Grid container spacing={2} className={classes.root}>
       <Grid item md={3} xs={12}>
-        <Filters />
+        <Filters location={location} history={history}/>
       </Grid>
       <Grid item md xs={12}>
         <Ordering location={location} />
