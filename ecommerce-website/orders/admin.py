@@ -12,7 +12,7 @@ class OrderAdmin(admin.ModelAdmin):
     list_filter = ('shipping_status', 'payment_mode', 'created_at')
     list_per_page = 25
     search_fields = ('user__phone_number', 'user__email', 'code')
-    readonly_fields = ('user','cart', 'reciver', 'payment_mode', 'shipping_status', 'code')
+    readonly_fields = ('user','cart', 'receiver', 'payment_mode', 'shipping_status', 'code')
 
     def total_price(self, obj):
         return obj.cart.total_price
