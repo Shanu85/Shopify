@@ -11,8 +11,8 @@ User = get_user_model()
 
 class Address(models.Model):
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
-    reciver_full_name = models.CharField(max_length=120)
-    reciver_phone_number = models.CharField(max_length=10, validators=[
+    receiver_full_name = models.CharField(max_length=120)
+    receiver_phone_number = models.CharField(max_length=10, validators=[
         RegexValidator('^(9|8|7)\d{9}$', message="Invalid phone number.")])
     state = models.CharField(max_length=120)
     city = models.CharField(max_length=120)

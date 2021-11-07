@@ -73,7 +73,7 @@ const SubmittedFilters = () => {
             size="small"
             variant="outlined"
           >
-            from {min_price}$ to {max_price}$
+            from ₹ {min_price} to ₹ {max_price}
             <CloseIcon fontSize="small" color="action" />
           </Button>
         )}

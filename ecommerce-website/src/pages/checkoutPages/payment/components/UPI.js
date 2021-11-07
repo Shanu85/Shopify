@@ -50,10 +50,10 @@ function UPI({history}) {
               
               //console.log('data',pay_instance.payments.fetch(response.razorpay_payment_id));
               const order = {
-                reciver: {
+                receiver: {
                     
-                  full_name: address.reciver_full_name,
-                  phone_number: address.reciver_phone_number,
+                  full_name: address.receiver_full_name,
+                  phone_number: address.receiver_phone_number,
                   address: `${address.state} ${address.city} ${address.postal_address} ${address.postal_code}`
                 },
                 payment_mode: paymentMethod,
