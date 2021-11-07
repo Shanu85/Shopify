@@ -165,11 +165,6 @@ const Routes = () => {
           path="/seller-change-password"
           component={SellerChangePassword}
         />
-        <AdminProtectedRoute
-          exact
-          path="/admin-change-password"
-          component={AdminChangePassword}
-        />
         <BuyerProtectedRoute exact path="/profile" component={Profile} />
         <BuyerProtectedRoute
           exact
