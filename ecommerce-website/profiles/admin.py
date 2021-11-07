@@ -9,7 +9,7 @@ class AddressAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'reciver_full_name',
                     'address', 'postal_code', 'created_at')
     list_display_links = ('id', 'user')
-    list_filter = ('user', 'state', 'city')
+    list_filter = ('state', 'city')
     list_per_page = 25
     search_fields = (
         'user__phone_number', 'user__email',
@@ -22,6 +22,18 @@ class AddressAdmin(admin.ModelAdmin):
     def address(self, obj):
         return f"{obj.state}, {obj.city}, {obj.postal_address}"
 
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def changeform_view(self, request, object_id=None, form_url='', extra_context=None):
+        extra_context = extra_context or {}
+        extra_context['show_save_and_continue'] = False
+        extra_context['show_save'] = False
+        return super(AddressAdmin, self).changeform_view(request, object_id, extra_context=extra_context)
+
 
 @admin.register(FavoritesProducts)
 class FavoritesProductsAdmin(admin.ModelAdmin):
@@ -32,3 +44,14 @@ class FavoritesProductsAdmin(admin.ModelAdmin):
     search_fields = (
         'user__phone_number', 'user__email', 'products__title'
     )
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def changeform_view(self, request, object_id=None, form_url='', extra_context=None):
+        extra_context = extra_context or {}
+        extra_context['show_save_and_continue'] = False
+        extra_context['show_save'] = False
+        return super(FavoritesProductsAdmin, self).changeform_view(request, object_id, extra_context=extra_context)

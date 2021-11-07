@@ -34,7 +34,7 @@ class Order(models.Model):
         return f"{self.user} - {self.code}"
 
     def save(self, *args, **kwargs):
-        print(self.payment_mode,self.code)
+        # print(self.payment_mode,self.code)
         if self.payment_mode == "Cash On Delievery":
             self.code = id_generator()
         super(Order, self).save(*args, **kwargs)

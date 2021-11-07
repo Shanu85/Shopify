@@ -79,7 +79,7 @@ class Product(models.Model):
 
     @property
     def available(self):
-        return self.sizes.available_sizes().exists()
+        return self.sale_count>0 and self.status
 
     @property
     def discount_percent(self):

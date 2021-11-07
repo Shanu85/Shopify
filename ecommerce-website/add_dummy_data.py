@@ -73,16 +73,17 @@ def add_products():
         user = User.objects.get(id=product['user'])
         colors = product.get('colors', False)
         status = product['status']
+        proposal = product['proposal']
         product = Product.objects.create(
             user=user,title=title, photo_main=photo_main, photo_1=photo_1, photo_2=photo_2,
             photo_3=photo_3, photo_4=photo_4, description=description, price=price,
-            sale_count=sale_count, discount_price=discount_price, status=status
+            sale_count=sale_count, discount_price=discount_price, status=status, proposal=proposal
         )
         for size in sizes:
             product.sizes.add(size)
-        if colors:
-            for color in colors:
-                product.colors.add(color)
+        # if colors:
+        #     for color in colors:
+        #         product.colors.add(color)
     print("Products added.")
     with open('./dummy_data/seller_products.json') as f:
         products = json.load(f)
