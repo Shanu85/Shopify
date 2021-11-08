@@ -47,6 +47,9 @@ INSTALLED_APPS = [
     'django_filters',
     'livereload',
     'django_rest_passwordreset',
+    'django_otp',
+    'django_otp.plugins.otp_totp',
+    # 'django_otp.plugins.otp_static',
 ]
 
 MIDDLEWARE = [
@@ -58,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'livereload.middleware.LiveReloadScript',
+    'django_otp.middleware.OTPMiddleware',
 ]
 
 ROOT_URLCONF = 'web.urls'
