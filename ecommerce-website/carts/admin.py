@@ -3,7 +3,7 @@ from django.contrib import admin
 from .models import Cart, CartItem
 
 
-@admin.register(Cart)
+# @admin.register(Cart)
 class CartAdmin(admin.ModelAdmin):
     date_hierarchy = 'created_at'
     list_display = ('id', 'user', 'total_price', 'total_customer_profit', 'items_count',
@@ -16,7 +16,7 @@ class CartAdmin(admin.ModelAdmin):
     readonly_fields = ('ordered',)
 
 
-@admin.register(CartItem)
+# @admin.register(CartItem)
 class CartItemAdmin(admin.ModelAdmin):
     list_display = ('id', 'cart', 'product', 'size', 'quantity',
                     'total_price', 'total_customer_profit')

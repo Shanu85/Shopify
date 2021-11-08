@@ -4,15 +4,16 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import LoginForm from "./components/LoginForm";
 import { login } from "@actions/authActions";
-import { phone_number_reg, otp_reg } from "../regexes";
+import { phone_number_reg, password_reg, otp_reg } from "../regexes";
 import { UserType } from "./components/UserType";
 
 const validationSchema = Yup.object({
   phone_number: Yup.string()
     .matches(phone_number_reg, "Invalid phone number")
     .required("Required field"),
+  //Minimum eight and maximum 10 characters, at least one uppercase letter, one lowercase letter, one number and one special character:
   password: Yup.string()
-    .min(8, "Must be at least 8 characters")
+    .matches(password_reg, "Weak Password ")
     .required("Required field"),
   otp: Yup.string()
     .matches(otp_reg, "Invalid OTP")
@@ -43,6 +44,7 @@ const Login = () => {
     const user = {
       phone_number,
       password,
+      otp,
       user_type
     };
     

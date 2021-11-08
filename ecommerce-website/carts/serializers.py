@@ -35,8 +35,7 @@ class AddItemToCartSerializer(serializers.ModelSerializer):
         product = validated_data.get('product')
         size = validated_data.get('size')
         cart, _ = Cart.objects.get_or_create(user=user, ordered=False)
-        cart_item = CartItem.objects.filter(
-            cart=cart, product=product, size=size)
+        cart_item = CartItem.objects.filter(cart=cart, product=product, size=size)
         if cart_item.exists():
             cart_item = cart_item.first()
             if size.available_count > cart_item.quantity:

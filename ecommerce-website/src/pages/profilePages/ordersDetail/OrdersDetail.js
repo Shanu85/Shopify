@@ -103,7 +103,7 @@ const OrdersDetail = ({ match }) => {
           <Grid item md={6} xs={12}>
             <Typography variant="body2">Total price:</Typography>
             <Typography variant="h6">
-              {order.cart && order.cart.total_price}$
+              ₹ {order.cart && order.cart.total_price}
             </Typography>
           </Grid>
         </Grid>

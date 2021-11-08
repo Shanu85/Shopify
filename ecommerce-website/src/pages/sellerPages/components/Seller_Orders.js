@@ -39,14 +39,6 @@ export default function Orders() {
     dispatch(fetchSellerOrders());
   }, [dispatch]);
 
-  if (sellerOrders.length < 1) {
-    return (
-      <Typography className={classes.root} variant="h5">
-        No order
-      </Typography>
-    );
-  }
-
   return (
     <Seller_Sidebar activeItem="seller_orders">
       <Title>Recent Orders</Title>
@@ -83,7 +75,7 @@ export default function Orders() {
                 <TableCell align="center">{sellerOrder.date.split(' ')[0]}</TableCell>
                 <TableCell align="center">{sellerOrder.title}</TableCell>
                 <TableCell align="center">{sellerOrder.quantity}</TableCell>
-                <TableCell align="center">{sellerOrder.total_price} INR</TableCell>
+                <TableCell align="center">₹ {sellerOrder.total_price}</TableCell>
                 <TableCell align="center">{sellerOrder.payment_mode}</TableCell>
                 <TableCell align="center">{sellerOrder.location}</TableCell>
               </TableRow>

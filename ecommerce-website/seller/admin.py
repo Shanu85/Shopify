@@ -3,7 +3,7 @@ from django.contrib import admin
 from .models import Address1
 
 
-@admin.register(Address1)
+# @admin.register(Address1)
 class AddressAdmin1(admin.ModelAdmin):
     date_hierarchy = 'created_at'
     list_display = ('id', 'user', 'receiver_full_name',

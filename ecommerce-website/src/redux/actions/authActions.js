@@ -48,6 +48,9 @@ export const login = (user, setErrors, resetForm) => (dispatch, getState) => {
       dispatch({ type: AUTH_SUCCESS, payload: response.data });
       dispatch({ type: STOP_LOADING_BUTTON });
       resetForm();
+      if (user.user_type === 'Admin'){
+        window.location.reload(false);
+      }
       dispatch(
         addNotif({
           message: `Welcome ${getState().auth.user.first_name || ""}`,
@@ -226,7 +229,6 @@ export const updateSellerInfo = (user, setErrors, resetForm, history)=>dispatch=
   axios
   .put("/api/user/", user)
   .then(response=>{
-    // console.log(user);
     dispatch({type:AUTH_SUCCESS, payload:response.data});
     dispatch({type:STOP_LOADING_BUTTON});
     resetForm();
