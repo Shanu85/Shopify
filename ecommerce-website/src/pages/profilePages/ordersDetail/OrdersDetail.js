@@ -61,21 +61,21 @@ const OrdersDetail = ({ match }) => {
       <Paper className={classes.paper}>
         <Grid container spacing={3}>
           <Grid item md={6} xs={12}>
-            <Typography variant="body2">Reciver:</Typography>
+            <Typography variant="body2">receiver:</Typography>
             <Typography variant="h6">
-              {order.reciver && order.reciver.full_name}
+              {order.receiver && order.receiver.full_name}
             </Typography>
           </Grid>
           <Grid item md={6} xs={12}>
-            <Typography variant="body2">Reciver phone number:</Typography>
+            <Typography variant="body2">receiver phone number:</Typography>
             <Typography variant="h6">
-              {order.reciver && order.reciver.phone_number}
+              {order.receiver && order.receiver.phone_number}
             </Typography>
           </Grid>
           <Grid item md={6} xs={12}>
-            <Typography variant="body2">Reciver postal address:</Typography>
+            <Typography variant="body2">receiver postal address:</Typography>
             <Typography variant="h6">
-              {order.reciver && order.reciver.address}
+              {order.receiver && order.receiver.address}
             </Typography>
           </Grid>
           <Grid item md={6} xs={12}>

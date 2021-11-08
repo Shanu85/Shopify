@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Order, ReciverInfo
+from .models import Order, receiverInfo
 
 
 @admin.register(Order)
@@ -19,8 +19,8 @@ class OrderAdmin(admin.ModelAdmin):
         return obj.cart.total_price
 
 
-@admin.register(ReciverInfo)
-class ReciverInfoAdmin(admin.ModelAdmin):
+@admin.register(receiverInfo)
+class receiverInfoAdmin(admin.ModelAdmin):
     date_hierarchy = 'created_at'
     list_display = ('id', 'full_name', 'phone_number', 'address', 'created_at')
     list_display_links = ('id', 'full_name')

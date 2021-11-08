@@ -3,7 +3,6 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import AuthRoute from "./components/routes/AuthRoute";
-import AdminProtectedRoute from "./components/routes/AdminProtectedRoute";
 import BuyerProtectedRoute from "./components/routes/BuyerProtectedRoute";
 import SellerProtectedRoute from "./components/routes/SellerProtectedRoute";
 import AdminProtectedRoute from "./components/routes/AdminProtectedRoute";
