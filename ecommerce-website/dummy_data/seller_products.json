@@ -1,0 +1,52 @@
+[
+    {
+        "user": 1,
+        "title":"Levis Shirt topwear",
+        "sale_count":100,
+        "price":1000,
+        "status":false,
+        "description":"Perfect for your on-the-go life, this shirt makes outfitting easier then ever. We cut this button-up to flatter your shape in the most subtle way, while still providing an easy fit and drape.",
+        "photo_1": "./dummy_data/img/715sLBgFvBL._AC_UX466_.jpg",
+        "photo_main": "./dummy_data/img/JLKFALK32.jpg"
+    },
+    {
+        "user": 2,
+        "title":"Adidas Shoes footwear", 
+        "sale_count":120, 
+        "price":2000,
+        "status":true,
+        "description":"Move with comfort fuelled by the plush cushioning and flexible design that adapts to the changing shape of your foot.", 
+        "photo_main": "./dummy_data/img/JLKFALK32.jpg",
+        "photo_1": "./dummy_data/img/715sLBgFvBL._AC_UX466_.jpg"
+    },
+    {
+        "user": 1,
+        "title":"Puma TShirt topwear", 
+        "sale_count":170, 
+        "price":800,
+        "status":true,
+        "description":"Eye-catching graphic elements elevate this cotton crew neck tee from casual to ultra-cool.", 
+        "photo_main": "./dummy_data/img/JLKFALK32.jpg",
+        "photo_1": "./dummy_data/img/715sLBgFvBL._AC_UX466_.jpg"
+    },
+    {
+        "user": 1,
+        "title":"Trousers bottomwear",
+        "sale_count":130,
+        "price":670,
+        "status":false,
+        "description":"Grey solid mid-rise chinos, has a button closure and a zip fly, has a waistband with belt loops, five pockets", 
+        "photo_main": "./dummy_data/img/JLKFALK32.jpg",
+        "photo_1": "./dummy_data/img/715sLBgFvBL._AC_UX466_.jpg"
+    },
+    {
+        "user": 1,
+        "title":"Socks footwear", 
+        "sale_count":160, 
+        "price":490,
+        "status":true,
+        "description":"Pack of 3 solid ankle-length socks in grey, charcoal grey and black  each has a ribbed mouth and a flat toe seam",
+        "photo_main": "./dummy_data/img/JLKFALK32.jpg",
+        "photo_1": "./dummy_data/img/715sLBgFvBL._AC_UX466_.jpg"
+    }
+  ]
