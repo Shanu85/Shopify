@@ -30,7 +30,7 @@
   {
 
     "user":2,
-    "title":"Women Pink Yoke Design Keyhole Neck Thread Work Kurta",
+    "title":"Women Pink Yoke Design Keyhole Neck Thread Work Kurta topwear",
     "photo_main":"./dummy_data/img/kurtaTopwearFront1.png",
     "photo_1":"./dummy_data/img/kurtaTopwearside1.png",
     "photo_2":"./dummy_data/img/kurtaTopwearBack1.png",
@@ -58,7 +58,7 @@
   {
 
     "user":3,
-    "title":"Mitera Green & White Embellished Sequinned Saree",
+    "title":"Mitera Green & White Embellished Sequinned Saree topwear",
     "photo_main":"./dummy_data/img/ShadiFront1.png",
     "photo_1":"./dummy_data/img/ShadiSide1.png",
     "photo_2":"./dummy_data/img/ShadiBack1.png",
@@ -86,7 +86,7 @@
   {
 
     "user":3,
-    "title":"Women Red & Cream-Coloured Printed Top with Skirt",
+    "title":"Women Red & Cream-Coloured Printed Top with Skirt topwear",
     "photo_main":"./dummy_data/img/SkirtFront1.png",
     "photo_1":"./dummy_data/img/SkirtSide1.png",
     "photo_2":"./dummy_data/img/SkirtBack1.png",
@@ -113,7 +113,7 @@
   {
 
     "user":3,
-    "title":"Men Black Slim Advanced Rapid Dry Raglan T-shirt",
+    "title":"Men Black Slim Advanced Rapid Dry Raglan T-shirt topwear",
     "photo_main":"./dummy_data/img/TshirtFront1.jpg",
     "photo_1":"./dummy_data/img/TshirtSide1.jpg",
     "photo_2":"./dummy_data/img/TshirtBack1.jpg",
@@ -141,7 +141,7 @@
   {
 
     "user":3,
-    "title":"Men Olive Green Regular Fit Solid Cargos",
+    "title":"Men Olive Green Regular Fit Solid Cargos bottomwear",
     "photo_main":"./dummy_data/img/ShortsFront1.png",
     "photo_1":"./dummy_data/img/ShortSide1.png",
     "photo_2":"./dummy_data/img/ShortBack1.png",
@@ -168,7 +168,7 @@
 
   {
     "user":2,
-    "title":"Men Teal Blue Solid RAPID-DRY Training Joggers",
+    "title":"Men Teal Blue Solid RAPID-DRY Training Joggers bottomwear",
     "photo_main":"./dummy_data/img/JoggersFront1.png",
     "photo_1":"./dummy_data/img/JoggersSide1.png",
     "photo_2":"./dummy_data/img/JoggersBack1.png",
@@ -195,7 +195,7 @@
 
   {
     "user":3,
-    "title":"Men Blue Relaxed Fit Hoodie",
+    "title":"Men Blue Relaxed Fit Hoodie topwear",
     "photo_main":"./dummy_data/img/HoddieFront1.jpg",
     "photo_1":"./dummy_data/img/HoddieSide1.jpg",
     "photo_2":"./dummy_data/img/HoddieBack1.jpg",
