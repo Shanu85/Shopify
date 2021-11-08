@@ -169,6 +169,7 @@ REST_FRAMEWORK = {
 CSRF_COOKIE_NAME = "XSRF-TOKEN"
 
 LOGOUT_REDIRECT_URL = '/login'
+LOGIN_REDIRECT_URL = '/login'
 
 # Local settings for production
 

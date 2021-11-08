@@ -173,7 +173,8 @@ function AddProductFrom({ onClose, forceClose }) {
                                 <option value="XL">XL</option>
                                 <option value="XXL">XXL</option>
                                 <option value="XXXL">XXXL</option>
-                                <option value="FREE">FREE</option>
+                                <option value="4XL">4XL</option>
+                                <option value="FREE SIZE">FREE SIZE</option>
                             </select>
                         </Grid>
 

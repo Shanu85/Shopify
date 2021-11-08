@@ -7,9 +7,10 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-
 import useStyles from "../../AuthFromsStyles";
 import LoadingButton from "@components/loading/LoadingButton";
+import KeyboardedInput from 'react-touch-screen-keyboard';
+import 'react-touch-screen-keyboard/lib/Keyboard.css';
 
 const LoginForm = props => {
   const {
@@ -17,9 +18,16 @@ const LoginForm = props => {
     errors,
     handleSubmit,
     handleChange,
-    isValid
+    isValid,
+    setFieldValue,
   } = props;
   const classes = useStyles();
+
+  const CustomKeyboard = [
+    ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
+    ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', '@'],
+    ['z', 'x', 'c', 'v', 'b', 'n', 'm', '.com']
+  ];
 
   return (
     <Container component="main" maxWidth="xs">
@@ -71,23 +79,17 @@ const LoginForm = props => {
             </Grid>
 
             <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="otp"
-                label="OTP"
-                name="otp"
-                helperText={errors.otp}
-                error={
-                  Boolean(errors.otp) ||
-                  Boolean(errors.non_field_errors)
-                }
+              <KeyboardedInput
+                enabled
+                type="text"
+                placeholder="OTP"
+                name="OTP"
                 value={otp}
-                onChange={handleChange}
+                onChange={(input) => setFieldValue('otp', input)}
+                defaultKeyboard={CustomKeyboard}
               />
             </Grid>
+
             {errors.non_field_errors && (
               <Typography
                 variant="body1"
