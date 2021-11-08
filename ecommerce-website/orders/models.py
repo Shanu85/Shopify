@@ -7,7 +7,7 @@ from web.utils import id_generator
 User = get_user_model()
 
 
-class receiverInfo(models.Model):
+class ReciverInfo(models.Model):
     full_name = models.CharField(max_length=125)
     phone_number = models.CharField(max_length=11)
     address = models.TextField()
@@ -21,7 +21,7 @@ class Order(models.Model):
     user = models.ForeignKey(
         User, on_delete=models.DO_NOTHING, related_name="orders")
     cart = models.ForeignKey(Cart, on_delete=models.DO_NOTHING)
-    receiver = models.ForeignKey(receiverInfo, on_delete=models.DO_NOTHING)
+    reciver = models.ForeignKey(ReciverInfo, on_delete=models.DO_NOTHING)
     payment_mode = models.CharField(max_length=50)
     shipping_status = models.CharField(max_length=50)
     code = models.CharField(max_length=100, null=True,  unique=True)
@@ -34,7 +34,7 @@ class Order(models.Model):
         return f"{self.user} - {self.code}"
 
     def save(self, *args, **kwargs):
-        # print(self.payment_mode,self.code)
+        print(self.payment_mode,self.code)
         if self.payment_mode == "Cash On Delievery":
             self.code = id_generator()
         super(Order, self).save(*args, **kwargs)

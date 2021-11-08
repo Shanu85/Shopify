@@ -16,6 +16,7 @@ class OrderListView(ListCreateAPIView):
         return self.request.user.orders.all()
 
     def get_serializer_class(self):
+        print(self.request.method)
         if self.request.method == "POST":
             return CreateOrderSerializer
         return OrderListSerializer
@@ -49,7 +50,7 @@ class OrderFilterView(ListAPIView):
             for order in orders:
                 if(order.id in ides):
                     item = CartItem.objects.get(id=order.id)
-                    ordersall.append({'title':item.product.title, 'quantity':item.quantity, 'total_price': item.total_price, 'payment_mode':order.payment_mode, 'date':order.created_at, 'location':order.receiver.address})
+                    ordersall.append({'title':item.product.title, 'quantity':item.quantity, 'total_price': item.total_price, 'payment_mode':order.payment_mode, 'date':order.created_at, 'location':order.reciver.address})
         
         # print(ordersall)
         return ordersall

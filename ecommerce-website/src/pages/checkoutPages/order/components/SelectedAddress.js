@@ -25,7 +25,7 @@ const SelectedAddress = ({ address, setChange }) => {
     <Paper className={classes.root}>
       <List>
         <ListItem>
-          <Typography display="inline">{`receiver: ${address.receiver_full_name}`}</Typography>
+          <Typography display="inline">{`Reciver: ${address.reciver_full_name}`}</Typography>
         </ListItem>
         <ListItem>
           <Typography>
@@ -33,7 +33,7 @@ const SelectedAddress = ({ address, setChange }) => {
           </Typography>
         </ListItem>
         <ListItem>
-          <Typography>phone number: {address.receiver_phone_number}</Typography>
+          <Typography>phone number: {address.reciver_phone_number}</Typography>
         </ListItem>
         <ListItem>
           <Typography>postal code: {address.postal_code}</Typography>

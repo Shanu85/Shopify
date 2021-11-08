@@ -24,7 +24,7 @@ const SellerValidationSchema = Yup.object({
     .matches(password_reg, "Weak Password ")
     .required("Required field"),
   confirm_password: Yup.string()
-    .oneOf([Yup.ref("password"), null], "Doesn't not match")
+    .matches(password_reg, "Passwords don't match")
     .required("Required field"),
   otp: Yup.string()
     .matches(otp_reg, "Invalid OTP")
@@ -58,7 +58,7 @@ const Register = () => {
     first_name: "",
     last_name: "",
     email: "",
-    otp: "",
+    OTP: "",
   };
 
   const dispatch = useDispatch();
@@ -74,9 +74,13 @@ const Register = () => {
   }
 
   const handleSubmit = (
-    { first_name, last_name, phone_number, email, password, confirm_password, otp },
+    { first_name, last_name, phone_number, email, password, confirm_password, OTP },
     { setErrors, resetForm }
   ) => {
+    if (password !== confirm_password) {
+      alert("Passwords don't match!");
+      return;
+    }
     const user = {
       first_name,
       last_name,
@@ -84,7 +88,7 @@ const Register = () => {
       phone_number,
       email,
       password,
-      otp
+      OTP
     };
 
     dispatch(register(user, setErrors, resetForm));
@@ -96,12 +100,12 @@ const Register = () => {
         <UserType changeType={changeType} /> :
         <>
           <Grid container style={{ margin: '20px 0px 0px', textAlign: 'center' }}>
-            <Grid item xs={6} style={{ margin: '150px auto 50px', padding: { left: '100px' } }}>
-
+          <Grid item xs={6} style={{ margin: '150px auto 50px', padding: {left: '100px'}}}>
+         
               <p> Step 1: Install the Google Authenticator App </p>
               <p> Step 2: Scan this QR code </p>
               <p> Step 3: Use the OTP to verify </p>
-
+              
               <Box
                 component="img"
                 sx={{
@@ -114,7 +118,7 @@ const Register = () => {
 
             </Grid>
 
-            <Grid item xs={6} style={{ marginBottom: '50px', padding: { right: '100px' } }}>
+            <Grid item xs={6} style={{ marginBottom: '50px', padding: {right: '100px'} }}>
               <Formik
                 initialValues={values}
                 validationSchema={user_type === "Seller" ? SellerValidationSchema : BuyerValidationSchema}

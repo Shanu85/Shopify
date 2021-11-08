@@ -61,21 +61,21 @@ const OrdersDetail = ({ match }) => {
       <Paper className={classes.paper}>
         <Grid container spacing={3}>
           <Grid item md={6} xs={12}>
-            <Typography variant="body2">receiver:</Typography>
+            <Typography variant="body2">Reciver:</Typography>
             <Typography variant="h6">
-              {order.receiver && order.receiver.full_name}
+              {order.reciver && order.reciver.full_name}
             </Typography>
           </Grid>
           <Grid item md={6} xs={12}>
-            <Typography variant="body2">receiver phone number:</Typography>
+            <Typography variant="body2">Reciver phone number:</Typography>
             <Typography variant="h6">
-              {order.receiver && order.receiver.phone_number}
+              {order.reciver && order.reciver.phone_number}
             </Typography>
           </Grid>
           <Grid item md={6} xs={12}>
-            <Typography variant="body2">receiver postal address:</Typography>
+            <Typography variant="body2">Reciver postal address:</Typography>
             <Typography variant="h6">
-              {order.receiver && order.receiver.address}
+              {order.reciver && order.reciver.address}
             </Typography>
           </Grid>
           <Grid item md={6} xs={12}>
@@ -103,7 +103,7 @@ const OrdersDetail = ({ match }) => {
           <Grid item md={6} xs={12}>
             <Typography variant="body2">Total price:</Typography>
             <Typography variant="h6">
-              ₹ {order.cart && order.cart.total_price}
+              {order.cart && order.cart.total_price}$
             </Typography>
           </Grid>
         </Grid>

@@ -28,7 +28,7 @@ export default function Seller_Deposits({pay_balance}) {
     <Grid style={{ margin: "30px" }}>
       <Title>Recent Deposits</Title>
       <Typography component="p" variant="h6">
-        ₹ {pay_balance}
+        $ {pay_balance}
       </Typography>
       <Typography color="text.secondary" sx={{flex: 1}} >
         {currDate}

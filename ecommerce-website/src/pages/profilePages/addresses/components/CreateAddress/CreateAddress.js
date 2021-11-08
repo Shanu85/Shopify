@@ -12,8 +12,8 @@ import { phone_number_reg } from "@pages/authPages/regexes";
 import { createAddress } from "@actions/profileActions/AddressActions";
 
 const validationSchema = Yup.object({
-  receiver_full_name: Yup.string().required(),
-  receiver_phone_number: Yup.string()
+  reciver_full_name: Yup.string().required(),
+  reciver_phone_number: Yup.string()
     .matches(phone_number_reg, "Invalid phone number")
     .required(),
   state: Yup.string().required(),
@@ -24,8 +24,8 @@ const validationSchema = Yup.object({
 
 const CreateAddress = ({ fullScreen, open, handleClose, onSubmit }) => {
   const values = {
-    receiver_full_name: "",
-    receiver_phone_number: "",
+    reciver_full_name: "",
+    reciver_phone_number: "",
     state: "",
     city: "",
     postal_address: "",

@@ -14,7 +14,7 @@ const CartItem = ({ order }) => {
       <TableCell align="center">
         {moment(order.created_at).format("MMM Do YY")}
       </TableCell>
-      <TableCell align="center">₹ {order.total_price}</TableCell>
+      <TableCell align="center">{order.total_price}$</TableCell>
       <TableCell align="center">{order.items_count}</TableCell>
       <TableCell align="center">{order.shipping_status}</TableCell>
       <TableCell align="center">

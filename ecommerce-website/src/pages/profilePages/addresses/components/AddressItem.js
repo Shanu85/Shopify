@@ -65,7 +65,7 @@ const AddressItem = ({ address }) => {
   return (
     <Paper className={classes.root}>
       <div className={classes.wrapperAddress}>
-        <Typography variant="h5">{address.receiver_full_name}</Typography>
+        <Typography variant="h5">{address.reciver_full_name}</Typography>
         <Typography variant="subtitle1">
           {address.state} state, {address.city} city, {address.postal_address}
         </Typography>
@@ -83,7 +83,7 @@ const AddressItem = ({ address }) => {
               <PhoneIcon />
             </ListItemIcon>
             <ListItemText
-              primary={`phone number: ${address.receiver_phone_number}`}
+              primary={`phone number: ${address.reciver_phone_number}`}
             />
             {!matches && <ListItemActions />}
           </ListItem>
