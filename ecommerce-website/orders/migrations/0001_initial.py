@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='ReciverInfo',
+            name='receiverInfo',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('full_name', models.CharField(max_length=125)),
@@ -34,7 +34,7 @@ class Migration(migrations.Migration):
                 ('code', models.CharField(max_length=8, unique=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('cart', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='carts.Cart')),
-                ('reciver', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='orders.ReciverInfo')),
+                ('receiver', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='orders.receiverInfo')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, related_name='orders', to=settings.AUTH_USER_MODEL)),
             ],
             options={

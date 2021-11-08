@@ -2,9 +2,11 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import PrimaryAuthRoute from "./components/routes/PrimaryAuthRoute";
 import AuthRoute from "./components/routes/AuthRoute";
 import BuyerProtectedRoute from "./components/routes/BuyerProtectedRoute";
 import SellerProtectedRoute from "./components/routes/SellerProtectedRoute";
+import AdminProtectedRoute from "./components/routes/AdminProtectedRoute";
 import Loading from "./components/loading/Loading";
 
 const Header = React.lazy(() => import("./components/layouts/Header"));
@@ -14,8 +16,12 @@ const Login = React.lazy(() =>
   import(/* webpackChunkName: "login" */ "./pages/authPages/login")
 );
 
-const Register = React.lazy(() =>
+const PrimaryRegister = React.lazy(() =>
   import(/* webpackChunkName: "register" */ "./pages/authPages/register")
+);
+
+const Register = React.lazy(() =>
+  import(/* webpackChunkName: "register" */ "./pages/authPages/register/secondaryRegister")
 );
 
 const AdminLogout = React.lazy(() =>
@@ -148,6 +154,7 @@ const Routes = () => {
         <BuyerProtectedRoute exact path="/buyer-logout" component={BuyerLogout} />
         <SellerProtectedRoute exact path="/seller-logout" component={SellerLogout} />
         <AuthRoute exact path="/login" component={Login} />
+        <PrimaryAuthRoute exact path="/primary-register" component={PrimaryRegister} />
         <AuthRoute exact path="/register" component={Register} />
         <AuthRoute exact path="/reset-password" component={ResetPassword} />
         <AuthRoute
@@ -164,6 +171,11 @@ const Routes = () => {
           exact
           path="/seller-change-password"
           component={SellerChangePassword}
+        />
+        <AdminProtectedRoute
+          exact
+          path="/admin-change-password"
+          component={AdminChangePassword}
         />
         <BuyerProtectedRoute exact path="/profile" component={Profile} />
         <BuyerProtectedRoute

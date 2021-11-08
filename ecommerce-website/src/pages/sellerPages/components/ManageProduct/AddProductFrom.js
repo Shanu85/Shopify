@@ -5,6 +5,7 @@ import { useState } from 'react';
 function AddProductFrom({ onClose, forceClose }) {
     const paperStyle = { padding: '0 15px 40px 15px', width: 450, }
 
+    const [ProductMainImage, setProductMainImage] = useState(null);
     const [ProductImage1, setProductImage1] = useState(null);
     const [ProductImage2, setProductImage2] = useState(null);
     const [ProductProposal, setProductProposal] = useState(null);
@@ -18,7 +19,10 @@ function AddProductFrom({ onClose, forceClose }) {
 
     const handleSubmit = async () => {
 
-        if (ProductImage1 === null) {
+        if (ProductMainImage === null) {
+            alert("Please upload your product main image");
+        }
+        else if (ProductImage1 === null) {
             alert("Please upload your product image 1");
         }
         else if (ProductImage2 === null) {
@@ -27,17 +31,33 @@ function AddProductFrom({ onClose, forceClose }) {
         else if (ProductProposal === null) {
             alert("Please upload your product proposal");
         }
+        else if(ProductMainImage.size>524288)
+        {
+            alert("Main image file size should be less than 0.5 MB")
+        }
+        else if(ProductImage1.size>524288)
+        {
+            alert("Image1 file size should be less than 0.5 MB")
+        }
+        else if(ProductImage2.size>524288)
+        {
+            alert("Image2 file size should be less than 0.5 MB")
+        }
+        else if(ProductProposal.size>1048576)
+        {
+            alert("Proposal file size should be less than 1 MB")
+        }
         else if (ProductName.length < 2) {
             alert("Product name is too short");
         }
-        else if (Stock < 5) {
-            alert("Product stock should be greater or equal to 5");
+        else if (Stock < 10) {
+            alert("Product stock should be greater or equal to 10");
         }
         else if (parseFloat(Stock) % 1 !== 0) {
             alert("Product stock should be integer only");
         }
-        else if (parseFloat(ProductPrice) < 10) {
-            alert("Product price should be greater or equal to 10");
+        else if (parseFloat(ProductPrice) < 50) {
+            alert("Product price should be greater or equal to 50");
         }
         else if (parseFloat(DiscountPrice) > parseFloat(ProductPrice)) {
             alert("Discount price should be less or equal to product price");
@@ -56,7 +76,7 @@ function AddProductFrom({ onClose, forceClose }) {
             form_data.append('discount_price', DiscountPrice);
             form_data.append('proposal', ProductProposal);
             form_data.append('description', ProductDes);
-            form_data.append('photo_main', ProductImage1);
+            form_data.append('photo_main', ProductMainImage);
             form_data.append('photo_1', ProductImage1);
             form_data.append('photo_2', ProductImage2);
             form_data.append('size', Size);
@@ -72,6 +92,14 @@ function AddProductFrom({ onClose, forceClose }) {
 
                 <form>
                     <Grid container spacing={2}>
+                        <Grid item xs={5}>
+                            <label>Product Main Image</label>
+                        </Grid>
+                        <Grid item xs={7}>
+                            <input type="file" accept=".png,.jpg" multiple
+                                onChange={(e) => setProductMainImage(e.target.files[0])} required />
+                        </Grid>
+
                         <Grid item xs={5}>
                             <label>Product Image 1</label>
                         </Grid>
@@ -173,7 +201,8 @@ function AddProductFrom({ onClose, forceClose }) {
                                 <option value="XL">XL</option>
                                 <option value="XXL">XXL</option>
                                 <option value="XXXL">XXXL</option>
-                                <option value="FREE">FREE</option>
+                                <option value="4XL">4XL</option>
+                                <option value="FREE SIZE">FREE SIZE</option>
                             </select>
                         </Grid>
 

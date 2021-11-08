@@ -22,7 +22,7 @@ const AuthRoute = ({ component: Component, to, ...rest }) => {
 };
 
 AuthRoute.defaultProps = {
-  to: "/"
+  to: "/primary-register"
 };
 
 export default AuthRoute;

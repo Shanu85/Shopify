@@ -4,6 +4,7 @@ import { addNotif } from "./notifActions";
 import {
   AUTH_FAIL,
   AUTH_SUCCESS,
+  PRIMARY_AUTH_SUCCESS,
   START_LOADING_UI,
   STOP_LOADING_UI,
   START_LOADING_BUTTON,
@@ -48,7 +49,7 @@ export const login = (user, setErrors, resetForm) => (dispatch, getState) => {
       dispatch({ type: AUTH_SUCCESS, payload: response.data });
       dispatch({ type: STOP_LOADING_BUTTON });
       resetForm();
-      if (user.user_type === 'Admin'){
+      if (user.user_type === 'Admin') {
         window.location.reload(false);
       }
       dispatch(
@@ -65,6 +66,30 @@ export const login = (user, setErrors, resetForm) => (dispatch, getState) => {
     });
 };
 
+export const primaryRegister = (user, history, setErrors, resetForm) => dispatch => {
+  // dispatch({ type: START_LOADING_BUTTON });
+  // axios
+  //   .post("/api/auth/primary_register/", user)
+  //   .then(response => {
+  //     dispatch({ type: PRIMARY_AUTH_SUCCESS, payload: response.data });
+  //     dispatch({ type: STOP_LOADING_BUTTON });
+  //     resetForm();
+  //     history.push("/register");
+  //     dispatch(addNotif({ message: "Your account registered successfully" }));
+  //   })
+  //   .catch(error => {
+  //     dispatch({ type: AUTH_FAIL });
+  //     setErrors(error.response.data);
+  //     dispatch({ type: STOP_LOADING_BUTTON });
+  //   });
+
+  dispatch({ type: PRIMARY_AUTH_SUCCESS, payload: user});
+  dispatch({ type: STOP_LOADING_BUTTON });
+  resetForm();
+  history.push("/register");
+  dispatch(addNotif({ message: "Your account registered successfully" }));
+};
+
 export const register = (user, setErrors, resetForm) => dispatch => {
   dispatch({ type: START_LOADING_BUTTON });
   axios
@@ -73,7 +98,7 @@ export const register = (user, setErrors, resetForm) => dispatch => {
       dispatch({ type: AUTH_SUCCESS, payload: response.data });
       dispatch({ type: STOP_LOADING_BUTTON });
       resetForm();
-      dispatch(addNotif({ message: "Your account registered successfully" }));
+      dispatch(addNotif({ message: "2 Factor Authentication has been established" }));
     })
     .catch(error => {
       dispatch({ type: AUTH_FAIL });
@@ -224,26 +249,26 @@ export const updateUser = (user, setErrors, history) => dispatch => {
     });
 };
 
-export const updateSellerInfo = (user, setErrors, resetForm, history)=>dispatch=>{
+export const updateSellerInfo = (user, setErrors, resetForm, history) => dispatch => {
   dispatch({ type: START_LOADING_BUTTON });
   axios
-  .put("/api/user/", user)
-  .then(response=>{
-    dispatch({type:AUTH_SUCCESS, payload:response.data});
-    dispatch({type:STOP_LOADING_BUTTON});
-    resetForm();
-    history.push("/seller_dashboard");
-    dispatch(
-      addNotif({
-        message:"Personal Info was updated",
-        options:{variant:"info"}
-      })
-    )
-  })
-  .catch(error=>{
-    setErrors(error.response.data);
-    dispatch({type:START_LOADING_BUTTON})
-  })
+    .put("/api/user/", user)
+    .then(response => {
+      dispatch({ type: AUTH_SUCCESS, payload: response.data });
+      dispatch({ type: STOP_LOADING_BUTTON });
+      resetForm();
+      history.push("/seller_dashboard");
+      dispatch(
+        addNotif({
+          message: "Personal Info was updated",
+          options: { variant: "info" }
+        })
+      )
+    })
+    .catch(error => {
+      setErrors(error.response.data);
+      dispatch({ type: START_LOADING_BUTTON })
+    })
 };
 
 

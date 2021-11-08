@@ -31,8 +31,8 @@ class Migration(migrations.Migration):
             name='Address',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('reciver_full_name', models.CharField(max_length=120)),
-                ('reciver_phone_number', models.CharField(max_length=10, validators=[django.core.validators.RegexValidator('^(9|8|7)\\d{9}$', message='Invalid phone number.')])),
+                ('receiver_full_name', models.CharField(max_length=120)),
+                ('receiver_phone_number', models.CharField(max_length=10, validators=[django.core.validators.RegexValidator('^(9|8|7)\\d{9}$', message='Invalid phone number.')])),
                 ('state', models.CharField(max_length=120)),
                 ('city', models.CharField(max_length=120)),
                 ('postal_address', models.TextField()),

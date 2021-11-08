@@ -20,18 +20,8 @@ class OrderAdmin(admin.ModelAdmin):
     def has_add_permission(self, request):
         return False
 
-    def has_delete_permission(self, request, obj=None):
-        return False
-
-    def changeform_view(self, request, object_id=None, form_url='', extra_context=None):
-        extra_context = extra_context or {}
-        extra_context['show_save_and_continue'] = False
-        extra_context['show_save'] = False
-        return super(OrderAdmin, self).changeform_view(request, object_id, extra_context=extra_context)
-
-
-#@admin.register(ReciverInfo)
-class ReciverInfoAdmin(admin.ModelAdmin):
+@admin.register(receiverInfo)
+class receiverInfoAdmin(admin.ModelAdmin):
     date_hierarchy = 'created_at'
     list_display = ('id', 'full_name', 'phone_number', 'address', 'created_at')
     list_display_links = ('id', 'full_name')

@@ -73,50 +73,16 @@ def add_products():
         user = User.objects.get(id=product['user'])
         colors = product.get('colors', False)
         status = product['status']
-        proposal = product['proposal']
-        product = Product.objects.create(
-            user=user,title=title, photo_main=photo_main, photo_1=photo_1, photo_2=photo_2,
-            photo_3=photo_3, photo_4=photo_4, description=description, price=price,
-            sale_count=sale_count, discount_price=discount_price, status=status, proposal=proposal
-        )
-        for size in sizes:
-            product.sizes.add(size)
-        # if colors:
-        #     for color in colors:
-        #         product.colors.add(color)
-    print("Products added.")
-    with open('./dummy_data/seller_products.json') as f:
-        products = json.load(f)
-    for product in products:
-        title = product['title']
-        photo_main = File(open(product['photo_main'], 'rb'))
-        photo_1 = product.get('photo_1')
-        if photo_1:
-            photo_1 = File(open(photo_1, 'rb'))
-        photo_2 = product.get('photo_2')
-        if photo_2:
-            photo_2 = File(open(photo_2, 'rb'))
-        photo_3 = product.get('photo_3')
-        if photo_3:
-            photo_3 = File(open(photo_3, 'rb'))
-        photo_4 = product.get('photo_4')
-        if photo_4:
-            photo_4 = File(open(photo_4, 'rb'))
-        description = product['description']
-        price = product['price']
-        discount_price = product.get('discount_price')
-        sale_count = product['sale_count']
-
-        #sizes = product['sizes']
-        user = User.objects.get(id=product['user'])
-        colors = product.get('colors', False)
-        status = product['status']
         product = Product.objects.create(
             user=user,title=title, photo_main=photo_main, photo_1=photo_1, photo_2=photo_2,
             photo_3=photo_3, photo_4=photo_4, description=description, price=price,
             sale_count=sale_count, discount_price=discount_price, status=status
         )
-        
+        for size in sizes:
+            product.sizes.add(size)
+        if colors:
+            for color in colors:
+                product.colors.add(color)        
     print("Products added.")
 
 

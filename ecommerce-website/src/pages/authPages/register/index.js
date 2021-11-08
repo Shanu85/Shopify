@@ -1,1 +1,2 @@
-export { default } from "./Register";
+export { default } from "./PrimaryRegister";
+

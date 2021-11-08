@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Box, Grid } from "@material-ui/core";
+import useReactRouter from "use-react-router";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import BuyerRegisterForm from "./components/BuyerRegisterForm";
 import SellerRegisterForm from "./components/SellerRegisterForm";
-import { register } from "@actions/authActions";
-import { phone_number_reg, password_reg, otp_reg } from "../regexes";
+import { primaryRegister } from "@actions/authActions";
+import { phone_number_reg, password_reg } from "../regexes";
 import { UserType } from "./components/UserType";
-import QRCode from "./components/images/qrcode.png";
 
 const SellerValidationSchema = Yup.object({
   first_name: Yup.string().required("Required field"),
@@ -26,9 +25,6 @@ const SellerValidationSchema = Yup.object({
   confirm_password: Yup.string()
     .oneOf([Yup.ref("password"), null], "Doesn't not match")
     .required("Required field"),
-  otp: Yup.string()
-    .matches(otp_reg, "Invalid OTP")
-    .required("Required Field"),
 });
 
 const BuyerValidationSchema = Yup.object({
@@ -44,12 +40,9 @@ const BuyerValidationSchema = Yup.object({
   confirm_password: Yup.string()
     .matches(password_reg, "Passwords don't match")
     .required("Required field"),
-  otp: Yup.string()
-    .matches(otp_reg, "Invalid OTP")
-    .required("Required Field"),
 });
 
-const Register = () => {
+const PrimaryRegister = () => {
 
   const values = {
     phone_number: "",
@@ -58,10 +51,10 @@ const Register = () => {
     first_name: "",
     last_name: "",
     email: "",
-    otp: "",
   };
 
   const dispatch = useDispatch();
+  const { history } = useReactRouter();
 
   const [user_type, setType] = useState("NA");
   const changeType = {
@@ -74,9 +67,10 @@ const Register = () => {
   }
 
   const handleSubmit = (
-    { first_name, last_name, phone_number, email, password, confirm_password, otp },
+    { first_name, last_name, phone_number, email, password, confirm_password },
     { setErrors, resetForm }
   ) => {
+    const otp = null;
     const user = {
       first_name,
       last_name,
@@ -84,10 +78,10 @@ const Register = () => {
       phone_number,
       email,
       password,
-      otp
+      otp,
     };
 
-    dispatch(register(user, setErrors, resetForm));
+    dispatch(primaryRegister(user, history, setErrors, resetForm));
   };
 
   return (
@@ -95,39 +89,17 @@ const Register = () => {
       {user_type === "NA" ?
         <UserType changeType={changeType} /> :
         <>
-          <Grid container style={{ margin: '20px 0px 0px', textAlign: 'center' }}>
-            <Grid item xs={6} style={{ margin: '150px auto 50px', padding: { left: '100px' } }}>
-
-              <p> Step 1: Install the Google Authenticator App </p>
-              <p> Step 2: Scan this QR code </p>
-              <p> Step 3: Use the OTP to verify </p>
-
-              <Box
-                component="img"
-                sx={{
-                  height: 'auto',
-                  width: 'auto'
-                }}
-                alt="QR Code"
-                src={QRCode}
-              />
-
-            </Grid>
-
-            <Grid item xs={6} style={{ marginBottom: '50px', padding: { right: '100px' } }}>
-              <Formik
-                initialValues={values}
-                validationSchema={user_type === "Seller" ? SellerValidationSchema : BuyerValidationSchema}
-                onSubmit={handleSubmit}
-              >
-                {props => user_type === "Seller" ? <SellerRegisterForm {...props} /> : <BuyerRegisterForm {...props} />}
-              </Formik>
-            </Grid>
-          </Grid>
+          <Formik
+            initialValues={values}
+            validationSchema={user_type === "Seller" ? SellerValidationSchema : BuyerValidationSchema}
+            onSubmit={handleSubmit}
+          >
+            {props => user_type === "Seller" ? <SellerRegisterForm {...props} /> : <BuyerRegisterForm {...props} />}
+          </Formik>
         </>
       }
     </>
   );
 };
 
-export default Register;
+export default PrimaryRegister;

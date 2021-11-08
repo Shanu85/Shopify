@@ -32,8 +32,6 @@ function Cod({ history }) {
     } else {
       alert("Incorrect");
       getCaptcha();
-      setTypeCaptcha("");
-      setData("");
     }
   };
 
@@ -44,6 +42,10 @@ function Cod({ history }) {
 
   const [typedCaptcha, setTypeCaptcha] = useState("");
   const [data, setData] = useState("");
+
+  const handleTypedCaptchaChange = (event) => {
+    setTypeCaptcha(event.target.value);
+  };
 
   function RandomIndex(length) {
     return Math.floor(Math.random() * length);
@@ -79,7 +81,7 @@ function Cod({ history }) {
 
   useEffect(() => {
     getCaptcha();
-  }, [getCaptcha]);
+  }, []);
 
   return (
     <Card style={{ border: "none", boxShadow: "none" }}>
@@ -93,7 +95,7 @@ function Cod({ history }) {
             style={{ border: "2px solid grey" }}
           ></canvas>
 
-          <Button variant="text" onClick={getCaptcha} style={{ color: "red", justifyContent: "center", marginLeft: "20px" }}>
+          <Button variant="text" onClick={() => getCaptcha()} style={{ color: "red", justifyContent: "center", marginLeft: "20px" }}>
             Change Captcha
           </Button>
         </Box>
@@ -103,9 +105,9 @@ function Cod({ history }) {
         <TextField
           helperText="Please enter above captcha"
           id="captchaInput"
-
           label="Captcha"
-
+          value={typedCaptcha}
+          onChange={handleTypedCaptchaChange}
         />
       </CardContent>
       <CardContent>
