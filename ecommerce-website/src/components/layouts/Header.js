@@ -51,7 +51,7 @@ const Header = () => {
         Login
       </Button>
 
-      <Button component={RouterLink} to="/register" color="inherit">
+      <Button component={RouterLink} to="/primary-register" color="inherit">
         Register
       </Button>
     </div>

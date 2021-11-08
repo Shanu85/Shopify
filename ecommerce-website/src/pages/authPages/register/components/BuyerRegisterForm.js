@@ -9,25 +9,16 @@ import Container from "@material-ui/core/Container";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import useStyles from "../../AuthFromsStyles";
 import LoadingButton from "@components/loading/LoadingButton";
-import KeyboardedInput from 'react-touch-screen-keyboard';
-import 'react-touch-screen-keyboard/lib/Keyboard.css';
 
 const BuyerRegisterForm = props => {
   const {
-    values: { first_name, last_name, phone_number, password, confirm_password, otp},
+    values: { first_name, last_name, phone_number, password, confirm_password},
     errors,
     handleSubmit,
     handleChange,
     isValid,
-    setFieldValue,
   } = props;
   const classes = useStyles();
-
-  const CustomKeyboard = [
-    ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
-    ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', '@'],
-    ['z', 'x', 'c', 'v', 'b', 'n', 'm', '.com']
-  ];
 
   return (
     <Container component="main" maxWidth="xs">
@@ -122,18 +113,6 @@ const BuyerRegisterForm = props => {
                 }
                 value={confirm_password}
                 onChange={handleChange}
-              />
-            </Grid>
-
-            <Grid item xs={12}>
-              <KeyboardedInput
-                enabled
-                type="text"
-                placeholder="OTP"
-                name="OTP"
-                value={otp}
-                onChange={(input) => setFieldValue('otp', input)}
-                defaultKeyboard={CustomKeyboard}
               />
             </Grid>
 
