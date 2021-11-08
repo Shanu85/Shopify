@@ -68,7 +68,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function parseTitle(title) {
+function parseTitle(title){
   title = title + "";
   return title.substr(0, title.lastIndexOf(' '));
 }
@@ -166,12 +166,12 @@ const ProductsDetail = ({ match, history }) => {
                     {product.discount_percent}%
                   </Typography>
                   <Typography gutterBottom variant="h4" component="h2">
-                    ₹ <del>{product.price}</del> {product.discount_price}
+                    <del>{product.price}</del> {product.discount_price}
                   </Typography>
                 </React.Fragment>
               ) : (
                 <Typography gutterBottom variant="h4" component="h2">
-                  {product.price} INR
+                  {product.price}
                 </Typography>
               )}
             </div>

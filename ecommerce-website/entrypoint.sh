@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ "$DATABASE" = "postgres" ]
+if [ "$DATABASE" = "mysql" ]
 then
     echo "Waiting for postgres..."
 
@@ -8,7 +8,7 @@ then
       sleep 0.1
     done
 
-    echo "PostgreSQL started"
+    echo "MySQL started"
 fi
 
 exec "$@"

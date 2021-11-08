@@ -86,7 +86,7 @@ const Cart = () => {
             display="flex"
             className={classes.price}
           >
-            ₹ {cart.total_price}
+            {cart.total_price}$
           </Typography>
         </Box>
       </Grid>

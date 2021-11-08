@@ -34,7 +34,7 @@ const CartSummary = ({ cart }) => {
           Products price ({cart.items_count} product)
         </Typography>
         <Typography display="inline" className={classes.right}>
-          ₹ {(cart.total_price + cart.total_customer_profit).toFixed(2)}
+          {(cart.total_price + cart.total_customer_profit).toFixed(2)}$
         </Typography>
       </div>
       <div className={classes.control}>
@@ -42,13 +42,13 @@ const CartSummary = ({ cart }) => {
           Products profit
         </Typography>
         <Typography color="primary" display="inline" className={classes.right}>
-          ₹ {cart.total_customer_profit}
+          {cart.total_customer_profit}$
         </Typography>
       </div>
       <div className={classes.control}>
         <Typography display="inline">Total price</Typography>
         <Typography display="inline" className={classes.right}>
-          ₹ {cart.total_price}
+          {cart.total_price}$
         </Typography>
       </div>
       <Divider className={classes.divider} />
@@ -57,7 +57,7 @@ const CartSummary = ({ cart }) => {
           The amount payable:
         </Typography>
         <Typography variant="h6" align="center">
-          ₹ {cart.total_price}
+          {cart.total_price}$
         </Typography>
       </div>
     </Paper>

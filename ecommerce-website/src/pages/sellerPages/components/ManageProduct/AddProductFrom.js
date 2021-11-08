@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Grid, Paper } from '@material-ui/core';
 import { useState } from 'react';
+import CategoryFilter from '../../../productPages/products/components/Filters/CategoryFilter';
 
 function AddProductFrom({ onClose, forceClose }) {
     const paperStyle = { padding: '0 15px 40px 15px', width: 450, }
@@ -31,19 +32,13 @@ function AddProductFrom({ onClose, forceClose }) {
             alert("Product name is too short");
         }
         else if (Stock < 5) {
-            alert("Product stock should be greater or equal to 5");
+            alert("Product stock should be atleast 5");
         }
-        else if (parseFloat(Stock) % 1 !== 0) {
-            alert("Product stock should be integer only");
+        else if (ProductPrice < 10) {
+            alert("Product price should be atleast 10");
         }
-        else if (parseFloat(ProductPrice) < 10) {
-            alert("Product price should be greater or equal to 10");
-        }
-        else if (parseFloat(DiscountPrice) > parseFloat(ProductPrice)) {
+        else if (DiscountPrice > ProductPrice) {
             alert("Discount price should be less or equal to product price");
-        }
-        else if (parseFloat(DiscountPrice) < 0) {
-            alert("Discount price should be greater or equal to 0");
         }
         else if (ProductDes.length < 10) {
             alert("Product description should be aleast 10 characters long");
@@ -60,9 +55,10 @@ function AddProductFrom({ onClose, forceClose }) {
             form_data.append('photo_1', ProductImage1);
             form_data.append('photo_2', ProductImage2);
             form_data.append('size', Size);
+
             onClose(form_data);
         }
-        
+
         forceClose();
     }
 

@@ -48,13 +48,13 @@ class UserAdmin(BaseUserAdmin):
     form = UserChangeForm
     add_form = UserCreationForm
 
-    list_display = ('id', 'phone_number', 'email', 'full_name')
+    list_display = ('id', 'phone_number', 'email', 'full_name', 'is_admin')
     list_display_links = ('id', 'phone_number')
-    list_filter = ('user_type',)
-    readonly_fields = ('id', 'phone_number', 'email', 'full_name')
+    list_filter = ('is_admin',)
     fieldsets = (
         (None, {'fields': ('phone_number', 'password')}),
-        ('Personal info', {'fields': ('email', 'first_name', 'last_name', 'national_code')}),
+        ('Personal info', {
+         'fields': ('email', 'first_name', 'last_name', 'national_code')}),
         ('Permissions', {'fields': ('is_admin',)}),
     )
     add_fieldsets = (
@@ -66,18 +66,6 @@ class UserAdmin(BaseUserAdmin):
     search_fields = ('email', 'first_name', 'last_name', 'phone_number')
     ordering = ('phone_number',)
     filter_horizontal = ()
-
-    def has_add_permission(self, request):
-        return False
-
-    # def has_delete_permission(self, request, obj=None):
-    #     return False
-
-    def changeform_view(self, request, object_id=None, form_url='', extra_context=None):
-        extra_context = extra_context or {}
-        extra_context['show_save_and_continue'] = False
-        extra_context['show_save'] = False
-        return super(UserAdmin, self).changeform_view(request, object_id, extra_context=extra_context)
 
 
 admin.site.register(User, UserAdmin)
