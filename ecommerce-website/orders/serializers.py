@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.db.models import F
 
-from .models import Order, ReciverInfo
+from .models import Order, receiverInfo
 from carts.models import Cart
 from carts.serializers import CartSerializer
 from products.serializers import ProductUpdateSerializer
@@ -10,9 +10,9 @@ from carts.models import CartItem
 from accounts.models import User
 
 
-class ReciverInfoSerializer(serializers.ModelSerializer):
+class receiverInfoSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ReciverInfo
+        model = receiverInfo
         fields = '__all__'
 
 
@@ -37,7 +37,7 @@ class OrderListSerializer(serializers.ModelSerializer):
 
 class OrderDetailSerializer(serializers.ModelSerializer):
     cart = CartSerializer()
-    reciver = ReciverInfoSerializer()
+    receiver = receiverInfoSerializer()
 
     class Meta:
         model = Order
@@ -55,7 +55,7 @@ class OrderFilterSerializer(serializers.Serializer):
 # exclude = ('code',)
 
 class CreateOrderSerializer(serializers.ModelSerializer):
-    reciver = ReciverInfoSerializer()
+    receiver = receiverInfoSerializer()
 
     class Meta:
         model = Order
@@ -66,7 +66,6 @@ class CreateOrderSerializer(serializers.ModelSerializer):
         )
 
     def create(self, data):
-        print(self.context.get('request').user)
         user = self.context.get('request').user
         cart = user.carts.get(ordered=False)
         # Validate cart
@@ -74,20 +73,26 @@ class CreateOrderSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Cart must not be empty")
         # Update products sale count
         for item in cart.items.all():
+            if(item.product.sale_count-item.quantity<0):
+                return None
             Product.objects.filter(id=item.product.id).update(
-                sale_count=F('sale_count') + item.quantity
+                sale_count=F('sale_count') - item.quantity
             )
         # Create reaciver info model
-        reciver_info = ReciverInfo.objects.create(**data.get('reciver'))
+        receiver_info = receiverInfo.objects.create(**data.get('receiver'))
         code=data.get('code',None)
         # Create order model
         cart.ordered = True
 
-        print(code,data.get('payment_mode'))
+        for item in cart.items.all():
+            seller_pro = item.product.user
+            seller_pro.pay_balance += item.total_price
+            seller_pro.save()
+            print(seller_pro.phone_number, seller_pro.pay_balance)
         
         cart.save()
         order = Order.objects.create(
-            user=user, cart=cart, reciver=reciver_info,code=code,
+            user=user, cart=cart, receiver=receiver_info,code=code,
             payment_mode = data.get('payment_mode'), shipping_status="Preparation"
         )
         # Create another cart model with ordered=False

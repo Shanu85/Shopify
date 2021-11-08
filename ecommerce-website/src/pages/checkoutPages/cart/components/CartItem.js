@@ -42,12 +42,12 @@ const getPrice = product => (
   <React.Fragment>
     {product.discount_price ? (
       <Typography display="inline" variant="body1">
-        <del style={{ color: "grey" }}>{product.price}$</del>{" "}
-        {product.discount_price}$
+        ₹ <del style={{ color: "grey" }}>{product.price}</del>{" "}
+        {product.discount_price}
       </Typography>
     ) : (
       <Typography display="inline" variant="body1">
-        {product.price}$
+        ₹ {product.price}
       </Typography>
     )}
   </React.Fragment>
@@ -70,7 +70,7 @@ const CartItem = ({ editable, item, item: { product } }) => {
         <Typography display="inline">Quantity: {item.quantity}</Typography>
       )}
       <Typography className={classes.price} variant="h6" display="inline">
-        {item.total_price}$
+        ₹ {item.total_price}
       </Typography>
     </div>
   );

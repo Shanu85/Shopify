@@ -47,8 +47,6 @@ INSTALLED_APPS = [
     'django_filters',
     'livereload',
     'django_rest_passwordreset',
-    'django_otp',
-    'django_otp.plugins.otp_totp',
 ]
 
 MIDDLEWARE = [
@@ -58,7 +56,6 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django_otp.middleware.OTPMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'livereload.middleware.LiveReloadScript',
 ]
@@ -170,6 +167,8 @@ REST_FRAMEWORK = {
 # CSRF token
 
 CSRF_COOKIE_NAME = "XSRF-TOKEN"
+
+LOGOUT_REDIRECT_URL = '/login'
 
 # Local settings for production
 

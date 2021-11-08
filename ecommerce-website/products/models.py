@@ -34,7 +34,7 @@ class Size(models.Model):
 
 class ProductManager(models.Manager):
     def all(self):
-        return self.filter(active=True, status=True)
+        return self.filter(active=True)
 
     def available_products(self):
         return self.all().filter(sizes__available_count__gt=0).distinct()
@@ -79,7 +79,7 @@ class Product(models.Model):
 
     @property
     def available(self):
-        return self.sizes.available_sizes().exists()
+        return self.sale_count>0 and self.status
 
     @property
     def discount_percent(self):

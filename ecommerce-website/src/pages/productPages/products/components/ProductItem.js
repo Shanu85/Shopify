@@ -66,12 +66,12 @@ const ProductItem = ({ product, history }) => {
                       {product.discount_percent}%
                     </Typography>
                     <Typography gutterBottom variant="h6" component="h2">
-                      <del>{product.price}</del> {product.discount_price}
+                      ₹ <del>{product.price}</del> {product.discount_price}
                     </Typography>
                   </React.Fragment>
                 ) : (
                   <Typography gutterBottom variant="h6" component="h2">
-                    {product.price}
+                    ₹ {product.price}
                   </Typography>
                 )}
               </React.Fragment>

@@ -3,7 +3,6 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import AuthRoute from "./components/routes/AuthRoute";
-import AdminProtectedRoute from "./components/routes/AdminProtectedRoute";
 import BuyerProtectedRoute from "./components/routes/BuyerProtectedRoute";
 import SellerProtectedRoute from "./components/routes/SellerProtectedRoute";
 import Loading from "./components/loading/Loading";
@@ -134,25 +133,6 @@ const S_Dash = React.lazy(() =>
 const S_order = React.lazy(() =>
   import('./pages/sellerPages/components/Seller_Orders')
 );
-
-const A_Sidebar=React.lazy(()=>
-  import('./pages/adminPages/Admin_Sidebar'))
-
-const A_Dash=React.lazy(()=>
-  import('./pages/adminPages/components/Admin_Dashboard'))
-
-const A_allSeller=React.lazy(()=>
-  import('./pages/adminPages/components/All_Seller'))
-
-const A_allBuyer=React.lazy(()=>
-  import('./pages/adminPages/components/All_Buyer'))
-
-const A_allProducts=React.lazy(()=>
-  import('./pages/adminPages/components/All_Products'))
-
-
- const A_pendingProducts=React.lazy(()=>
- import('./pages/adminPages/components/Pending_Products'))
   
 const Routes = () => {
   const theme = useTheme();
@@ -165,7 +145,6 @@ const Routes = () => {
       <Loading inFetching />
       <Switch>
         <Route exact path="/" component={Home} />
-        {/* <AdminProtectedRoute exact path="/admin-logout" component={AdminLogout} /> */}
         <BuyerProtectedRoute exact path="/buyer-logout" component={BuyerLogout} />
         <SellerProtectedRoute exact path="/seller-logout" component={SellerLogout} />
         <AuthRoute exact path="/login" component={Login} />
@@ -176,11 +155,6 @@ const Routes = () => {
           path="/reset-password/:token"
           component={ResetPasswordConfirm}
         />
-        {/* <AdminProtectedRoute
-          exact
-          path="/admin-change-password"
-          component={AdminChangePassword}
-        /> */}
         <BuyerProtectedRoute
           exact
           path="/buyer-change-password"
@@ -224,13 +198,6 @@ const Routes = () => {
         <SellerProtectedRoute exact path="/seller_product" exact component={S_Product} />
         <SellerProtectedRoute exact path="/seller_Home" exact component={S_SideBar} />
         <SellerProtectedRoute exact path="/seller_Order" exact component={S_order} />
-        
-        {/* <AdminProtectedRoute exact path='/admin_dashboard' exact component={A_Dash}/>
-        <AdminProtectedRoute exact path='/All_Seller' exact component={A_allSeller}/>
-        <AdminProtectedRoute exact path='/All_Buyer' exact component={A_allBuyer}/>
-        <AdminProtectedRoute exact path='/All_Products' exact component={A_allProducts}/>
-        <AdminProtectedRoute exact path='/Pending_Products' exact component={A_pendingProducts}/> */}
-
       </Switch>
     </React.Suspense>
   );

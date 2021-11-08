@@ -6,13 +6,14 @@ import * as Yup from "yup";
 
 import ChangePasswordForm from "./components/ChangePasswordForm";
 import { adminChangePassword } from "@actions/authActions";
+import { password_reg } from "../regexes";
 
 const validationSchema = Yup.object({
   old_password: Yup.string()
     .min(8, "Must be at least 8 characters")
     .required("Required field"),
   new_password: Yup.string()
-    .min(8, "Must be at least 8 characters")
+    .matches(password_reg, "Weak Password ")
     .required("Required field"),
   new_password2: Yup.string()
     .oneOf([Yup.ref("new_password"), null], "Does not match")

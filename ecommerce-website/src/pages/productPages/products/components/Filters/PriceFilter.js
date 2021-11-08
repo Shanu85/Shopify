@@ -78,8 +78,8 @@ const PriceFilter = () => {
         valueLabelDisplay="auto"
       />
       <Typography gutterBottom>
-        <span>from {value[0]}$</span>
-        <span style={{ float: "right" }}>to {value[1]}$</span>
+        <span>from ₹ {value[0]}</span>
+        <span style={{ float: "right" }}>to ₹ {value[1]}</span>
       </Typography>
     </div>
   );
