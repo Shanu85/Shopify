@@ -51,8 +51,6 @@ class ProductSellerView(ListAPIView):
         user = self.request.user
         if(user.user_type=='Buyer'):
             return Response("Invalid user type")
-        
-        #print(user.user_type)
         return Product.objects.all().filter(user=user)
 
 
@@ -66,8 +64,6 @@ class ProductAddView(ListAPIView):
         user = self.request.user
         if(user.user_type=='Buyer'):
             return Response("Invalid user type")
-        
-        #print(user.user_type)
         return Product.objects.all().filter(user=user)
 
     def post(self, request, *args, **kwargs):
@@ -78,9 +74,6 @@ class ProductAddView(ListAPIView):
         user = self.request.user
         data = request.data
         sizes = data.get('size', '')
-
-        print(sizes, "Tunak tunak tun")
-
         if(sizes=='S'):
             sizes = [1]
         elif(sizes=='M'):
@@ -100,9 +93,6 @@ class ProductAddView(ListAPIView):
         else:
             sizes = [9]
 
-        print(sizes)
-
-        #print("Tunak tunak tun",sizes)
         object = self.get_object
         product = Product.objects.create(user=user, title=data['title'], photo_main=data['photo_main'], photo_1=data['photo_1'], photo_2=data['photo_2'],
             description=data['description'], price=data['price'], proposal=data['proposal'],
@@ -127,7 +117,6 @@ class DeleteProductSellerView(ListAPIView):
             if(int(id)==int(product.id)):
                 a = True
             seller_products.append(product)
-            #print(product.id, id)
 
         if(user.user_type=='Buyer'):
             return Response("You don't have the authorizations.")
@@ -151,12 +140,10 @@ class UpdateProductSellerView(ListAPIView):
 
     def post(self, request, id):
         user = self.request.user
-        #print("tunak tunak tun",user)
         seller_products = []
         products = Product.objects.all().filter(user=user)
         for product in products:
             seller_products.append(product)
-            #print(product.id, seller_products.count(Product.objects.get(id=id)))
 
         if(user.user_type=='Buyer' or seller_products.count(Product.objects.get(id=id))==0):
             return Response("You don't have the authorizations.")
@@ -165,7 +152,6 @@ class UpdateProductSellerView(ListAPIView):
         serializer = self.get_serializer(instance=obj, data=request.data)
         if serializer.is_valid():
             serializer.save()
-        #serializer.saveslug()
         return Response(serializer.data)
 
 

@@ -44,7 +44,7 @@ export const createSellerProduct = (newSellerProduct, setAddOpen) => dispatch =>
             setAddOpen(false);
         })
         .catch(error => {
-            console.log(error, newSellerProduct);
+            // console.log(error, newSellerProduct);
             dispatch({ type: STOP_LOADING_BUTTON });
         });
 };
@@ -81,7 +81,7 @@ export const updateSellerProduct = (
             );
         })
         .catch(error => {
-            console.log(error);
+            // console.log(error);
             dispatch({ type: STOP_LOADING_BUTTON });
         });
 };
