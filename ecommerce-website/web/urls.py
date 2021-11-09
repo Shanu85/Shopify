@@ -23,13 +23,13 @@ from django.views.generic import TemplateView
 
 from django_otp.admin import OTPAdminSite
   
-admin.site.__class__ = OTPAdminSite
+# admin.site.__class__ = OTPAdminSite
 
 urlpatterns = [
     # path('dadmin/', admin.site.urls),
     path('admin/', admin.site.urls),
     path('api/auth/', include('accounts.urls')),
-    path('api/auth/reset-password/', include('django_rest_passwordreset.urls')),
+    # path('api/auth/reset-password/', include('django_rest_passwordreset.urls')),
     path('api/user/', include('profiles.urls')),
     path('api/seller/', include('seller.urls')),
     path('api/cart/', include('carts.urls')),

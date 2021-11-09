@@ -89,6 +89,6 @@ class User(AbstractBaseUser):
 
 # reset password signal
 # TODO: send real email in production
-@receiver(reset_password_token_created)
-def password_reset_token_created(sender, instance, reset_password_token, *args, **kwargs):
-    print(reset_password_token.key)
+# @receiver(reset_password_token_created)
+# def password_reset_token_created(sender, instance, reset_password_token, *args, **kwargs):
+#     print(reset_password_token.key)

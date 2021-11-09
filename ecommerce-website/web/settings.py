@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'orders.apps.OrdersConfig',
     'django_filters',
     'livereload',
-    'django_rest_passwordreset',
+    # 'django_rest_passwordreset',
     'django_otp',
     'django_otp.plugins.otp_totp',
     # 'django_otp.plugins.otp_static',
@@ -173,7 +173,6 @@ REST_FRAMEWORK = {
 CSRF_COOKIE_NAME = "XSRF-TOKEN"
 
 LOGOUT_REDIRECT_URL = '/login'
-LOGIN_REDIRECT_URL = '/login'
 
 # Local settings for production
 

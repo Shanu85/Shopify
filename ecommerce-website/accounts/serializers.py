@@ -12,8 +12,8 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        exclude = ('password', 'is_admin', 'is_active')
-        read_only_fields = ('last_login',)
+        exclude = ('password', 'isAuthenticated', 'pay_balance', 'is_admin', 'is_active')
+        read_only_fields = ('last_login', 'user_type', 'phone_number')
 
     def get_cart_items_count(self, obj):
         return obj.carts.get(ordered=False).items.count()

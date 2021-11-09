@@ -55,17 +55,17 @@ const SellerChangePassword = React.lazy(() =>
   )
 );
 
-const ResetPassword = React.lazy(() =>
-  import(
-    /* webpackChunkName: "reset-password" */ "./pages/authPages/resetPassword"
-  )
-);
+// const ResetPassword = React.lazy(() =>
+//   import(
+//     /* webpackChunkName: "reset-password" */ "./pages/authPages/resetPassword"
+//   )
+// );
 
-const ResetPasswordConfirm = React.lazy(() =>
-  import(
-    /* webpackChunkName: "reset-password-confirm" */ "./pages/authPages/resetPasswordConfirm"
-  )
-);
+// const ResetPasswordConfirm = React.lazy(() =>
+//   import(
+//     /* webpackChunkName: "reset-password-confirm" */ "./pages/authPages/resetPasswordConfirm"
+//   )
+// );
 
 const Profile = React.lazy(() =>
   import(/* webpackChunkName: "profile" */ "./pages/profilePages/profile")
@@ -157,12 +157,12 @@ const Routes = () => {
         <AuthRoute exact path="/login" component={Login} />
         <PrimaryAuthRoute exact path="/primary-register" component={PrimaryRegister} />
         <SecondaryAuthRoute exact path="/register" component={Register} />
-        <AuthRoute exact path="/reset-password" component={ResetPassword} />
+        {/* <AuthRoute exact path="/reset-password" component={ResetPassword} />
         <AuthRoute
           exact
           path="/reset-password/:token"
           component={ResetPasswordConfirm}
-        />
+        /> */}
         <BuyerProtectedRoute
           exact
           path="/buyer-change-password"

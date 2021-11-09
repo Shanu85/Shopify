@@ -20,7 +20,7 @@ export const loadUser = () => dispatch => {
       if (response.data.isAuthenticated === true) {
         dispatch({ type: AUTH_SUCCESS, payload: response.data });
       } else {
-        // delete the user
+        dispatch(deleteUser(response.data));
         dispatch({ type: AUTH_FAIL });
       }
       dispatch({ type: STOP_LOADING_UI });
@@ -30,6 +30,22 @@ export const loadUser = () => dispatch => {
       dispatch({ type: STOP_LOADING_UI });
     });
 };
+
+
+export const deleteUser = (user) => dispatch => {
+  axios
+    .post("/api/auth/user/delete/", user)
+    .then(response => {
+      dispatch(
+        addNotif({
+          message: "Authentication Failed",
+          options: { variant: "error" }
+        })
+      );
+    })
+};
+
+
 
 export const loginUser = (user, otp, setErrors, resetForm) => (dispatch, getState) => {
   dispatch({ type: START_LOADING_BUTTON });

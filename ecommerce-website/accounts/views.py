@@ -41,6 +41,16 @@ class LoginView(generics.GenericAPIView):
         return Response(user)
 
 
+class DeleteView(generics.GenericAPIView):
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request, *args, **kwargs):
+        user  = request.user
+        temp = user
+        user.delete()
+        return Response(status=HTTP_204_NO_CONTENT)
+
+
 class LogoutView(APIView):
     permission_classes = (IsAuthenticated,)
 

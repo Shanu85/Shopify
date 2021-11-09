@@ -11,9 +11,8 @@ const validationSchema = Yup.object({
   phone_number: Yup.string()
     .matches(phone_number_reg, "Invalid phone number")
     .required("Required field"),
-  //Minimum eight and maximum 10 characters, at least one uppercase letter, one lowercase letter, one number and one special character:
   password: Yup.string()
-    .matches(password_reg, "Weak Password ")
+    .min(8, "Must be at least 8 characters")
     .required("Required field"),
   otp: Yup.string()
     .matches(otp_reg, "Invalid OTP")
