@@ -9,4 +9,5 @@ urlpatterns = [
     path('change-password/', views.ChangePasswordView.as_view(), name='change-password'),
     path('totp/create/', views.TOTPCreateView.as_view(), name='totp-create'),
     path('totp/login/<int:token>/', views.TOTPVerifyView.as_view(), name='totp-login'),
+    path('totp/login2/<int:token>/', views.TOTPVerifyView2.as_view(), name='totp-login')
 ]

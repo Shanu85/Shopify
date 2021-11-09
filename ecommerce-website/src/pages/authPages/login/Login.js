@@ -44,12 +44,10 @@ const Login = () => {
     const user = {
       phone_number,
       password,
-      otp,
       user_type
     };
     
-    user_type === "NA";
-    dispatch(login(user, setErrors, resetForm));
+    dispatch(login(user, otp, setErrors, resetForm));
   };
 
   return (

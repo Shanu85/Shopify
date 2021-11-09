@@ -5,7 +5,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import BuyerRegisterForm from "./components/BuyerRegisterForm";
 import SellerRegisterForm from "./components/SellerRegisterForm";
-import { primaryRegister } from "@actions/authActions";
+import { registerUser } from "@actions/authActions";
 import { phone_number_reg, password_reg } from "../regexes";
 import { UserType } from "./components/UserType";
 
@@ -70,7 +70,6 @@ const PrimaryRegister = () => {
     { first_name, last_name, phone_number, email, password, confirm_password },
     { setErrors, resetForm }
   ) => {
-    const otp = null;
     const user = {
       first_name,
       last_name,
@@ -78,10 +77,9 @@ const PrimaryRegister = () => {
       phone_number,
       email,
       password,
-      otp,
     };
 
-    dispatch(primaryRegister(user, history, setErrors, resetForm));
+    dispatch(registerUser(user, history, setErrors, resetForm));
   };
 
   return (

@@ -5,18 +5,25 @@ import {
   AUTH_FAIL,
   AUTH_SUCCESS,
   PRIMARY_AUTH_SUCCESS,
+  SECONDARY_AUTH_FAIL,
   START_LOADING_UI,
   STOP_LOADING_UI,
   START_LOADING_BUTTON,
   STOP_LOADING_BUTTON
 } from "../types";
 
-export const loadUser = () => dispatch => {
+export const loadUser = (isAuthenticated, user, url) => dispatch => {
   dispatch({ type: START_LOADING_UI });
   axios
     .get("/api/user/")
     .then(response => {
-      dispatch({ type: AUTH_SUCCESS, payload: response.data });
+      if (isAuthenticated === true) {
+        dispatch({ type: AUTH_SUCCESS, payload: response.data });
+      } else {
+        console.log(url);
+        dispatch({ type: PRIMARY_AUTH_SUCCESS, payload: { user: response.data, url: url } });
+      }
+
       dispatch({ type: STOP_LOADING_UI });
     })
     .catch(() => {
@@ -41,10 +48,11 @@ export const loadSeller = () => dispatch => {
 };
 
 
-export const login = (user, setErrors, resetForm) => (dispatch, getState) => {
+export const login = (user, otp, setErrors, resetForm) => (dispatch, getState) => {
   dispatch({ type: START_LOADING_BUTTON });
+  //console.log(user);
   axios
-    .post("/api/auth/login/", user)
+    .post(`/api/auth/totp/login2/${otp}/`, user)
     .then(response => {
       dispatch({ type: AUTH_SUCCESS, payload: response.data });
       dispatch({ type: STOP_LOADING_BUTTON });
@@ -66,43 +74,55 @@ export const login = (user, setErrors, resetForm) => (dispatch, getState) => {
     });
 };
 
-export const primaryRegister = (user, history, setErrors, resetForm) => dispatch => {
-  // dispatch({ type: START_LOADING_BUTTON });
-  // axios
-  //   .post("/api/auth/primary_register/", user)
-  //   .then(response => {
-  //     dispatch({ type: PRIMARY_AUTH_SUCCESS, payload: response.data });
-  //     dispatch({ type: STOP_LOADING_BUTTON });
-  //     resetForm();
-  //     history.push("/register");
-  //     dispatch(addNotif({ message: "Your account registered successfully" }));
-  //   })
-  //   .catch(error => {
-  //     dispatch({ type: AUTH_FAIL });
-  //     setErrors(error.response.data);
-  //     dispatch({ type: STOP_LOADING_BUTTON });
-  //   });
-
-  dispatch({ type: PRIMARY_AUTH_SUCCESS, payload: user});
-  dispatch({ type: STOP_LOADING_BUTTON });
-  resetForm();
-  history.push("/register");
-  dispatch(addNotif({ message: "Your account registered successfully" }));
+export const registerUser = (user, history, setErrors, resetForm) => dispatch => {
+  dispatch({ type: START_LOADING_BUTTON });
+  //console.log(user);
+  axios
+    .post('/api/auth/register/', user)
+    .then(response => {
+      dispatch(primaryRegister(response.data, history, setErrors, resetForm));
+    })
+    .catch(error => {
+      dispatch({ type: AUTH_FAIL });
+      setErrors(error.response.data);
+      dispatch({ type: STOP_LOADING_BUTTON });
+    });
 };
 
-export const register = (user, setErrors, resetForm) => dispatch => {
-  dispatch({ type: START_LOADING_BUTTON });
+export const primaryRegister = (user, history, setErrors, resetForm) => dispatch => {
+  console.log(user);
+  // dispatch({ type: START_LOADING_BUTTON });
   axios
-    .post("/api/auth/register/", user)
+    .get("/api/auth/totp/create/", user)
     .then(response => {
-      dispatch({ type: AUTH_SUCCESS, payload: response.data });
+      // console.log(response.data);
+      dispatch({ type: PRIMARY_AUTH_SUCCESS, payload: { user: user, url: response.data } });
+      dispatch({ type: STOP_LOADING_BUTTON });
+      resetForm();
+      history.push("/register");
+      dispatch(addNotif({ message: "Your account registered successfully" }));
+    })
+    .catch(error => {
+      dispatch({ type: AUTH_FAIL });
+      setErrors(error.response.data);
+      dispatch({ type: STOP_LOADING_BUTTON });
+    });
+};
+
+export const register = (user, url, otp, setErrors, resetForm) => dispatch => {
+  dispatch({ type: START_LOADING_BUTTON });
+  // console.log(user);
+  axios
+    .post(`/api/auth/totp/login/${otp}/`, user)
+    .then(response => {
+      dispatch({ type: AUTH_SUCCESS, payload: user });
       dispatch({ type: STOP_LOADING_BUTTON });
       resetForm();
       dispatch(addNotif({ message: "2 Factor Authentication has been established" }));
     })
     .catch(error => {
-      dispatch({ type: AUTH_FAIL });
-      setErrors(error.response.data);
+      dispatch({ type: SECONDARY_AUTH_FAIL, payload: { user: user, url: url } });
+      // setErrors(error.response.data);
       dispatch({ type: STOP_LOADING_BUTTON });
     });
 };

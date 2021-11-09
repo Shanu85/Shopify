@@ -21,14 +21,13 @@ const Register = () => {
   const dispatch = useDispatch();
 
   const user = useSelector(state => state.auth.user);
+  const url = useSelector(state => state.auth.url);
 
   const handleSubmit = (
     { otp },
     { setErrors, resetForm }
   ) => {
-    user.otp = otp;
-
-    dispatch(register(user, setErrors, resetForm));
+    dispatch(register(user, url, otp, setErrors, resetForm));
   };
 
   return (
@@ -49,10 +48,11 @@ const Register = () => {
             alt="QR Code"
             src={QRCode}
           />
-
+          <p>Secret Key: {url}
+          </p>
         </Grid>
 
-        <Grid item xs={6} style={{ marginBottom: '50px', padding: { right: '100px' } }}>
+        <Grid item xs={6} style={{ margin: '150px auto 50px', padding: { right: '100px' } }}>
           <Formik
             initialValues={values}
             validationSchema={validationSchema}

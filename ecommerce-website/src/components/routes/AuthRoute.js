@@ -4,7 +4,8 @@ import { Route, Redirect } from "react-router-dom";
 
 const AuthRoute = ({ component: Component, to, ...rest }) => {
 
-  const { isAuthenticated, user } = useSelector(state => state.auth);
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  const user = useSelector(state => state.auth.user);
 
   return (
     <Route

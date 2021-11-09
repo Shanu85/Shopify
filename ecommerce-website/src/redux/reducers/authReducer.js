@@ -2,6 +2,7 @@ import {
   AUTH_FAIL,
   AUTH_SUCCESS,
   PRIMARY_AUTH_SUCCESS,
+  SECONDARY_AUTH_FAIL,
   REMOVE_FROM_CART,
   ADD_TO_CART,
   CREATE_ORDER
@@ -10,7 +11,8 @@ import {
 const initialState = {
   isAuthenticated: null,
   isPrimaryAuthenticated: null,
-  user: null
+  user: null,
+  url: null,
 };
 
 export default (state = initialState, action) => {
@@ -20,19 +22,29 @@ export default (state = initialState, action) => {
       return {
         isAuthenticated: false,
         isPrimaryAuthenticated: true,
-        user: payload,
+        user: payload.user,
+        url: payload.url,
+      };
+    case SECONDARY_AUTH_FAIL:
+      return {
+        isAuthenticated: false,
+        isPrimaryAuthenticated: true,
+        user: payload.user,
+        url: payload.url,
       };
     case AUTH_SUCCESS:
       return {
         isAuthenticated: true,
         isPrimaryAuthenticated: true,
         user: payload,
+        url: null,
       };
     case AUTH_FAIL:
       return {
         isAuthenticated: false,
         isPrimaryAuthenticated: false,
-        user: null
+        user: null,
+        url: null,
       };
     case REMOVE_FROM_CART:
       return {

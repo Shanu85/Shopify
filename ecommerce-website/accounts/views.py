@@ -67,6 +67,7 @@ class ChangePasswordView(generics.UpdateAPIView):
             return Response("Password changed successfully.")
         return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
 
+
 def get_user_totp_device(self, user, confirmed=None):
     devices = devices_for_user(user, confirmed=confirmed)
     for device in devices:
@@ -75,18 +76,19 @@ def get_user_totp_device(self, user, confirmed=None):
 
 
 class TOTPCreateView(views.APIView):
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     """
     Use this endpoint to set up a new TOTP device
     """
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
     def get(self, request, format=None):
         user = request.user
+        # print(user)
         device = get_user_totp_device(self, user)
         if not device:
             device = user.totpdevice_set.create(confirmed=False, name = user.email)
         url = device.config_url
-        print(url)
+        # print(url)
         return Response(url, status=status.HTTP_201_CREATED)
 
 
@@ -122,8 +124,49 @@ class TOTPVerifyView(APIView):
             if not device.confirmed:
                 device.confirmed = True
                 device.save()
-                user.is_two_factor_enabled=True
-                user.save()
-            return Response(user, status=HTTP_200_OK)    
+                # print(user)
+                # print(device)
+                # user.is_two_factor_enabled=True
+                # user.save()
+            # print(user)
+            return Response(True, status=status.HTTP_200_OK)
             # return Response(dict(token=user.token), status=HTTP_200_OK)
         return Response(dict(errors=dict(token=['Invalid TOTP Token'])), status=HTTP_400_BAD_REQUEST)
+
+
+class TOTPVerifyView2(generics.GenericAPIView):
+    """
+    Api to verify/enable a TOTP device
+    """
+    serializer_class = serializers.LoginSerializer
+    permission_classes = (IsAuthenticated, )
+    def post(self, request, token, format=None):
+        #user2 = {'phone_number': request.data['phone_number'], 'password': request.data['password']}
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data
+        user = serializers.UserSerializer(
+        user, context=self.get_serializer_context()).data
+
+        print(user)
+        if user:
+            #user = request.user
+            device = get_user_totp_device(self, user)
+            print(device)
+            if not device:
+                return Response(dict(
+            errors=['This user has not setup two factor authentication']),
+                    status=HTTP_400_BAD_REQUEST
+                )
+            if not device == None and device.verify_token(token):
+                if not device.confirmed:
+                    device.confirmed = True
+                    device.save()
+                    # user.is_two_factor_enabled=True
+                    # user.save()
+                    print("Shanu ki BFF")
+                return Response(user, status=HTTP_200_OK)    
+                # return Response(dict(token=user.token), status=HTTP_200_OK)
+            return Response(dict(errors=dict(token=['Invalid TOTP Token'])), status=HTTP_400_BAD_REQUEST)
+        
+        return Response(user, status=HTTP_400_BAD_REQUEST)
