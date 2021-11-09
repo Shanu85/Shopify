@@ -34,6 +34,8 @@ class LoginView(generics.GenericAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data
+        user.isAuthenticated = True
+        user.save()
         user = serializers.UserSerializer(
             user, context=self.get_serializer_context()).data
         return Response(user)
@@ -43,6 +45,9 @@ class LogoutView(APIView):
     permission_classes = (IsAuthenticated,)
 
     def post(self, request, *args, **kwargs):
+        user = request.user
+        user.isAuthenticated = False
+        user.save()
         logout(request)
         return Response(status=HTTP_204_NO_CONTENT)
 
@@ -126,8 +131,8 @@ class TOTPVerifyView(APIView):
                 device.save()
                 # print(user)
                 # print(device)
-                # user.is_two_factor_enabled=True
-                # user.save()
+                user.isAuthenticated = True
+                user.save()
             # print(user)
             return Response(True, status=status.HTTP_200_OK)
             # return Response(dict(token=user.token), status=HTTP_200_OK)
@@ -141,18 +146,17 @@ class TOTPVerifyView2(generics.GenericAPIView):
     serializer_class = serializers.LoginSerializer
     permission_classes = (IsAuthenticated, )
     def post(self, request, token, format=None):
-        #user2 = {'phone_number': request.data['phone_number'], 'password': request.data['password']}
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data
         user = serializers.UserSerializer(
         user, context=self.get_serializer_context()).data
 
-        print(user)
+        # print(user)
         if user:
             #user = request.user
             device = get_user_totp_device(self, user)
-            print(device)
+            # print(device)
             if not device:
                 return Response(dict(
             errors=['This user has not setup two factor authentication']),
@@ -164,7 +168,7 @@ class TOTPVerifyView2(generics.GenericAPIView):
                     device.save()
                     # user.is_two_factor_enabled=True
                     # user.save()
-                    print("Shanu ki BFF")
+                    # print("Shanu ki BFF")
                 return Response(user, status=HTTP_200_OK)    
                 # return Response(dict(token=user.token), status=HTTP_200_OK)
             return Response(dict(errors=dict(token=['Invalid TOTP Token'])), status=HTTP_400_BAD_REQUEST)

@@ -4,34 +4,44 @@
     "password": "Shopify@8769",
     "email": "admin@gmail.com",
     "is_admin": true,
-    "user_type": "Admin"
+    "user_type": "Admin",
+    "isAuthenticated": false
   },
   {
     "phone_number": "9177654321",
     "password": "Whatthe$97",
-    "first_name": "john",
-    "last_name": "deo",
-    "email": "john@gmail.com",
+    "first_name": "Johnny",
+    "last_name": "Lever",
+    "email": "johnny@gmail.com",
     "national_code": "181202",
     "pay_balance": "30060",
-    "user_type": "Seller"
+    "user_type": "Seller",
+    "isAuthenticated": false
   },
   {
     "phone_number": "9175559999",
     "password": "Aman$890",
-    "first_name": "alex",
-    "last_name": "washington",
-    "email": "alex@yahoo.com",
-    "user_type": "Seller"
+    "first_name": "Arun",
+    "last_name": "Balaji",
+    "email": "arun@yahoo.com",
+    "pay_balance": "10560",
+    "user_type": "Seller",
+    "isAuthenticated": false
   },
   {
     "phone_number": "9172589875",
     "password": "Chaman@1456",
-    "user_type": "Buyer"
+    "first_name": "Jatin",
+    "last_name": "Sharma",
+    "user_type": "Buyer",
+    "isAuthenticated": false
   },
   {
     "phone_number": "9180596836",
     "password": "Kyakaru&4978",
-    "user_type": "Buyer"
+    "first_name": "Ajeet",
+    "last_name": "Yadav",
+    "user_type": "Buyer",
+    "isAuthenticated": false
   }
 ]

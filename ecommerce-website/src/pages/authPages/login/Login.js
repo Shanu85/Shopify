@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import LoginForm from "./components/LoginForm";
-import { login } from "@actions/authActions";
+import { loginUser } from "@actions/authActions";
 import { phone_number_reg, password_reg, otp_reg } from "../regexes";
 import { UserType } from "./components/UserType";
 
@@ -47,7 +47,7 @@ const Login = () => {
       user_type
     };
     
-    dispatch(login(user, otp, setErrors, resetForm));
+    dispatch(loginUser(user, otp, setErrors, resetForm));
   };
 
   return (

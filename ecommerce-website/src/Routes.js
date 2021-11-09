@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import PrimaryAuthRoute from "./components/routes/PrimaryAuthRoute";
+import SecondaryAuthRoute from "./components/routes/SecondaryAuthRoute";
 import AuthRoute from "./components/routes/AuthRoute";
 import BuyerProtectedRoute from "./components/routes/BuyerProtectedRoute";
 import SellerProtectedRoute from "./components/routes/SellerProtectedRoute";
@@ -155,7 +156,7 @@ const Routes = () => {
         <SellerProtectedRoute exact path="/seller-logout" component={SellerLogout} />
         <AuthRoute exact path="/login" component={Login} />
         <PrimaryAuthRoute exact path="/primary-register" component={PrimaryRegister} />
-        <AuthRoute exact path="/register" component={Register} />
+        <SecondaryAuthRoute exact path="/register" component={Register} />
         <AuthRoute exact path="/reset-password" component={ResetPassword} />
         <AuthRoute
           exact

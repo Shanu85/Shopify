@@ -2,9 +2,10 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
 
-const AuthRoute = ({ component: Component, to, ...rest }) => {
+const SecondaryAuthRoute = ({ component: Component, to, ...rest }) => {
 
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  const isPrimaryAuthenticated = useSelector(state => state.auth.isPrimaryAuthenticated);
   const user = useSelector(state => state.auth.user);
 
   return (
@@ -15,15 +16,15 @@ const AuthRoute = ({ component: Component, to, ...rest }) => {
           (user.user_type === "Admin" ? <Redirect to={"/admin/"} /> :
             (user.user_type === "Seller" ? <Redirect to={"/seller_dashboard"} /> : <Redirect to={"/products"} />))
         ) : (
-          isAuthenticated === false && <Component {...props} />
+          (isPrimaryAuthenticated === true ? <Component {...props} />: <Redirect to={to} />)
         )
       }
     />
   );
 };
 
-AuthRoute.defaultProps = {
-  to: "/"
+SecondaryAuthRoute.defaultProps = {
+  to: "/primary-register"
 };
 
-export default AuthRoute;
+export default SecondaryAuthRoute;

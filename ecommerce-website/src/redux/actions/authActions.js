@@ -12,18 +12,17 @@ import {
   STOP_LOADING_BUTTON
 } from "../types";
 
-export const loadUser = (isAuthenticated, user, url) => dispatch => {
+export const loadUser = () => dispatch => {
   dispatch({ type: START_LOADING_UI });
   axios
     .get("/api/user/")
     .then(response => {
-      if (isAuthenticated === true) {
+      if (response.data.isAuthenticated === true) {
         dispatch({ type: AUTH_SUCCESS, payload: response.data });
       } else {
-        console.log(url);
-        dispatch({ type: PRIMARY_AUTH_SUCCESS, payload: { user: response.data, url: url } });
+        // delete the user
+        dispatch({ type: AUTH_FAIL });
       }
-
       dispatch({ type: STOP_LOADING_UI });
     })
     .catch(() => {
@@ -32,29 +31,26 @@ export const loadUser = (isAuthenticated, user, url) => dispatch => {
     });
 };
 
-
-export const loadSeller = () => dispatch => {
-  dispatch({ type: START_LOADING_UI });
+export const loginUser = (user, otp, setErrors, resetForm) => (dispatch, getState) => {
+  dispatch({ type: START_LOADING_BUTTON });
   axios
-    .get("/api/seller/")
+    .post('/api/auth/login/', user)
     .then(response => {
-      dispatch({ type: AUTH_SUCCESS, payload: response.data });
-      dispatch({ type: STOP_LOADING_UI });
+      dispatch(login(response.data, otp, setErrors, resetForm));
     })
-    .catch(() => {
+    .catch(error => {
       dispatch({ type: AUTH_FAIL });
-      dispatch({ type: STOP_LOADING_UI });
+      setErrors(error.response.data);
+      dispatch({ type: STOP_LOADING_BUTTON });
     });
 };
-
 
 export const login = (user, otp, setErrors, resetForm) => (dispatch, getState) => {
   dispatch({ type: START_LOADING_BUTTON });
-  //console.log(user);
   axios
-    .post(`/api/auth/totp/login2/${otp}/`, user)
+    .post(`/api/auth/totp/login/${otp}/`, user)
     .then(response => {
-      dispatch({ type: AUTH_SUCCESS, payload: response.data });
+      dispatch({ type: AUTH_SUCCESS, payload: user});
       dispatch({ type: STOP_LOADING_BUTTON });
       resetForm();
       if (user.user_type === 'Admin') {
@@ -74,9 +70,9 @@ export const login = (user, otp, setErrors, resetForm) => (dispatch, getState) =
     });
 };
 
+
 export const registerUser = (user, history, setErrors, resetForm) => dispatch => {
   dispatch({ type: START_LOADING_BUTTON });
-  //console.log(user);
   axios
     .post('/api/auth/register/', user)
     .then(response => {
@@ -89,13 +85,11 @@ export const registerUser = (user, history, setErrors, resetForm) => dispatch =>
     });
 };
 
+
 export const primaryRegister = (user, history, setErrors, resetForm) => dispatch => {
-  console.log(user);
-  // dispatch({ type: START_LOADING_BUTTON });
   axios
     .get("/api/auth/totp/create/", user)
     .then(response => {
-      // console.log(response.data);
       dispatch({ type: PRIMARY_AUTH_SUCCESS, payload: { user: user, url: response.data } });
       dispatch({ type: STOP_LOADING_BUTTON });
       resetForm();
@@ -109,9 +103,9 @@ export const primaryRegister = (user, history, setErrors, resetForm) => dispatch
     });
 };
 
+
 export const register = (user, url, otp, setErrors, resetForm) => dispatch => {
   dispatch({ type: START_LOADING_BUTTON });
-  // console.log(user);
   axios
     .post(`/api/auth/totp/login/${otp}/`, user)
     .then(response => {
@@ -127,6 +121,7 @@ export const register = (user, url, otp, setErrors, resetForm) => dispatch => {
     });
 };
 
+
 export const logout = () => dispatch => {
   dispatch({ type: START_LOADING_UI });
   axios.post("/api/auth/logout/").then(() => {
@@ -134,6 +129,7 @@ export const logout = () => dispatch => {
     dispatch({ type: STOP_LOADING_UI });
   });
 };
+
 
 export const adminChangePassword = (
   data,
@@ -158,6 +154,7 @@ export const adminChangePassword = (
     });
 };
 
+
 export const buyerChangePassword = (
   data,
   setErrors,
@@ -180,6 +177,7 @@ export const buyerChangePassword = (
       dispatch({ type: STOP_LOADING_BUTTON });
     });
 };
+
 
 export const sellerChangePassword = (
   data,
@@ -204,6 +202,7 @@ export const sellerChangePassword = (
     });
 };
 
+
 export const resetPassword = (email, setErrors, history) => dispatch => {
   dispatch({ type: START_LOADING_BUTTON });
   axios
@@ -222,6 +221,7 @@ export const resetPassword = (email, setErrors, history) => dispatch => {
       dispatch({ type: STOP_LOADING_BUTTON });
     });
 };
+
 
 export const resetPasswordConfirm = (
   password,
@@ -248,6 +248,7 @@ export const resetPasswordConfirm = (
     });
 };
 
+
 export const updateUser = (user, setErrors, history) => dispatch => {
   dispatch({ type: START_LOADING_BUTTON });
   axios
@@ -268,6 +269,7 @@ export const updateUser = (user, setErrors, history) => dispatch => {
       dispatch({ type: STOP_LOADING_BUTTON });
     });
 };
+
 
 export const updateSellerInfo = (user, setErrors, resetForm, history) => dispatch => {
   dispatch({ type: START_LOADING_BUTTON });
