@@ -88,7 +88,6 @@ class CreateOrderSerializer(serializers.ModelSerializer):
             seller_pro = item.product.user
             seller_pro.pay_balance += item.total_price
             seller_pro.save()
-            print(seller_pro.phone_number, seller_pro.pay_balance)
         
         cart.save()
         order = Order.objects.create(
