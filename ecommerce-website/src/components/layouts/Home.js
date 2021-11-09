@@ -46,7 +46,7 @@ const Home = () => {
             <Typography variant="h2">Find it, love it, buy it.</Typography>
 
             {isAuthenticated && user.user_type === "Admin" ?
-              <Button component={RouterLink} to="/admin/" color="primary" variant="contained" style={{ margin: '50px' }}>
+              <Button component={RouterLink} to={"/admin/"} onClick={()=>window.location.reload(false)} color="primary" variant="contained" style={{ margin: '50px' }}>
                 GO TO ADMIN PROFILE
               </Button>
               :

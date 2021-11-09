@@ -82,7 +82,7 @@ const LoginForm = props => {
               <KeyboardedInput
                 enabled
                 type="text"
-                placeholder="OTP"
+                placeholder="OTP*"
                 name="OTP"
                 value={otp}
                 onChange={(input) => setFieldValue('otp', input)}
