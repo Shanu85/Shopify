@@ -23,7 +23,7 @@ from django.views.generic import TemplateView
 
 from django_otp.admin import OTPAdminSite
   
-# admin.site.__class__ = OTPAdminSite
+admin.site.__class__ = OTPAdminSite
 
 urlpatterns = [
     # path('dadmin/', admin.site.urls),
