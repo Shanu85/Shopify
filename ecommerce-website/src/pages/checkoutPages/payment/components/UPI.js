@@ -26,7 +26,7 @@ function UPI({history}) {
 
     const options = {
         key: REACT_APP_RAZORPAY_PUBLIC_KEY,
-        amount: Math.max(1.0, Math.round(cart.total_price*100/75)),
+        amount: Math.round(cart.total_price/75)*100,
         // method:paymentMode,
         currency:"USD", 
         method:{

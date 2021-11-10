@@ -30,6 +30,11 @@ function Title(props) {
   );
 }
 
+function parseTitle(title) {
+  title = title + "";
+  return title.substr(0, title.lastIndexOf(' '));
+}
+
 export default function Orders() {
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -73,7 +78,7 @@ export default function Orders() {
             {sellerOrders.map(sellerOrder => (
               <TableRow>
                 <TableCell align="center">{sellerOrder.date.split(' ')[0]}</TableCell>
-                <TableCell align="center">{sellerOrder.title}</TableCell>
+                <TableCell align="center">{parseTitle(sellerOrder.title)}</TableCell>
                 <TableCell align="center">{sellerOrder.quantity}</TableCell>
                 <TableCell align="center">₹ {sellerOrder.total_price}</TableCell>
                 <TableCell align="center">{sellerOrder.payment_mode}</TableCell>
