@@ -14,28 +14,16 @@ function EditProductForm({ onClose, sellerProduct }) {
     }
 
     const validationSchema = Yup.object().shape({
-        stock: Yup.number().min(10).required('Product stock must be atleast 10'),
-        product_price: Yup.number().min(50).required('Product stock must be atleast 50'),
+        stock: Yup.number().min(5).required('Product stock must be atleast 5'),
+        product_price: Yup.number().min(10).required('Product stock must be atleast 10'),
         discount_price: Yup.number().min(0).required('Discount Price should be less than or equal to Product Price'),
     })
 
     const onSubmit = (values, actions) => {
-        if (parseFloat(values['stock']) < 10) {
-            alert("Product stock should be greater or equal to 10");
+        if (values['discount_price'] > values['product_price']){
+            alert('Discount Price should be less than or equal to Product Price');
+            return;
         }
-        else if (parseFloat(values['stock']) % 1 !== 0) {
-            alert("Product stock should be integer only");
-        }
-        else if (parseFloat(values['product_price']) < 50) {
-            alert("Product price should be greater or equal to 50");
-        }
-        else if (parseFloat(values['discount_price']) > parseFloat(values['product_price'])) {
-            alert("Discount price should be less or equal to product price");
-        }
-        else if (parseFloat(values['discount_price']) < 50) {
-            alert("Discount price should be greater or equal to 50");
-        }
-
         sellerProduct['sale_count'] = values['stock'];
         sellerProduct['price'] = values['product_price'];
         sellerProduct['discount_price'] = values['discount_price'];

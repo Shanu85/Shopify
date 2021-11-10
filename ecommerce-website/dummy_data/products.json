@@ -21,11 +21,12 @@
     "photo_2": "./dummy_data/img/shoe-back.jpg",
     "proposal": "./dummy_data/pdf/ED596830.pdf",
     "description": "Comfortable shoe for gents, highly versatile",
-    "price": 200.99,
+    "price": 20.99,
     "sizes": [1,2],
     "sale_count": 5,
     "status": true
   },
+
   {
 
     "user":2,
@@ -40,7 +41,7 @@
     "sizes":[1,2,3],
     "sale_count":10,
     "status":true},
-  {
+    {
     "user": 3,
     "title": "Gents Sandal footwear",
     "photo_main": "./dummy_data/img/sandal-side.jpg",
@@ -48,11 +49,12 @@
     "photo_2": "./dummy_data/img/sandal-back.jpg",
     "proposal": "./dummy_data/pdf/ED596830.pdf",
     "description": "Comfortable sandals for gents, highly versatile, fit for adults",
-    "price": 150.99,
+    "price": 15.99,
     "sizes": [1,2,6,7],
     "sale_count": 7,
     "status": true
   },
+
   {
 
     "user":3,
@@ -67,7 +69,7 @@
     "sizes":[6,8],
     "sale_count":13,
     "status":true},
-  {
+    {
     "user": 2,
     "title": "Ladies Shoes footwear",
     "photo_main": "./dummy_data/img/lady_shoe-side.jpg",
@@ -75,11 +77,12 @@
     "photo_2": "./dummy_data/img/lady_shoe-back.jpg",
     "proposal": "./dummy_data/pdf/ED596830.pdf",
     "description": "Comfortable shoe for ladies, highly versatile",
-    "price": 178.99,
+    "price": 17.99,
     "sizes": [1,4,6,8],
     "sale_count": 10,
     "status": true
   },
+
   {
 
     "user":3,
@@ -93,8 +96,7 @@
     "discount_price": 4897,
     "sizes":[4,5,6,7],
     "sale_count":34,
-    "status":true},
-  {
+    "status":true},{
     "user": 3,
     "title": "Ladies Sandal footwear",
     "photo_main": "./dummy_data/img/lady_sandal-side.jpg",
@@ -102,7 +104,7 @@
     "photo_2": "./dummy_data/img/lady_sandal-back.jpg",
     "proposal": "./dummy_data/pdf/ED596830.pdf",
     "description": "Comfortable sandals for ladies, highly versatile, highly durable",
-    "price": 49.99,
+    "price": 14.99,
     "sizes": [3,5,7,8],
     "sale_count": 14,
     "status": true
@@ -121,9 +123,7 @@
     "discount_price": 589.9,
     "sizes":[2,3,4],
     "sale_count":23,
-    "status":true},
-  
-  {
+    "status":true},{
     "user": 2,
     "title": "Gents Jeans bottomwear",
     "photo_main": "./dummy_data/img/jeans-front.jpg",

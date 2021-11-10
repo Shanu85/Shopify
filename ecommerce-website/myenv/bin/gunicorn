@@ -1,4 +1,4 @@
-#!/home/shuklaji/Desktop/FCS_Project/ecommerce-website/myenv/bin/python
+#!/home/shuklaji/Desktop/FCS_Project/django-react-ecommerce-master/myenv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
