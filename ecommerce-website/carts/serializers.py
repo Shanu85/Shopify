@@ -70,3 +70,10 @@ class CartSerializer(serializers.ModelSerializer):
 
     def get_total_customer_profit(self, obj):
         return obj.total_customer_profit
+
+class ViewDummySerializer(serializers.Serializer):
+    class Meta:
+        read_only_fields = '__all__'
+
+    def create(self, data):
+        return False

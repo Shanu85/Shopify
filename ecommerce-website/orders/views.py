@@ -1,5 +1,7 @@
 from rest_framework.generics import ListCreateAPIView, RetrieveAPIView, ListAPIView
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+
 
 from .models import Order
 from .serializers import OrderListSerializer, CreateOrderSerializer, OrderDetailSerializer, OrderFilterSerializer
@@ -13,10 +15,16 @@ class OrderListView(ListCreateAPIView):
     permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
+        user  = self.request.user
+        if(user.user_type!='Buyer'):
+            return []
         return self.request.user.orders.all()
 
     def get_serializer_class(self):
+        user  = self.request.user
         if self.request.method == "POST":
+            if(user.user_type!='Buyer'):
+                return OrderFilterSerializer
             return CreateOrderSerializer
         return OrderListSerializer
 
@@ -26,6 +34,9 @@ class OrderDetailView(RetrieveAPIView):
     serializer_class = OrderDetailSerializer
 
     def get_queryset(self):
+        user  = self.request.user
+        if(user.user_type!='Buyer'):
+            return []
         return self.request.user.orders.all()
 
 
@@ -35,6 +46,9 @@ class OrderFilterView(ListAPIView):
 
 
     def get_queryset(self):
+        user = self.request.user
+        if(user.user_type!='Seller'):
+            return []
         users = User.objects.filter(user_type='Buyer').all()
         ordersall = []
         ides=[]

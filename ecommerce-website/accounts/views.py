@@ -41,14 +41,15 @@ class LoginView(generics.GenericAPIView):
         return Response(user)
 
 
-class DeleteView(generics.GenericAPIView):
+class DeleteView(APIView):
     permission_classes = (IsAuthenticated,)
-
     def post(self, request, *args, **kwargs):
         user  = request.user
         temp = user
-        user.delete()
-        return Response(status=HTTP_204_NO_CONTENT)
+        if(user.isAuthenticated==False):
+            user.delete()
+            return Response(status=HTTP_204_NO_CONTENT)
+        return Response("Smarty Pants! You are not allowed to be deleted", status=HTTP_400_BAD_REQUEST)
 
 
 class LogoutView(APIView):
@@ -91,11 +92,10 @@ def get_user_totp_device(self, user, confirmed=None):
 
 
 class TOTPCreateView(views.APIView):
-    # permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
     """
     Use this endpoint to set up a new TOTP device
     """
-    # permission_classes = [permissions.IsAuthenticated]
     def get(self, request, format=None):
         user = request.user
         # print(user)
@@ -104,7 +104,9 @@ class TOTPCreateView(views.APIView):
             device = user.totpdevice_set.create(confirmed=False, name = user.email)
         url = device.config_url
         # print(url)
-        return Response(url, status=status.HTTP_201_CREATED)
+        if(user.isAuthenticated==False):
+            return Response(url, status=status.HTTP_201_CREATED)    
+        return Response("Smarty Pants! We are not dumb.",status=status.HTTP_201_CREATED)
 
 
 class TOTPVerifyView(APIView):
