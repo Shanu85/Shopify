@@ -11,7 +11,10 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import json
 
+with open('/etc/config.json') as config_file:
+	config=json.load(config_file)
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,13 +23,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY", default="foo")
-
+# SECRET_KEY = os.environ.get("SECRET_KEY", default="foo")
+SECRET_KEY=config['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = int(os.environ.get("DEBUG", default=1))
 
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", default="*").split(" ")
-
+#ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", default="*").split(" ")
+ALLOWED_HOSTS=['192.168.2.238','0.0.0.0']
 
 # Application definition
 
@@ -46,10 +49,9 @@ INSTALLED_APPS = [
     'orders.apps.OrdersConfig',
     'django_filters',
     'livereload',
-    # 'django_rest_passwordreset',
+    'django_rest_passwordreset',
     'django_otp',
     'django_otp.plugins.otp_totp',
-    # 'django_otp.plugins.otp_static',
 ]
 
 MIDDLEWARE = [
@@ -59,9 +61,9 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django_otp.middleware.OTPMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'livereload.middleware.LiveReloadScript',
-    'django_otp.middleware.OTPMiddleware',
 ]
 
 ROOT_URLCONF = 'web.urls'
@@ -90,12 +92,12 @@ WSGI_APPLICATION = 'web.wsgi.application'
 
 DATABASES = {
     "default": {
-        "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
-        "NAME": os.environ.get("SQL_DATABASE", os.path.join(BASE_DIR, "db.sqlite3")),
-        "USER": os.environ.get("SQL_USER", "user"),
-        "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
-        "HOST": os.environ.get("SQL_HOST", "localhost"),
-        "PORT": os.environ.get("SQL_PORT", "5432"),
+        "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.mysql"),
+        "NAME": os.environ.get("SQL_DATABASE",  "shopify"),
+        "USER": os.environ.get("SQL_USER", "user1"),
+        "PASSWORD": os.environ.get("SQL_PASSWORD", "Hellothere1234$"),
+        "HOST": os.environ.get("SQL_HOST", "0.0.0.0"),
+        "PORT": os.environ.get("SQL_PORT", "3306"),
     }
 }
 
@@ -168,20 +170,39 @@ REST_FRAMEWORK = {
     ),
 }
 
-# CSRF token
-
-CSRF_COOKIE_NAME = "XSRF-TOKEN"
-
 LOGOUT_REDIRECT_URL = '/login'
 LOGIN_REDIRECT_URL = '/login'
 
 OTP_ADMIN_HIDE_SENSITIVE_DATA = True
 # OTP_EMAIL_THROTTLE_FACTOR = 300
 # OTP_TOTP_THROTTLE_FACTOR = False
+# CSRF token
+CSRF_COOKIE_NAME = "XSRF-TOKEN"
 
+SECURE_REFERRER_POLICY ='strict-origin'
+
+# prevents xss attack
+SECURE_BROWSER_XSS_FILTER = True
+
+# Secure cookies
+SESSION_COOKIE_SECURE = True
+# CSRF Cookie Secure
+CSRF_COOKIE_SECURE = True
+
+# to https only
+SECURE_HSTS_SECONDS=31536999
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD=True
+SECURE_SSL_REDIRECT = True
+
+SECURE_CONTENT_TYPE_NOSNIFF= True
+
+# DENY CLICKJACKING ATTACK
+X_FRAME_OPTIONS = 'DENY'
 # Local settings for production
 
 try:
     from local_settings import *
 except ImportError:
     pass
+

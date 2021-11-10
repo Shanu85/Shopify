@@ -5,7 +5,7 @@ from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.status import HTTP_204_NO_CONTENT, HTTP_400_BAD_REQUEST
-from .serializers import ProductListSerializer, ProductDetailSerializer, ProductSellerSerializer, ProductUpdateSerializer,  ProductFrontendSerializer
+from .serializers import ProductListSerializer, ProductDetailSerializer, ProductSellerSerializer, ProductAddSerializer, ProductUpdateSerializer,  ProductFrontendSerializer
 from .models import Product
 from .pagination import ProductPagination
 from .filters import ProductFilter
@@ -26,7 +26,7 @@ class ProductListView(ListAPIView):
     filterset_class = ProductFilter
 
     def get_queryset(self):
-        queryset = Product.objects.all()
+        queryset = Product.objects.filter(status=True)
         available = self.request.query_params.get('available', None)
         if available is not None and available == 'true':
             queryset = Product.objects.available_products()
@@ -57,7 +57,7 @@ class ProductSellerView(ListAPIView):
 class ProductAddView(ListAPIView):
     permission_classes = (IsAuthenticated, )
     #queryset = Product.objects.all()
-    serializer_class = ProductUpdateSerializer
+    serializer_class = ProductAddSerializer
     cache.clear()
 
     def get_queryset(self):
@@ -140,18 +140,22 @@ class UpdateProductSellerView(ListAPIView):
 
     def post(self, request, id):
         user = self.request.user
+        # print(request.data)
+        # print(user)
         seller_products = []
         products = Product.objects.all().filter(user=user)
         for product in products:
             seller_products.append(product)
-
+        # print(seller_products)
         if(user.user_type=='Buyer' or seller_products.count(Product.objects.get(id=id))==0):
             return Response("You don't have the authorizations.")
         obj = Product.objects.get(id=id)
 
         serializer = self.get_serializer(instance=obj, data=request.data)
         if serializer.is_valid():
+            # print("YES SAVED")
             serializer.save()
+        # print(serializer.errors)
         return Response(serializer.data)
 
 

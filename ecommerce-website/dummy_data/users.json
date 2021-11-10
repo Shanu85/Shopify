@@ -5,7 +5,7 @@
     "email": "admin@gmail.com",
     "is_admin": true,
     "user_type": "Admin",
-    "isAuthenticated": false
+    "isAuthenticated": true
   },
   {
     "phone_number": "9177654321",
@@ -16,7 +16,7 @@
     "national_code": "181202",
     "pay_balance": "30060",
     "user_type": "Seller",
-    "isAuthenticated": false
+    "isAuthenticated": true
   },
   {
     "phone_number": "9175559999",
@@ -26,7 +26,7 @@
     "email": "arun@yahoo.com",
     "pay_balance": "10560",
     "user_type": "Seller",
-    "isAuthenticated": false
+    "isAuthenticated": true
   },
   {
     "phone_number": "9172589875",
@@ -34,7 +34,7 @@
     "first_name": "Jatin",
     "last_name": "Sharma",
     "user_type": "Buyer",
-    "isAuthenticated": false
+    "isAuthenticated": true
   },
   {
     "phone_number": "9180596836",
@@ -42,6 +42,6 @@
     "first_name": "Ajeet",
     "last_name": "Yadav",
     "user_type": "Buyer",
-    "isAuthenticated": false
+    "isAuthenticated": true
   }
 ]

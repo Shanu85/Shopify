@@ -50,7 +50,7 @@ function AddProductFrom({ onClose, forceClose }) {
         else if (ProductName.length < 2) {
             alert("Product name is too short");
         }
-        else if (Stock < 10) {
+        else if (parseFloat(Stock) < 10) {
             alert("Product stock should be greater or equal to 10");
         }
         else if (parseFloat(Stock) % 1 !== 0) {
@@ -62,8 +62,8 @@ function AddProductFrom({ onClose, forceClose }) {
         else if (parseFloat(DiscountPrice) > parseFloat(ProductPrice)) {
             alert("Discount price should be less or equal to product price");
         }
-        else if (parseFloat(DiscountPrice) < 0) {
-            alert("Discount price should be greater or equal to 0");
+        else if (parseFloat(DiscountPrice) < 50) {
+            alert("Discount price should be greater or equal to 50");
         }
         else if (ProductDes.length < 10) {
             alert("Product description should be aleast 10 characters long");

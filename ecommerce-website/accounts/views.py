@@ -34,8 +34,6 @@ class LoginView(generics.GenericAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data
-        user.isAuthenticated = True
-        user.save()
         user = serializers.UserSerializer(
             user, context=self.get_serializer_context()).data
         return Response(user)
@@ -57,8 +55,6 @@ class LogoutView(APIView):
 
     def post(self, request, *args, **kwargs):
         user = request.user
-        user.isAuthenticated = False
-        user.save()
         logout(request)
         return Response(status=HTTP_204_NO_CONTENT)
 
