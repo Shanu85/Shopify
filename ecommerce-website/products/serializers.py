@@ -85,10 +85,15 @@ class ProductSellerSerializer(serializers.ModelSerializer):
         model = Product
         fields = '__all__'
 
-class ProductUpdateSerializer(serializers.ModelSerializer):
+class ProductAddSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = ('title', 'photo_main', 'proposal', 'photo_1', 'photo_2', 'photo_3', 'photo_4', 'description', 'price', 'discount_price', 'sale_count', 'sizes')
+
+class ProductUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = ('price', 'discount_price', 'sale_count')
 
 class ProductFrontendSerializer(serializers.ModelSerializer):
     class Meta:
