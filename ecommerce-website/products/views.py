@@ -69,6 +69,8 @@ class ProductAddView(ListAPIView):
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data.dict())
         serializer.is_valid(raise_exception=True)
+        if int(request.data['sale_count']) < 0 or float(request.data['price']) < 50 or float(request.data['discount_price']) < 50 or float(request.data['discount_price']) > float(request.data['price']):
+            return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
         if(self.request.user.user_type=='Buyer'):
             return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
         user = self.request.user
@@ -142,6 +144,8 @@ class UpdateProductSellerView(ListAPIView):
         user = self.request.user
         # print(request.data)
         # print(user)
+        if int(request.data['sale_count']) < 0 or float(request.data['price']) < 50 or float(request.data['discount_price']) < 50 or float(request.data['discount_price']) > float(request.data['price']):
+            return Response("Bro, just leave it.")
         seller_products = []
         products = Product.objects.all().filter(user=user)
         for product in products:
