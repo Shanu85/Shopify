@@ -3,6 +3,13 @@ from django import forms
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
+from profiles.models import FavoritesProducts, Address
+from accounts.models import User
+from products.models import Product
+from carts.models import Cart
+from orders.models import Order
+from django.contrib import messages
+from django.shortcuts import redirect
 
 from .models import User
 
@@ -79,6 +86,34 @@ class UserAdmin(BaseUserAdmin):
         extra_context['show_save'] = False
         return super(UserAdmin, self).changeform_view(request, object_id, extra_context=extra_context)
 
+    def has_delete_permission(self, request, obj=id):       
+        return True
+
+    def delete_view(self, request, object_id, form_url='', extra_context=None):
+        user = User.objects.get(id=object_id)
+        if(user.user_type=='Admin'):
+            messages.error(request, 'Admin cannot be deleted')
+            return redirect('/admin/accounts/user/')
+
+        address = Address.objects.filter(user=user).all()
+        fav = FavoritesProducts.objects.filter(user=user).all()
+        prod = Product.objects.filter(user=user).all()
+        carts = Cart.objects.filter(user=user).all()
+        orders = Order.objects.filter(user=user).all()
+        for add in address:
+            add.delete()
+        for pro in fav:
+            pro.delete()
+        for order in orders:
+            order.delete()
+        for cart in carts:
+            cart.delete()
+        for pro in prod:
+            pro.delete()
+        user.delete()
+        messages.add_message(request, messages.INFO, 'User deleted')
+        return redirect('/admin/accounts/user/')
+        
 
 admin.site.register(User, UserAdmin)
 admin.site.unregister(Group)

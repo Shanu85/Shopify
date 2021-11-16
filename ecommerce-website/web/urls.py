@@ -14,16 +14,17 @@ from django.views.generic import TemplateView
 #     pass
 
 # from django.contrib.auth.models import User
-# from django_otp.plugins.otp_totp.models import TOTPDevice
+from django_otp.plugins.otp_totp.models import TOTPDevice
 
 # admin_site = OTPAdmin(name='OTPAdmin')
 # admin_site.register(User)
-# admin_site.register(TOTPDevice)
+# admin_site.unregister(TOTPDevice)
+admin.site.unregister(TOTPDevice)
 
 
 from django_otp.admin import OTPAdminSite
   
-admin.site.__class__ = OTPAdminSite
+# admin.site.__class__ = OTPAdminSite
 
 urlpatterns = [
     # path('dadmin/', admin.site.urls),

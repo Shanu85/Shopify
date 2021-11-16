@@ -51,12 +51,12 @@ class OrderFilterSerializer(serializers.Serializer):
     date = serializers.CharField(max_length=200)
     location = serializers.CharField(max_length=200)
 
-class OrderFilterSerializer(serializers.Serializer):
-    class Meta:
-        read_only_fields = '__all__'
+# class OrderFilterSerializer(serializers.Serializer):
+#     class Meta:
+#         read_only_fields = '__all__'
 
-    def create(self, data):
-        return False
+#     def create(self, data):
+#         return False
 
 # exclude = ('code',)
 

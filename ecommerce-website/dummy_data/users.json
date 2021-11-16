@@ -43,5 +43,13 @@
     "last_name": "Yadav",
     "user_type": "Buyer",
     "isAuthenticated": true
+  },
+  {
+    "phone_number": "9971234567",
+    "password": "shopIfY#5798",
+    "email": "apnashopifyapp@gmail.com",
+    "is_admin": true,
+    "user_type": "Admin",
+    "isAuthenticated": true
   }
 ]
