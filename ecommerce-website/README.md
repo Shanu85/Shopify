@@ -3,11 +3,7 @@
 
 You also need to install the Google Authenticator App on mobile from the play store. The steps can be found in this manual :- https://www.thecloudtutorial.com/create-user-manual-for-web-application/
 
-
-The home page of our website can be accessed from this URL :- https://192.168.2.238
-
-- First a user needs to register on our website. To register, you need to click on the REGISTER button on top-right
-- The user can then choose his role as a BUYER or as a SELLER.
+First a user needs to register on our website. To register, you need to click on the REGISTER button on top-right. User have to choose his role as a BUYER or as a SELLER.
 
 ![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/homepage1.png)
 
