@@ -74,7 +74,9 @@ Now, after registering or login, whenever the user logs out, then during the tim
 
 - The user (seller) can also change his password by using the Change password button.
 
+### Admin
 
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/admin.png)
 
 # User Information :-
 
