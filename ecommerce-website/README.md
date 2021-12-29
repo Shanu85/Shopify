@@ -55,19 +55,20 @@ Now, after registering or login, whenever the user logs out, then during the tim
 
 ### Seller
 
-### The user(seller) personal info (Dashboard) page is this :-
-
-- Here the user (seller) can also edit his personal info using the EDIT button.
+- The user(seller) personal info (Dashboard) page is this. 
+ Here the user (seller) can also edit his personal info using the EDIT button.
 ![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/profile_page.png)
 
-### The user (seller) can also view/add his products from the Products button :-
+- The user (seller) can also view/add his products from the Products button :-
 
-- To add a product, the user (seller) has to use the ADD PRODUCT button.
-- To add a product, you have to upload 3 images and each image size should be less than 0.5 MB. Also the price of the product should be more than 50 Rs. The discount price here shows that after discount what will be the price of the product, and that it should be less than that of the product. The size of the proposal pdf should be less than 1 MB. The product description should be more than 10 characters.
+ To add a product, the user (seller) has to use the ADD PRODUCT button.
+ To add a product, you have to upload 3 images and each image size should be less than 0.5 MB. Also the price of the product should be more than 50 Rs. The discount price here shows that after discount what will be the price of the product, and that it should be less than that of the product. The size of the proposal pdf should be less than 1 MB. The product description should be more than 10 characters.
 
 ![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/add_product.png)
 
+- After adding the project, seller have to wait for admin to approve the product. After admin approve the product, buyer can buy the product. Seller can also edit or remove the listed project.
 ![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/seller_product_page.png)
+
 
 ### The orders page (through the Orders button) shows what were the recent orders :-
 
