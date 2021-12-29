@@ -42,6 +42,8 @@ The home page of our website can be accessed from this URL :- https://192.168.2.
 
 ![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/add_product.png)
 
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/seller_product_page.png)
+
 ### The orders page (through the Orders button) shows what were the recent orders :-
 
 - The user (seller) can also change his password by using the Change password button.
