@@ -25,11 +25,11 @@ Now, after registering or login, whenever the user logs out, then during the tim
 - Then the user needs to scan a QR code and verify an OTP by using Google Authenticator App.
 
 ### Buyer
- - When buyer successfully login 
+ - When buyer successfully login, product page will be displayed -  
 
 ![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/products_page.png)
 
-### - The Buyer can add products to his cart (the cart is already created for each buyer whenever they register) after clicking on a product on the product page :-
+- The Buyer can add products to his cart (the cart is already created for each buyer whenever they register) after clicking on a product on the product page :-
 
 ![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/cart.png)
 
