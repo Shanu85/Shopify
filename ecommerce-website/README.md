@@ -1,140 +1,104 @@
 # User guide for shopify (an ecommerce platform)
 
 
-For opening this platform in your web browser, you need to install forticlient vpn
-and configure it to vpn.iiitd.edu.in.Then you need to connect to this vpn. The steps can be found in this manual :- http://it.iiitd.edu.in/VPN.pdf
 You also need to install the Google Authenticator App on mobile from the play store. The steps can be found in this manual :- https://www.thecloudtutorial.com/create-user-manual-for-web-application/
 
 
 The home page of our website can be accessed from this URL :- https://192.168.2.238
 
+- First a user needs to register on our website. To register, you need to click on the REGISTER button on top-right
+- The user can then choose his role as a BUYER or as a SELLER.
 
+## The registration page for the buyer is :-
 
-First a user needs to register on our website. To register, you need to click on the REGISTER button on top-right
+- The user then needs to fill in his details according to the details mentioned in the page and then needs to click the REGISTER button.
+- Then the user needs to scan a QR code and verify an OTP by using Google Authenticator App.
 
+## The products webpage will be then displayed after registering and entering the OTP :-
 
+- Whenever the user logs out, then during the time of login he again has to scan the QR code and enter an OTP.
 
-The user can then choose his role as a BUYER or as a SELLER.
+## Similarly the registration page for seller is :-
+- Then the user (seller) needs to fill in the details according to the details mentioned in the page and then needs to click the REGISTER button.
+- Then the user needs to scan a QR code and verify an OTP by using Google Authenticator App.
 
-The registration page for the buyer is :-
+## The user(seller) personal info (Dashboard) page is this :-
 
+- Here the user (seller) can also edit his personal info using the EDIT button.
 
-The user then needs to fill in his details according to the details mentioned in the page and then needs to click the REGISTER button.
-Then the user needs to scan a QR code and verify an OTP by using Google Authenticator App.
+## The user (seller) can also view/add his products from the Products button :-
 
+- To add a product, the user (seller) has to use the ADD PRODUCT button.
+- To add a product, you have to upload 3 images and each image size should be less than 0.5 MB. Also the price of the product should be more than 50 Rs. The discount price here shows that after discount what will be the price of the product, and that it should be less than that of the product. The size of the proposal pdf should be less than 1 MB. The product description should be more than 10 characters.
 
-The products webpage will be then displayed after registering and entering the OTP :-
+## The orders page (through the Orders button) shows what were the recent orders :-
 
+- The user (seller) can also change his password by using the Change password button.
 
-Whenever the user logs out, then during the time of login he again has to scan the QR code and enter an OTP.
+## The Buyer can add products to his cart (the cart is already created for each buyer whenever they register) after clicking on a product on the product page :-
 
-Similarly the registration page for seller is :-
+## To add a product to the cart, the user (buyer) has to click on ADD TO CART button :-
 
+## After adding to the cart, the user (buyer) has to click on CONTINUE SHOPPING to purchase the product :-
 
-Then the user (seller) needs to fill in the details according to the details mentioned in the page and then needs to click the REGISTER button.
-Then the user needs to scan a QR code and verify an OTP by using Google Authenticator App.
+## After clicking on CONTINUE SHOPPING, the user (buyer) has to provide his address details in a form and then press on the ADD button to confirm the address:-
 
+## After adding the address, the user (buyer) can check out his products (in his cart) by clicking on the CHECK OUT button :-
 
-The user(seller) personal info (Dashboard) page is this :-
+- The user (buyer) can pay in 2 different methods, by cash on delivery or by card payment.
 
-Here the user (seller) can also edit his personal info using the EDIT button.
+## In cash on delivery, the user (buyer) is required to fill a captcha to place the order :-
 
-The user (seller) can also view/add his products from the Products button :-
+- After placing the order, the user would have bought the item.
 
-To add a product, the user (seller) has to use the ADD PRODUCT button.
+## The following is the card payment method :-
 
-To add a product, you have to upload 3 images and each image size should be less than 0.5 MB. Also the price of the product should be more than 50 Rs. The discount price here shows that after discount what will be the price of the product, and that it should be less than that of the product. The size of the proposal pdf should be less than 1 MB. The product description should be more than 10 characters.
+## After clicking on PAY NOW, you will have to enter your email address :-
 
-The orders page (through the Orders button) shows what were the recent orders :-
+- After selecting the Card option, the user(buyer) will have to enter his card details such as Card number, Expiry data, CVV.
+- Since this is testing mode, the accepted Card number will be 4111111111111111.
 
+## Then the user will have to type in the OTP received at his phone number:-
 
-The user (seller) can also change his password by using the Change password button.
+- After clicking the PAY button, the order would have been placed.
+- Note: The payment made is in the form of dollars, and for that we have correctly converted the cost of the product from rupees to dollars.
 
-The Buyer can add products to his cart (the cart is already created for each buyer whenever they register) after clicking on a product on the product page :-
+## User Information :-
 
-
-
-To add a product to the cart, the user (buyer) has to click on ADD TO CART button :-
-
-
-After adding to the cart, the user (buyer) has to click on CONTINUE SHOPPING to purchase the product :-
-
-
-After clicking on CONTINUE SHOPPING, the user (buyer) has to provide his address details in a form and then press on the ADD button to confirm the address:-
-
-
-After adding the address, the user (buyer) can check out his products (in his cart) by clicking on the CHECK OUT button :-
-
-
-The user (buyer) can pay in 2 different methods, by cash on delivery or by card payment.
-In cash on delivery, the user (buyer) is required to fill a captcha to place the order :-
-
-
-After placing the order, the user would have bought the item.
-
-The following is the card payment method :-
-
-
-After clicking on PAY NOW, you will have to enter your email address :-
-
-
-
-
-After selecting the Card option, the user(buyer) will have to enter his card details such as Card number, Expiry data, CVV.
-
-Since this is testing mode, the accepted Card number will be 4111111111111111.
-
-Then the user will have to type in the OTP received at his phone number:-
-
-
-After clicking the PAY button, the order would have been placed.
-Note: The payment made is in the form of dollars, and for that we have correctly converted the cost of the product from rupees to dollars.
-
-User Information :-
-
-
-Admin
+### Admin
 Phone numbers - 9171234567
 Password - Shopify@8769
 Qrcode - 
 
 
 
-Seller
+### Seller
 Phone numbers - 9177654321
 Password - Whatthe$97
 Qrcode - 
 
-
-
-Seller
 Phone numbers - 9175559999
 Password - Aman$890
 Qrcode - 
 
 
-
-Buyer
+### Buyer
 Phone numbers - 9172589875
 Password - Chaman@1456
 Qrcode - 
 
-
-
-Buyer 
 Phone numbers - 9180596836
 Password - Kyakaru&4978
 Qrcode - 
 
 
+## Admin:
+### The admin have the privilege to do the following changes:
 
-Admin:
-The admin have the privilege to do the following changes:
-Approve the Product of a seller, or delete it
-	Within this he/she is only allowed to change the status attribute for the Product.
-Delete seller or buyer but not other admins
-See the orders, addresses, favorite products
-Is able to only view the order details. Admin cannot edit, delete or add any order to the users.
+- Approve the Product of a seller, or delete it. Within this he/she is only allowed to change the status attribute for the Product.
+- Delete seller or buyer but not other admins
+- See the orders, addresses, favorite products
+- Is able to only view the order details. Admin cannot edit, delete or add any order to the users.
 
 
 
