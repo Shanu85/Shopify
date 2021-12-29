@@ -9,10 +9,18 @@ The home page of our website can be accessed from this URL :- https://192.168.2.
 - First a user needs to register on our website. To register, you need to click on the REGISTER button on top-right
 - The user can then choose his role as a BUYER or as a SELLER.
 
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/homepage1.png)
+
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/homepage2.png)
+
 ### The registration page for the buyer is :-
 
 - The user then needs to fill in his details according to the details mentioned in the page and then needs to click the REGISTER button.
 - Then the user needs to scan a QR code and verify an OTP by using Google Authenticator App.
+
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/buyer_register1.png)
+
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/buyer_register2.png)
 
 ### The products webpage will be then displayed after registering and entering the OTP :-
 
@@ -25,27 +33,43 @@ The home page of our website can be accessed from this URL :- https://192.168.2.
 ### The user(seller) personal info (Dashboard) page is this :-
 
 - Here the user (seller) can also edit his personal info using the EDIT button.
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/profile_page.png)
 
 ### The user (seller) can also view/add his products from the Products button :-
 
 - To add a product, the user (seller) has to use the ADD PRODUCT button.
 - To add a product, you have to upload 3 images and each image size should be less than 0.5 MB. Also the price of the product should be more than 50 Rs. The discount price here shows that after discount what will be the price of the product, and that it should be less than that of the product. The size of the proposal pdf should be less than 1 MB. The product description should be more than 10 characters.
 
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/add_product.png)
+
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/seller_product_page.png)
+
 ### The orders page (through the Orders button) shows what were the recent orders :-
 
 - The user (seller) can also change his password by using the Change password button.
 
+### Buyer
+ - When buyer successfully login 
+
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/products_page.png)
+
 ### The Buyer can add products to his cart (the cart is already created for each buyer whenever they register) after clicking on a product on the product page :-
+
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/cart.png)
 
 ### To add a product to the cart, the user (buyer) has to click on ADD TO CART button :-
 
 ### After adding to the cart, the user (buyer) has to click on CONTINUE SHOPPING to purchase the product :-
+
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/order_details.png)
 
 ### After clicking on CONTINUE SHOPPING, the user (buyer) has to provide his address details in a form and then press on the ADD button to confirm the address:-
 
 ### After adding the address, the user (buyer) can check out his products (in his cart) by clicking on the CHECK OUT button :-
 
 - The user (buyer) can pay in 2 different methods, by cash on delivery or by card payment.
+
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/payment_page.png)
 
 ### In cash on delivery, the user (buyer) is required to fill a captcha to place the order :-
 
@@ -58,10 +82,14 @@ The home page of our website can be accessed from this URL :- https://192.168.2.
 - After selecting the Card option, the user(buyer) will have to enter his card details such as Card number, Expiry data, CVV.
 - Since this is testing mode, the accepted Card number will be 4111111111111111.
 
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/razorpay1.png)
+
 ### Then the user will have to type in the OTP received at his phone number:-
 
 - After clicking the PAY button, the order would have been placed.
 - Note: The payment made is in the form of dollars, and for that we have correctly converted the cost of the product from rupees to dollars.
+
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/razorpay2.png)
 
 # User Information :-
 
@@ -103,7 +131,7 @@ Qrcode -
 
 
 
-
+<!-----
 
 # Django React eCommerce
 
@@ -178,3 +206,4 @@ docker-compose exec web python add_dummy_data.py
 
 You are good to go. Open your server ip address on port 80 (Ex on localhost: http://127.0.0.1).
  
+--->
