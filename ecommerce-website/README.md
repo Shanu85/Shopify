@@ -40,6 +40,8 @@ The home page of our website can be accessed from this URL :- https://192.168.2.
 - To add a product, the user (seller) has to use the ADD PRODUCT button.
 - To add a product, you have to upload 3 images and each image size should be less than 0.5 MB. Also the price of the product should be more than 50 Rs. The discount price here shows that after discount what will be the price of the product, and that it should be less than that of the product. The size of the proposal pdf should be less than 1 MB. The product description should be more than 10 characters.
 
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/add_product.png)
+
 ### The orders page (through the Orders button) shows what were the recent orders :-
 
 - The user (seller) can also change his password by using the Change password button.
