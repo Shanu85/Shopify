@@ -33,6 +33,7 @@ The home page of our website can be accessed from this URL :- https://192.168.2.
 ### The user(seller) personal info (Dashboard) page is this :-
 
 - Here the user (seller) can also edit his personal info using the EDIT button.
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/profile_page.png)
 
 ### The user (seller) can also view/add his products from the Products button :-
 
