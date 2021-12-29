@@ -10,6 +10,7 @@ The home page of our website can be accessed from this URL :- https://192.168.2.
 - The user can then choose his role as a BUYER or as a SELLER.
 
 ![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/homepage1.png)
+
 ![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/homepage2.png)
 
 ### The registration page for the buyer is :-
