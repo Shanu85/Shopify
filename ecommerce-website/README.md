@@ -18,6 +18,10 @@ The home page of our website can be accessed from this URL :- https://192.168.2.
 - The user then needs to fill in his details according to the details mentioned in the page and then needs to click the REGISTER button.
 - Then the user needs to scan a QR code and verify an OTP by using Google Authenticator App.
 
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/buyer_register1.png)
+
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/buyer_register2.png)
+
 ### The products webpage will be then displayed after registering and entering the OTP :-
 
 - Whenever the user logs out, then during the time of login he again has to scan the QR code and enter an OTP.
