@@ -50,7 +50,8 @@ Now, after registering or login, whenever the user logs out, then during the tim
 ![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/razorpay2.png)
 
 - After placing the order, the user would have bought the item. 
-![](https://github.com/Shanu85/Shopify/upload/main/ecommerce-website/Website_Image)
+
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/order_placed.png)
 
 ### Seller
 
