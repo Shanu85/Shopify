@@ -70,7 +70,7 @@ Now, after registering or login, whenever the user logs out, then during the tim
 ![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/seller_product_page.png)
 
 
-- The orders page (through the Orders button) shows what were the recent orders :-
+- The orders page (through the Orders button) shows what were the recent orders.
 
 - The user (seller) can also change his password by using the Change password button.
 
