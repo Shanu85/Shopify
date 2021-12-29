@@ -58,6 +58,8 @@ The home page of our website can be accessed from this URL :- https://192.168.2.
 
 - The user (buyer) can pay in 2 different methods, by cash on delivery or by card payment.
 
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/payment_page.png)
+
 ### In cash on delivery, the user (buyer) is required to fill a captcha to place the order :-
 
 - After placing the order, the user would have bought the item.
@@ -69,10 +71,14 @@ The home page of our website can be accessed from this URL :- https://192.168.2.
 - After selecting the Card option, the user(buyer) will have to enter his card details such as Card number, Expiry data, CVV.
 - Since this is testing mode, the accepted Card number will be 4111111111111111.
 
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/razorpay1.png)
+
 ### Then the user will have to type in the OTP received at his phone number:-
 
 - After clicking the PAY button, the order would have been placed.
 - Note: The payment made is in the form of dollars, and for that we have correctly converted the cost of the product from rupees to dollars.
+
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/razorpay2.png)
 
 # User Information :-
 
