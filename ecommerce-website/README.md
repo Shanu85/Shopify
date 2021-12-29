@@ -48,9 +48,13 @@ The home page of our website can be accessed from this URL :- https://192.168.2.
 
 ### The Buyer can add products to his cart (the cart is already created for each buyer whenever they register) after clicking on a product on the product page :-
 
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/cart.png)
+
 ### To add a product to the cart, the user (buyer) has to click on ADD TO CART button :-
 
 ### After adding to the cart, the user (buyer) has to click on CONTINUE SHOPPING to purchase the product :-
+
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/order_details.png)
 
 ### After clicking on CONTINUE SHOPPING, the user (buyer) has to provide his address details in a form and then press on the ADD button to confirm the address:-
 
