@@ -18,13 +18,21 @@ First a user needs to register on our website. To register, you need to click on
 
 ![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/buyer_register2.png)
 
-### The products webpage will be then displayed after registering and entering the OTP :-
-
-- Whenever the user logs out, then during the time of login he again has to scan the QR code and enter an OTP.
+Now, after registering or login, whenever the user logs out, then during the time of login he again has to scan the QR code and enter an OTP.
 
 ### Similarly the registration page for seller is :-
 - Then the user (seller) needs to fill in the details according to the details mentioned in the page and then needs to click the REGISTER button.
 - Then the user needs to scan a QR code and verify an OTP by using Google Authenticator App.
+
+### Buyer
+ - When buyer successfully login 
+
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/products_page.png)
+
+### - The Buyer can add products to his cart (the cart is already created for each buyer whenever they register) after clicking on a product on the product page :-
+
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/cart.png)
+
 
 ### The user(seller) personal info (Dashboard) page is this :-
 
@@ -44,14 +52,6 @@ First a user needs to register on our website. To register, you need to click on
 
 - The user (seller) can also change his password by using the Change password button.
 
-### Buyer
- - When buyer successfully login 
-
-![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/products_page.png)
-
-### The Buyer can add products to his cart (the cart is already created for each buyer whenever they register) after clicking on a product on the product page :-
-
-![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/cart.png)
 
 ### To add a product to the cart, the user (buyer) has to click on ADD TO CART button :-
 
