@@ -36,6 +36,20 @@ Now, after registering or login, whenever the user logs out, then during the tim
 - After clicking on CONTINUE SHOPPING, the user (buyer) has to provide his address details in a form and then press on the ADD button to confirm the address. After adding the address, the user (buyer) can check out his products (in his cart) by clicking on the CHECK OUT button :-
 ![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/order_details.png)
 
+- After clicking checkout, the user (buyer) will get redirected to payment page where she/he can pay in 2 different methods, by cash on delivery or by card payment. 
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/payment_page.png)
+
+- In cash on delivery, the user (buyer) is required to fill a captcha to place the order. 
+- In card method, after clicking on PAY NOW, you will have to enter your email address. After selecting the Card option, the user(buyer) will have to enter his card details such as Card number, Expiry data, CVV. Since this is testing mode, the accepted Card number will be 4111111111111111.
+ Then the user will have to type in the OTP received at his phone number:-
+    After clicking the PAY button, the order would have been placed.
+    ### Note: The payment made is in the form of dollars, and for that we have correctly converted the cost of the product from rupees to dollars.
+
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/razorpay1.png)
+
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/razorpay2.png)
+
+- After placing the order, the user would have bought the item. 
 
 ### The user(seller) personal info (Dashboard) page is this :-
 
@@ -56,32 +70,6 @@ Now, after registering or login, whenever the user logs out, then during the tim
 - The user (seller) can also change his password by using the Change password button.
 
 
-
-
-
-- The user (buyer) can pay in 2 different methods, by cash on delivery or by card payment.
-
-![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/payment_page.png)
-
-### In cash on delivery, the user (buyer) is required to fill a captcha to place the order :-
-
-- After placing the order, the user would have bought the item.
-
-### The following is the card payment method :-
-
-### After clicking on PAY NOW, you will have to enter your email address :-
-
-- After selecting the Card option, the user(buyer) will have to enter his card details such as Card number, Expiry data, CVV.
-- Since this is testing mode, the accepted Card number will be 4111111111111111.
-
-![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/razorpay1.png)
-
-### Then the user will have to type in the OTP received at his phone number:-
-
-- After clicking the PAY button, the order would have been placed.
-- Note: The payment made is in the form of dollars, and for that we have correctly converted the cost of the product from rupees to dollars.
-
-![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/razorpay2.png)
 
 # User Information :-
 
