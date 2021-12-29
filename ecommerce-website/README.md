@@ -120,12 +120,11 @@ Now, after registering or login, whenever the user logs out, then during the tim
 ## Admin:
 ### The admin have the privilege to do the following changes:
 
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/admin.png)
 - Approve the Product of a seller, or delete it. Within this he/she is only allowed to change the status attribute for the Product.
 - Delete seller or buyer but not other admins
 - See the orders, addresses, favorite products
 - Is able to only view the order details. Admin cannot edit, delete or add any order to the users.
-
--[](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/admin.png)
 
 
 
