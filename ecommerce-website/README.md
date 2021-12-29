@@ -29,9 +29,12 @@ Now, after registering or login, whenever the user logs out, then during the tim
 
 ![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/products_page.png)
 
-- The Buyer can add products to his cart (the cart is already created for each buyer whenever they register) after clicking on a product on the product page.To add a product to the cart, the user (buyer) has to click on ADD TO CART button. After adding to the cart, the user (buyer) has to click on CONTINUE SHOPPING to purchase the product :-
+- The Buyer can add products to his cart (the cart is already created for each buyer whenever they register) after clicking on a product on the product page. To add a product to the cart, the user (buyer) has to click on ADD TO CART button. After adding to the cart, the user (buyer) has to click on CONTINUE SHOPPING to purchase the product :-
 
 ![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/cart.png)
+
+- After clicking on CONTINUE SHOPPING, the user (buyer) has to provide his address details in a form and then press on the ADD button to confirm the address. After adding the address, the user (buyer) can check out his products (in his cart) by clicking on the CHECK OUT button :-
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/order_details.png)
 
 
 ### The user(seller) personal info (Dashboard) page is this :-
@@ -54,11 +57,7 @@ Now, after registering or login, whenever the user logs out, then during the tim
 
 
 
-### After clicking on CONTINUE SHOPPING, the user (buyer) has to provide his address details in a form and then press on the ADD button to confirm the address:-
-![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/order_details.png)
 
-
-### After adding the address, the user (buyer) can check out his products (in his cart) by clicking on the CHECK OUT button :-
 
 - The user (buyer) can pay in 2 different methods, by cash on delivery or by card payment.
 
