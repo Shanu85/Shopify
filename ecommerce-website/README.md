@@ -9,61 +9,61 @@ The home page of our website can be accessed from this URL :- https://192.168.2.
 - First a user needs to register on our website. To register, you need to click on the REGISTER button on top-right
 - The user can then choose his role as a BUYER or as a SELLER.
 
-## The registration page for the buyer is :-
+### The registration page for the buyer is :-
 
 - The user then needs to fill in his details according to the details mentioned in the page and then needs to click the REGISTER button.
 - Then the user needs to scan a QR code and verify an OTP by using Google Authenticator App.
 
-## The products webpage will be then displayed after registering and entering the OTP :-
+### The products webpage will be then displayed after registering and entering the OTP :-
 
 - Whenever the user logs out, then during the time of login he again has to scan the QR code and enter an OTP.
 
-## Similarly the registration page for seller is :-
+### Similarly the registration page for seller is :-
 - Then the user (seller) needs to fill in the details according to the details mentioned in the page and then needs to click the REGISTER button.
 - Then the user needs to scan a QR code and verify an OTP by using Google Authenticator App.
 
-## The user(seller) personal info (Dashboard) page is this :-
+### The user(seller) personal info (Dashboard) page is this :-
 
 - Here the user (seller) can also edit his personal info using the EDIT button.
 
-## The user (seller) can also view/add his products from the Products button :-
+### The user (seller) can also view/add his products from the Products button :-
 
 - To add a product, the user (seller) has to use the ADD PRODUCT button.
 - To add a product, you have to upload 3 images and each image size should be less than 0.5 MB. Also the price of the product should be more than 50 Rs. The discount price here shows that after discount what will be the price of the product, and that it should be less than that of the product. The size of the proposal pdf should be less than 1 MB. The product description should be more than 10 characters.
 
-## The orders page (through the Orders button) shows what were the recent orders :-
+### The orders page (through the Orders button) shows what were the recent orders :-
 
 - The user (seller) can also change his password by using the Change password button.
 
-## The Buyer can add products to his cart (the cart is already created for each buyer whenever they register) after clicking on a product on the product page :-
+### The Buyer can add products to his cart (the cart is already created for each buyer whenever they register) after clicking on a product on the product page :-
 
-## To add a product to the cart, the user (buyer) has to click on ADD TO CART button :-
+### To add a product to the cart, the user (buyer) has to click on ADD TO CART button :-
 
-## After adding to the cart, the user (buyer) has to click on CONTINUE SHOPPING to purchase the product :-
+### After adding to the cart, the user (buyer) has to click on CONTINUE SHOPPING to purchase the product :-
 
-## After clicking on CONTINUE SHOPPING, the user (buyer) has to provide his address details in a form and then press on the ADD button to confirm the address:-
+### After clicking on CONTINUE SHOPPING, the user (buyer) has to provide his address details in a form and then press on the ADD button to confirm the address:-
 
-## After adding the address, the user (buyer) can check out his products (in his cart) by clicking on the CHECK OUT button :-
+### After adding the address, the user (buyer) can check out his products (in his cart) by clicking on the CHECK OUT button :-
 
 - The user (buyer) can pay in 2 different methods, by cash on delivery or by card payment.
 
-## In cash on delivery, the user (buyer) is required to fill a captcha to place the order :-
+### In cash on delivery, the user (buyer) is required to fill a captcha to place the order :-
 
 - After placing the order, the user would have bought the item.
 
-## The following is the card payment method :-
+### The following is the card payment method :-
 
-## After clicking on PAY NOW, you will have to enter your email address :-
+### After clicking on PAY NOW, you will have to enter your email address :-
 
 - After selecting the Card option, the user(buyer) will have to enter his card details such as Card number, Expiry data, CVV.
 - Since this is testing mode, the accepted Card number will be 4111111111111111.
 
-## Then the user will have to type in the OTP received at his phone number:-
+### Then the user will have to type in the OTP received at his phone number:-
 
 - After clicking the PAY button, the order would have been placed.
 - Note: The payment made is in the form of dollars, and for that we have correctly converted the cost of the product from rupees to dollars.
 
-## User Information :-
+# User Information :-
 
 ### Admin
 Phone numbers - 9171234567
