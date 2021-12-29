@@ -48,6 +48,11 @@ The home page of our website can be accessed from this URL :- https://192.168.2.
 
 - The user (seller) can also change his password by using the Change password button.
 
+### Buyer
+ - When buyer successfully login 
+
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/products_page.png)
+
 ### The Buyer can add products to his cart (the cart is already created for each buyer whenever they register) after clicking on a product on the product page :-
 
 ![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/cart.png)
