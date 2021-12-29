@@ -9,6 +9,8 @@ The home page of our website can be accessed from this URL :- https://192.168.2.
 - First a user needs to register on our website. To register, you need to click on the REGISTER button on top-right
 - The user can then choose his role as a BUYER or as a SELLER.
 
+![imgonline-com-ua-twotoone-ShCNiNLsQtoXncZ5](https://user-images.githubusercontent.com/63155782/147652049-eda82ad0-985e-4808-8c8d-0fa51c3263a1.jpg)
+
 ### The registration page for the buyer is :-
 
 - The user then needs to fill in his details according to the details mentioned in the page and then needs to click the REGISTER button.
