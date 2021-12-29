@@ -1,4 +1,5 @@
-# Django React eCommerce
+
+<!-- # Django React eCommerce
 
 Advanced eCommerce example web application with Django and React
 
@@ -70,3 +71,4 @@ docker-compose exec web python add_dummy_data.py
 ```
 
 You are good to go. Open your server ip address on port 80 (Ex on localhost: http://127.0.0.1).
+ -->
