@@ -24,7 +24,7 @@ Now, after registering or login, whenever the user logs out, then during the tim
 - Then the user (seller) needs to fill in the details according to the details mentioned in the page and then needs to click the REGISTER button.
 - Then the user needs to scan a QR code and verify an OTP by using Google Authenticator App.
 
-### Buyer
+## Buyer:
  - When buyer successfully login, product page will be displayed -  
 
 ![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/products_page.png)
@@ -53,7 +53,7 @@ Now, after registering or login, whenever the user logs out, then during the tim
 
 ![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/order_placed.png)
 
-### Seller
+## Seller:
 
 - The user(seller) personal info (Dashboard) page is this. 
  Here the user (seller) can also edit his personal info using the EDIT button.
