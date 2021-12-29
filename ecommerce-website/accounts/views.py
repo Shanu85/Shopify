@@ -1,5 +1,6 @@
 from django.core.exceptions import ValidationError
 from rest_framework import generics
+from rest_framework import response
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.status import HTTP_204_NO_CONTENT, HTTP_400_BAD_REQUEST, HTTP_200_OK
@@ -19,6 +20,9 @@ User = get_user_model()
 class RegisterView(generics.GenericAPIView):
     serializer_class = serializers.RegisterSerializer
     def post(self, request, *args, **kwargs):
+
+        if (request.data['user_type'] == 'Admin'):
+            return Response('Not anymore', status=HTTP_400_BAD_REQUEST)
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
@@ -129,4 +133,6 @@ class TOTPVerifyView(APIView):
             # print(user)
             return Response(True, status=status.HTTP_200_OK)
             # return Response(dict(token=user.token), status=HTTP_200_OK)
+        if user.isAuthenticated == True:
+            logout(request)
         return Response(dict(errors=dict(token=['Invalid TOTP Token'])), status=HTTP_400_BAD_REQUEST)

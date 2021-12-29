@@ -13,8 +13,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 import json
 
-with open('/etc/config.json') as config_file:
-	config=json.load(config_file)
+# with open('/etc/config.json') as config_file:
+# 	config=json.load(config_file)
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -23,13 +23,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = os.environ.get("SECRET_KEY", default="foo")
-SECRET_KEY=config['SECRET_KEY']
+SECRET_KEY = os.environ.get("SECRET_KEY", default="foo")
+# SECRET_KEY=config['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = int(os.environ.get("DEBUG", default=1))
 
-#ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", default="*").split(" ")
-ALLOWED_HOSTS=['192.168.2.238','0.0.0.0']
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", default="*").split(" ")
+# ALLOWED_HOSTS=['192.168.2.238','0.0.0.0']
 
 # Application definition
 
@@ -91,13 +91,21 @@ WSGI_APPLICATION = 'web.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
+    # "default": {
+    #     "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.mysql"),
+    #     "NAME": os.environ.get("SQL_DATABASE",  "shopify"),
+    #     "USER": os.environ.get("SQL_USER", "user1"),
+    #     "PASSWORD": os.environ.get("SQL_PASSWORD", "Hellothere1234$"),
+    #     "HOST": os.environ.get("SQL_HOST", "0.0.0.0"),
+    #     "PORT": os.environ.get("SQL_PORT", "3306"),
+    # }
     "default": {
-        "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.mysql"),
-        "NAME": os.environ.get("SQL_DATABASE",  "shopify"),
-        "USER": os.environ.get("SQL_USER", "user1"),
-        "PASSWORD": os.environ.get("SQL_PASSWORD", "Hellothere1234$"),
-        "HOST": os.environ.get("SQL_HOST", "0.0.0.0"),
-        "PORT": os.environ.get("SQL_PORT", "3306"),
+        "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
+        "NAME": os.environ.get("SQL_DATABASE", os.path.join(BASE_DIR, "db.sqlite3")),
+        "USER": os.environ.get("SQL_USER", "user"),
+        "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
+        "HOST": os.environ.get("SQL_HOST", "localhost"),
+        "PORT": os.environ.get("SQL_PORT", "5432"),
     }
 }
 
@@ -190,10 +198,10 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
 # to https only
-SECURE_HSTS_SECONDS=31536999
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD=True
-SECURE_SSL_REDIRECT = True
+# SECURE_HSTS_SECONDS=31536999
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# SECURE_HSTS_PRELOAD=True
+# SECURE_SSL_REDIRECT = True
 
 SECURE_CONTENT_TYPE_NOSNIFF= True
 

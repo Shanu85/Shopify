@@ -37,7 +37,7 @@ class ProductManager(models.Manager):
         return self.filter(active=True)
 
     def available_products(self):
-        return self.all().filter(sizes__available_count__gt=0).distinct()
+        return self.all().filter(sale_count__gt=0).distinct()
 
 
 class Product(models.Model):

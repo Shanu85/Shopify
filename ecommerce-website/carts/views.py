@@ -16,9 +16,10 @@ class CartView(ModelViewSet):
             return Response('Smarty Boi. Try something more', status=HTTP_200_OK)
         obj, _ = Cart.objects.get_or_create(user=request.user, ordered=False)
         # Remove unavailable items from cart
-        unavailable_items = obj.items.filter(product__sale_count__lte=0)
+        unavailable_items = obj.items.filter(product__sale_count__lte=0, product__status=False)
         if unavailable_items.exists():
             unavailable_items.delete()
+
         serializer = CartSerializer(obj, context={'request': request})
         return Response(serializer.data, status=HTTP_200_OK)
 
