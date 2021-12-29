@@ -40,7 +40,7 @@ Now, after registering or login, whenever the user logs out, then during the tim
 ![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/payment_page.png)
 
 - In cash on delivery, the user (buyer) is required to fill a captcha to place the order. 
-- In card method, after clicking on PAY NOW, you will have to enter your email address. After selecting the Card option, the user(buyer) will have to enter his card details such as Card number, Expiry data, CVV. Since this is testing mode, the accepted Card number will be 4111111111111111.
+- In card method, after clicking on PAY NOW, you will have to enter your email address. After selecting the Card option, the user(buyer) will have to enter his card details such as Card number, Expiry data, CVV. Since this is testing mode, the accepted Card number will be ### 4111111111111111.
  Then the user will have to type in the OTP received at his phone number:-
     After clicking the PAY button, the order would have been placed.
     ### Note: The payment made is in the form of dollars, and for that we have correctly converted the cost of the product from rupees to dollars.
