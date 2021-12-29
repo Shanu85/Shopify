@@ -79,29 +79,32 @@ Now, after registering or login, whenever the user logs out, then during the tim
 ### Admin
 Phone numbers - 9171234567
 Password - Shopify@8769
-
-![Qrcode -](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/admin_QR.png)
+Qrcode -
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/admin_QR.png)
 
 
 ### Seller
 Phone numbers - 9177654321
 Password - Whatthe$97
-
-![Qrcode - ](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/Whatthe%2497_QR.png)
+Qrcode -
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/Whatthe%2497_QR.png)
 
 Phone numbers - 9175559999
 Password - Aman$890
-![Qrcode -](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/Aman%24890_QR.png) 
+Qrcode -
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/Aman%24890_QR.png) 
 
 
 ### Buyer
 Phone numbers - 9172589875
 Password - Chaman@1456
-![Qrcode -](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/Chaman%401456_QR.png) 
+Qrcode -
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/Chaman%401456_QR.png) 
 
 Phone numbers - 9180596836
 Password - Kyakaru&4978
-![Qrcode -](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/Kyakaru%264978_QR.png) 
+Qrcode -
+![](https://github.com/Shanu85/Shopify/blob/main/ecommerce-website/Website_Image/Kyakaru%264978_QR.png) 
 
 
 ## Admin:
