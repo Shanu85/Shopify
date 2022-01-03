@@ -12,9 +12,9 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 import json
-import django_heroku
+# import django_heroku
 import dotenv
-import dj_database_url
+# import dj_database_url
 # with open('/etc/config.json') as config_file:
 # 	config=json.load(config_file)
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'django_rest_passwordreset',
     'django_otp',
     'django_otp.plugins.otp_totp',
-    'django-heroku'
+    'djangoheroku'
     'whitenoise.runserver_nostatic',
 ]
 
