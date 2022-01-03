@@ -1,6 +1,6 @@
 # Shopify
 An e-commerce website is a software system developed primarily to facilitate buying and selling of products between users.The focus of this project is to develop a Secure e-Commerce website.
-
+To directly see about the site [user guide](https://github.com/Shanu85/Shopify/tree/main/ecommerce-website#user-guide-for-shopify-an-ecommerce-platform)
 
 ##  Main Features
 A user should be able to use this system any place and any time with the availability of internet and web browsers. In addition to specific requirements mentioned below, all the global standards / laws with respect to e-commerce websites should be strictly followed. 
