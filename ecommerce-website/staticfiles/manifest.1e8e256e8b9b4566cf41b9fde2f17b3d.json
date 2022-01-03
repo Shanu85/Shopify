@@ -1,0 +1,41 @@
+{
+  "icons": [
+    {
+      "src": "/static/icons/icon_512x512.1020025fde454f7737926a4be46a5227.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/icons/icon_384x384.6cc49c55cceb7c0034a42f15553150e1.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/icons/icon_256x256.a7162de95869afddfc8cf8c40c063eca.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/icons/icon_192x192.51d2319d99eeda5aa6121a160fd12a0e.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/icons/icon_128x128.410147a24f70f3e4d050a1bade74e97d.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/icons/icon_96x96.17b0f4dfa9dd4d67f7c9b27c05fdccb7.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    }
+  ],
+  "name": "Ecommerce Web App",
+  "short_name": "Ecommerce",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": ".",
+  "description": "An e-commerce web application built in with Django and React",
+  "background_color": "#f4f4f4"
+}
