@@ -12,24 +12,25 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 import json
-
-with open('/etc/config.json') as config_file:
-	config=json.load(config_file)
+import django_heroku
+import dotenv
+import dj_database_url
+# with open('/etc/config.json') as config_file:
+# 	config=json.load(config_file)
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = os.environ.get("SECRET_KEY", default="foo")
-SECRET_KEY=config['SECRET_KEY']
+SECRET_KEY = os.environ.get("SECRET_KEY", default="foo")
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = int(os.environ.get("DEBUG", default=1))
 
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", default="*").split(" ")
-# ALLOWED_HOSTS=['192.168.2.238','0.0.0.0']
+# ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", default="*").split(" ")
+ALLOWED_HOSTS=['https://shopifyfcs.herokuapp.com/','localhost','127.0.0.1']
 
 # Application definition
 
@@ -52,6 +53,7 @@ INSTALLED_APPS = [
     'django_rest_passwordreset',
     'django_otp',
     'django_otp.plugins.otp_totp',
+    'whitenoise.runserver_nostatic',
 ]
 
 MIDDLEWARE = [
@@ -64,6 +66,7 @@ MIDDLEWARE = [
     'django_otp.middleware.OTPMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'livereload.middleware.LiveReloadScript',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'web.urls'
@@ -91,24 +94,23 @@ WSGI_APPLICATION = 'web.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.mysql"),
-        "NAME": os.environ.get("SQL_DATABASE",  "shopify"),
-        "USER": os.environ.get("SQL_USER", "user1"),
-        "PASSWORD": os.environ.get("SQL_PASSWORD", "Hellothere1234$"),
-        "HOST": os.environ.get("SQL_HOST", "0.0.0.0"),
-        "PORT": os.environ.get("SQL_PORT", "3306"),
-    }
     # "default": {
-    #     "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
-    #     "NAME": os.environ.get("SQL_DATABASE", os.path.join(BASE_DIR, "db.sqlite3")),
-    #     "USER": os.environ.get("SQL_USER", "user"),
-    #     "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
-    #     "HOST": os.environ.get("SQL_HOST", "localhost"),
-    #     "PORT": os.environ.get("SQL_PORT", "5432"),
+    #     "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.mysql"),
+    #     "NAME": os.environ.get("SQL_DATABASE",  "shopify"),
+    #     "USER": os.environ.get("SQL_USER", "user1"),
+    #     "PASSWORD": os.environ.get("SQL_PASSWORD", "Hellothere1234$"),
+    #     "HOST": os.environ.get("SQL_HOST", "0.0.0.0"),
+    #     "PORT": os.environ.get("SQL_PORT", "3306"),
     # }
+    "default": {
+        "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
+        "NAME": os.environ.get("SQL_DATABASE", os.path.join(BASE_DIR, "db.sqlite3")),
+        "USER": os.environ.get("SQL_USER", "user"),
+        "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
+        "HOST": os.environ.get("SQL_HOST", "localhost"),
+        "PORT": os.environ.get("SQL_PORT", "5432"),
+    }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -150,7 +152,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'dist/static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Media files
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -214,3 +216,4 @@ try:
 except ImportError:
     pass
 
+django_heroku.settings(locals())
