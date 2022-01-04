@@ -55,7 +55,10 @@ INSTALLED_APPS = [
     'django_otp.plugins.otp_totp',
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     'djangoheroku'
+=======
+>>>>>>> parent of 1dd15ec (Heroku build files)
 =======
 >>>>>>> parent of 1dd15ec (Heroku build files)
 =======
