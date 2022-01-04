@@ -53,7 +53,10 @@ INSTALLED_APPS = [
     'django_rest_passwordreset',
     'django_otp',
     'django_otp.plugins.otp_totp',
+<<<<<<< HEAD
     'djangoheroku'
+=======
+>>>>>>> parent of 1dd15ec (Heroku build files)
     'whitenoise.runserver_nostatic',
 ]
 
@@ -201,10 +204,10 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
 # to https only
-SECURE_HSTS_SECONDS=31536999
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD=True
-SECURE_SSL_REDIRECT = True
+# SECURE_HSTS_SECONDS=31536999
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# SECURE_HSTS_PRELOAD=True
+# SECURE_SSL_REDIRECT = True
 
 SECURE_CONTENT_TYPE_NOSNIFF= True
 

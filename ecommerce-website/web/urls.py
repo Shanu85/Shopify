@@ -18,6 +18,7 @@ from django_otp.plugins.otp_totp.models import TOTPDevice
 
 # admin_site = OTPAdmin(name='OTPAdmin')
 # admin_site.register(User)
+# admin_site.unregister(TOTPDevice)
 admin.site.unregister(TOTPDevice)
 
 
