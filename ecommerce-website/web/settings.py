@@ -54,7 +54,10 @@ INSTALLED_APPS = [
     'django_otp',
     'django_otp.plugins.otp_totp',
 <<<<<<< HEAD
+<<<<<<< HEAD
     'djangoheroku'
+=======
+>>>>>>> parent of 1dd15ec (Heroku build files)
 =======
 >>>>>>> parent of 1dd15ec (Heroku build files)
     'whitenoise.runserver_nostatic',
